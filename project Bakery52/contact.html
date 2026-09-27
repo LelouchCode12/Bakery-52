@@ -3,11 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact & Booking</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+            <a href="index.html" class="navbar_brand">Bakery</a>
+            <ul class="navbar_links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="contact_section">
+            <h1>Contact Us & Table Reservation</h1>
+            <div class="contact-grid">
+                <form action="#" method="post">
+                    <h2>Book a table</h2>
+                    <div class="form-field">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="Phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="date">Preferred Date:</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="time">Preferred Time:</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                    <div class="form-field">
+                         <label for="guests">Number of Guests:</label>
+                         <select id="guests" name="guests">
+                            <option value="1">1 person</option>
+                            <option value="2">2 people</option>
+                            <option value="3">3 people</option>
+                            <option value="4">4+ people</option>
+                         </select>
+                    </div>
+                    <button type="submit">Book Now</button>
+                </form>
+
+            </div>
+        </section>
+    </main>
     
 </body>
 </html>
