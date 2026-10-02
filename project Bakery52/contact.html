@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Booking</title>
+    <title>Contact & Booking - Bakery-52</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
     <header>
         <nav class="navbar" aria-label="Main Navigation">
-            <a href="index.html" class="navbar_brand">Bakery</a>
+            <a href="index.html" class="navbar_brand">Bakery-52</a>
             <ul class="navbar_links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -23,35 +23,38 @@
         <section class="section container" aria-label="contact_section">
             <h1>Contact Us & Table Reservation</h1>
             <div class="contact-grid">
-                <form action="#" method="post">
+                <div>
+                <p id="demo-note" class="demo-note">This form is for demonstration purposes only. No data will be submitted or stored.</p>
+                <form action="demo-result.html" method="get" aria-describedby="demo-note">
                     <h2>Book a table</h2>
                     <div class="form-field">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" autocomplete="name" required>
                     </div>
                     <div class="form-field">
                         <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <input type="tel" id="phone" autocomplete="tel" required>
                     </div>
                     <div class="form-field">
                         <label for="date">Preferred Date:</label>
-                        <input type="date" id="date" name="date" required>
+                        <input type="date" id="date" required>
                     </div>
                     <div class="form-field">
                         <label for="time">Preferred Time:</label>
-                        <input type="time" id="time" name="time" required>
+                        <input type="time" id="time" required>
                     </div>
                     <div class="form-field">
                          <label for="guests">Number of Guests:</label>
-                         <select id="guests" name="guests">
+                         <select id="guests">
                             <option value="1">1 person</option>
                             <option value="2">2 people</option>
                             <option value="3">3 people</option>
                             <option value="4">4+ people</option>
                          </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Book Now</button>
+                    <button type="submit" class="btn btn-primary">Book Now(demo)</button>
                 </form>
+                </div>
                 
                 <!-- инфа сбоку -->
                 <aside>
@@ -76,20 +79,22 @@
         </section>
 
         <!-- FAQ Section -->
-        <section class="section section_muted">
+        <section class="section section_muted" id="faq">
             <div class="container">
                 <h2>Frequently Asked Questions</h2>
-                <div class="feature-card">
-                    <h3>What are your opening hours?</h3>
-                    <p>We are open from 9:00 AM to 9:00 PM every day.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Do you offer vegan options?</h3>
-                    <p>Yes, we have a variety of vegan pastries and desserts available.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Can I make a reservation online?</h3>
-                    <p>Yes, you can use the booking form above to reserve a table.</p>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>What are your opening hours?</summary>
+                        <p>We are open from 9:00 AM to 9:00 PM every day.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Do you offer vegan options?</summary>
+                        <p>Yes, we have a variety of vegan pastries and desserts available.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I make a reservation online?</summary>
+                        <p>Yes, you can use the booking form above to reserve a table.</p>
+                    </details>
                 </div>
             </div>
         </section>
