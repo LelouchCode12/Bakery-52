@@ -3,117 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakery-52</title>
-    <meta name="description" content="Bakery-52 is a bakery that offers a variety of delicious baked goods, including bread, pastries, cakes, and more. Our bakery is known for its high-quality ingredients and exceptional customer service.">
+    <title>Home - Bakery-52</title>
+    <meta name="description" content="Bakery-52 is a local bakery offering artisanal bread, fresh pastries, custom cakes, and specialty coffee.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-
 </head>
 <body>
     <header>
         <nav class="navbar" aria-label="Main Navigation">
             <a href="index.html" class="navbar_brand">Bakery-52</a>
             <ul class="navbar_links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
-    <main>
+
+    <main id="main-content">
         <section class="section hero container" aria-label="hero_section">
             <div class="hero_text">
                 <h1>Welcome to Bakery-52</h1>
-                <p>Experience the taste of freshly baked goods made with love and care.</p>
-                <a href="services.html" class="btn btn-primary">Explore Our Services</a>
-                <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                <p>Experience the taste of freshly baked goods made with love and care every morning.</p>
+                <div class="hero_buttons">
+                    <a href="services.html" class="btn btn-primary">Explore Our Menu</a>
+                    <a href="contact.html" class="btn btn-outline">Book a Table</a>
+                </div>
             </div>
             <div class="hero_image">
-                <div class="shef"><img src="images/imagesshef.jpeg" class="hero_image" class = "placeholder" alt="Delicious baked goods from Bakery-52"></div>
+                <div class="shef">
+                    <img src="images/imagesshef.jpeg" class="hero_img placeholder" alt="Chef preparing fresh baked pastries">
+                </div>
             </div>
         </section>
-        <section class = "section_muted">
-            <div class = "container">
-                <div class = "section_intro">
-                    <h2>Why choose us?</h2>
-                    <p>Three things that set Bakery-52 apart from your typical neighborhood coffee shop.</p>
+
+        <section class="section_muted hero">
+            <div class="container">
+                <div class="section_intro">
+                    <h2>Why Choose Us?</h2>
+                    <p>Three core principles that set Bakery-52 apart from typical coffee shops.</p>
                 </div>
-                <div class = "features">
+                <div class="features">
                     <article class="feature-card">
                         <div class="feature-card_icon" aria-hidden="true">☕</div>
-                        <h3>In-house roasting</h3>
-                        <p>We source green beans directly from farmers and roast them in small batches every week.</p>
+                        <h3>In-House Roasting</h3>
+                        <p>We source green coffee beans directly and roast them in small batches every week.</p>
                     </article>
                     <article class="feature-card">
                         <div class="feature-card_icon" aria-hidden="true">🍰</div>
-                        <h3>Freshly baked goods</h3>
-                        <p>Croissants and Cinnabons are baked on-site starting early in the morning—without the use of frozen semi-finished products.</p>
+                        <h3>Freshly Baked Daily</h3>
+                        <p>Croissants and pastries are baked on-site at 5:00 AM without frozen semi-finished products.</p>
                     </article>
                     <article class="feature-card">
                         <div class="feature-card_icon" aria-hidden="true">❤️</div>
                         <h3>Community Focus</h3>
-                        <p>We are committed to supporting our local community and providing a warm, welcoming environment for all.</p>
+                        <p>We are committed to providing a warm, welcoming environment for our neighborhood.</p>
                     </article>
                 </div>
             </div>
         </section>
-        <section class="section">
+
+        <section class="section container" aria-label="menu_section">
             <div class="container">
                 <div class="section_header">
-                    <h2>Catalog of cakes, desserts, and pastries</h2>
-                    <p>A few drinks and desserts that are ordered most frequently.</p>
+                    <h2>Featured Desserts & Cakes</h2>
+                    <p>Discover our most popular signature pastries and custom cakes.</p>
                 </div>
+                
                 <div class="card-grid">
-                    <article class="card">
+                    <article class="product-card">
                         <div class="placeholder">
-                        <img src="images/whoopiepie.png" alt="Whoopie Pie Cake" class="card_image"></div>
+                            <img src="images/whoopiepie.png" alt="Whoopie Pie Cake">
+                        </div>
                         <div class="card_content">
                             <h3>Whoopie Pie Cake</h3>
-                            <p>Ingredients: Chocolate sponge cake layers, cream made from natural heavy cream and cream cheese. Topped with dark chocolate glaze. Diameter: 23 cm Weight: 1.5 kg.</p>
+                            <p>Rich chocolate sponge layers with natural heavy cream cheese glaze.</p>
                             <span class="card_price">10 000₸</span>
                         </div>
                     </article>
-                    <article class="card">
+
+                    <article class="product-card">
                         <div class="placeholder">
-                        <img src="images/honey cake.png" alt="Honey Cake" class="card_image"></div>
+                            <img src="images/honey cake.png" alt="Honey Cake">
+                        </div>
                         <div class="card_content">
                             <h3>Honey Cake</h3>
-                            <p>Ingredients: Honey cake layers made with natural honey. Cream cheese frosting based on natural heavy cream and cream cheese; condensed milk. Diameter: 21 cm. Weight: 1.2 kg.</p>
+                            <p>Natural honey sponge with whipped cream cheese and condensed milk.</p>
                             <span class="card_price">12 000₸</span>
                         </div>
                     </article>
-                    <article class="card">
+
+                    <article class="product-card">
                         <div class="placeholder">
-                        <img src="images/milkgirl.png" alt="'Milk Girl' cake" class="card_image"></div>
+                            <img src="images/milkgirl.png" alt="'Milk Girl' cake">
+                        </div>
                         <div class="card_content">
-                            <h3>'Milk Girl' cake</h3>
-                            <p>Ingredients: Sponge cake layers, cream cheese frosting made with natural cream and cream cheese. Diameter: 20 cm. Weight: 0.9 kg.</p>
-                            <span class="card_price">7500₸</span>
+                            <h3>'Milk Girl' Cake</h3>
+                            <p>Delicate condensed milk sponge layers with light cream frosting.</p>
+                            <span class="card_price">7 500₸</span>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
-        <section class="section_muted">
+
+        <section class="section_muted hero">
             <div class="container">
-                <div class="section-intro">
-                    <h2>What our guests say</h2>
+                <div class="section_intro">
+                    <h2>What Our Guests Say</h2>
                 </div>
                 <div class="features">
                     <blockquote class="feature-card">
-                    <p>«The best flat white in this part of town, and it’s also a convenient place to work on a laptop.»</p>
-                    <footer>— Ansar E.</footer>
-                </blockquote>
-                <blockquote class="feature-card">
-                <p>«The pastries are always fresh, and the staff remembers regular guests by name.»</p>
-                <footer>— Alisher B.</footer>
-                </blockquote>
+                        <p>«The best flat white in this part of town, and a comfortable place to work on a laptop.»</p>
+                        <footer>— Ansar E.</footer>
+                    </blockquote>
+                    <blockquote class="feature-card">
+                        <p>«The pastries are always hot and fresh, and the baristas remember regular guests.»</p>
+                        <footer>— Alisher B.</footer>
+                    </blockquote>
+                </div>
             </div>
-        </div>
-    </section>
-  </main>
-<!-- Footer Section -->
+        </section>
+    </main>
+
     <footer class="site-footer">
         <div class="container footer-grid">
             <div>
