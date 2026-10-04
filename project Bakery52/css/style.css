@@ -24,6 +24,15 @@
   box-sizing: border-box;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -39,9 +48,9 @@ h1, h2, h3 {
   margin-top: 0;
 }
 
-h1 { font-size: 2.4rem; }
-h2 { font-size: 1.8rem; margin-bottom: var(--space-2); }
-h3 { font-size: 1.2rem; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.25rem); }
 
 p { margin: 0 0 var(--space-2); }
 
@@ -51,8 +60,8 @@ a {
 }
 
 img {
-  max-width: 70%;
-  align-items: center;
+  max-width: 100%;
+  height: auto;
   display: block;
 
 }
@@ -75,6 +84,10 @@ img {
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+}
+.section_header {
+  text-align: center;
+  margin-bottom: var(--space-4);
 }
 
 .btn {
@@ -127,8 +140,24 @@ img {
 .navbar_links a {
   color: var(--color-text);
   font-weight: 600;
-  padding: 0.3rem 0.1rem;
+  padding: 0.4em 0.5rem;
   border-bottom: 2px solid transparent;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.navbar_links a[aria-current="page"] {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+}
+.navbar_links a:hover {
+  background-color: #f0e6d8; 
+  color: var(--color-primary-dark);
+}
+.navbar_links a[aria-current="page"]:hover {
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
 }
 
 .placeholder {
@@ -147,7 +176,7 @@ img {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-3, 1.5rem);
   width: 100%;
 }
@@ -260,7 +289,7 @@ img {
   flex: 1 1 320px;
 }
 
-.hero__image .placeholder {
+.hero_image .placeholder {
   aspect-ratio: 4 / 3;
 }
 
@@ -268,15 +297,26 @@ img {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-3);
 }
 
 .team-member {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem 1.25rem 1.5rem;
   text-align: center;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.team-member:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(78, 53, 36, 0.15);
+  border-color: var(--color-primary);
 }
 
 .team-member img {
@@ -284,6 +324,9 @@ img {
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
+  border: 3px solid var(--color-primary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.25rem;
   flex-shrink: 0;
 }
 
@@ -317,7 +360,7 @@ img {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-3);
 }
 
@@ -347,19 +390,42 @@ img {
   gap: var(--space-2);
 }
 
-.info-list li {
+
+.faq-item {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: var(--space-2);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.faq-item:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(78, 53, 36, 0.08);
+}
 
+.faq-item summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
 
+.faq-item p {
+  margin: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out, margin-top 0.25s ease-out;
+}
 
-
-
-/* ============================================== */
-/* STYLES FOR SERVICES PAGE(дебилам не трогать) */
-
-
+.faq-item[open] p {
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 0.75rem;
+}
+@starting-style {
+  .faq-item[open] p {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
