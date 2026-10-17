@@ -21,38 +21,25 @@
     </header>
     <main>
         <section class="section container" aria-label="contact_section">
-            <h1>Contact Us & Table Reservation</h1>
+            <h1>Contact Us</h1>
             <div class="contact-grid">
                 <div>
                 <p id="demo-note" class="demo-note">This form is for demonstration purposes only. No data will be submitted or stored.</p>
                 <form action="demo-result.html" method="get" aria-describedby="demo-note">
-                    <h2>Book a table</h2>
+                    <h2>Send us a message&#9996&#128540</h2>
                     <div class="form-field">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" autocomplete="name" required>
+                        <input type="text" id="name" name="name" autocomplete="name" minlength="2" required placeholder="Shelly from Brawl Stars &#128165&#128299&#129312">
                     </div>
                     <div class="form-field">
-                        <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" autocomplete="tel" required>
+                        <label for="contactemail">Email:</label>
+                        <input type="email" id="contactemail" name="contactemail" autocomplete="email" required placeholder="shelly@brawlstars.com">
                     </div>
                     <div class="form-field">
-                        <label for="date">Preferred Date:</label>
-                        <input type="date" id="date" required>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" minlength="10" maxlength="500" required placeholder="please write your message here please please please"></textarea>
                     </div>
-                    <div class="form-field">
-                        <label for="time">Preferred Time:</label>
-                        <input type="time" id="time" required>
-                    </div>
-                    <div class="form-field">
-                         <label for="guests">Number of Guests:</label>
-                         <select id="guests">
-                            <option value="1">1 person</option>
-                            <option value="2">2 people</option>
-                            <option value="3">3 people</option>
-                            <option value="4">4+ people</option>
-                         </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Book Now(demo)</button>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
                 </div>
                 
