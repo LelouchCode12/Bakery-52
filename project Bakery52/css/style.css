@@ -36,6 +36,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  min-height: 100vh;
   margin: 0;
   font-family: var(--font-body);
   color: var(--color-text);
@@ -43,6 +44,8 @@ body {
   line-height: 1.6;
   font-size: 1.1rem;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .floating-badge {
   display: inline-flex;
