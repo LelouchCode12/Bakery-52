@@ -488,4 +488,41 @@ img {
 }
 
 
+/* Добавь позиционирование для панели */
+.widget-panel {
+  width: 260px;
+  height: 240px;
+  background-color: #ffffff;
+  border: 2px solid var(--color-border, #e6dccb);
+  border-left: none;
+  border-radius: 0 14px 14px 0;
+  padding: 1rem;
+  box-shadow: 6px 6px 20px rgba(78, 53, 36, 0.15);
+  transform: translateX(-100%);
+  margin-left: -38px;
+  transition: transform 0.35s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  position: relative; /* <-- ВАЖНО для крестика */
+}
+
+/* Стили крестика закрытия */
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: #888;
+  cursor: pointer;
+  padding: 0;
+}
+
+.close-btn:hover {
+  color: #332219;
+}
 
