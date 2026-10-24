@@ -554,21 +554,16 @@ img {
 
 
 /* NIGGA THEME */
-/* ==========================================
-   ТЁМНАЯ ТЕМА ЧЕРЕЗ ПЕРЕМЕННЫЕ (Без !important)
-   ========================================== */
-
 body.dark-theme {
-  --color-bg: #16110e;           /* Глубокий тёмно-шоколадный фон */
-  --color-surface: #241b17;      /* Цвет карточек и панелей */
-  --color-text: #ebdcd0;         /* Основной кремовый текст */
-  --color-text-light: #b09a8c;   /* Приглушённый текст */
-  --color-border: #3b2c26;       /* Тёмные мягкие границы */
-  --color-primary: #e0a96d;      /* Более светлый акцент для видимости на темном */
-  --color-primary-dark: #f3e9e0; /* Заголовки делаем светлыми */
+  --color-bg: #16110e;
+  --color-surface: #241b17;
+  --color-text: #ebdcd0;
+  --color-text-light: #b09a8c;
+  --color-border: #3b2c26;
+  --color-primary: #e0a96d; 
+  --color-primary-dark: #f3e9e0;
 }
 
-/* Дополнительные точечные настройки для специфичных элементов в темной теме */
 body.dark-theme .navbar {
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
@@ -596,7 +591,6 @@ body.dark-theme .side-panel input[type="text"]::placeholder {
   color: #8c786d;
 }
 
-/* Плавный переход цветов для ключевых элементов */
 body, 
 .card, 
 .product-card,
@@ -627,9 +621,8 @@ body,
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(111, 78, 55, 0.2);
 }
-/* Делаем футер тёмным в ночном режиме */
 body.dark-theme .site-footer {
-  background-color: #110c0a; /* Глубокий тёмно-коричневый оттенок для футера */
+  background-color: #110c0a; 
   color: var(--color-text);
   border-top: 1px solid var(--color-border);
 }
@@ -639,19 +632,18 @@ body.dark-theme .site-footer .bottom {
   color: var(--color-text-light);
 }
 
-/* Тёмный режим для боковой панели Greeting */
 body.dark-theme .side-panel {
-  background-color: var(--color-surface); /* Тёмно-коричневый фон панели */
+  background-color: var(--color-surface); 
   border-color: var(--color-border);
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
 }
 
 body.dark-theme .side-panel h6,
 body.dark-theme .side-panel p {
-  color: var(--color-text); /* Яркий кремовый текст вместо блёклого */
+  color: var(--color-text); 
 }
 
 body.dark-theme .side-trigger {
-  background-color: var(--color-accent); /* Светло-карамельный оттенок для плашки */
-  color: #16110e;                        /* Чёткий тёмный текст на плашке */
+  background-color: var(--color-accent); 
+  color: #16110e;                     
 }

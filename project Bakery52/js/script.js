@@ -26,10 +26,8 @@ const themeIcon = themeToggleBtn.querySelector('.theme-icon');
 const themeText = themeToggleBtn.querySelector('.theme-text');
 
 themeToggleBtn.onclick = () => {
-    // 1. Переключаем класс темы у body
     const isDark = document.body.classList.toggle('dark-theme');
     
-    // 2. Красиво меняем иконку и текст кнопки
     if (isDark) {
         themeIcon.textContent = '☀️';
         themeText.textContent = 'Light Mode';
