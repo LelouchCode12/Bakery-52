@@ -487,42 +487,163 @@ img {
   background-color: #8c6246;
 }
 
-
-/* Добавь позиционирование для панели */
-.widget-panel {
-  width: 260px;
-  height: 240px;
-  background-color: #ffffff;
-  border: 2px solid var(--color-border, #e6dccb);
-  border-left: none;
-  border-radius: 0 14px 14px 0;
+/* SIDE WELLCOME BAR */
+.side-welcome {
+  position: fixed; top: 50%; left: 0;
+  transform: translate(-260px, -50%);
+  z-index: 9999; display: flex; align-items: stretch;
+  transition: transform 0.35s ease;
+}
+.side-welcome.open {
+  transform: translate(0, -50%);
+}
+.side-panel {
+  font-family: var(--font-body);
+  width: 260px; height: 260px; background: #fff;
+  border: 1px solid #e6dccb; border-right: none;
+  border-radius: 0;
   padding: 1rem;
-  box-shadow: 6px 6px 20px rgba(78, 53, 36, 0.15);
-  transform: translateX(-100%);
-  margin-left: -38px;
-  transition: transform 0.35s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  
-  position: relative; /* <-- ВАЖНО для крестика */
+  padding-top: 0.2rem;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.1); position: relative;
 }
-
-/* Стили крестика закрытия */
-.close-btn {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  line-height: 1;
-  color: #888;
+.side-trigger {
+  width: 36px; height: 260px; background: #6f4e37; color: #fff;
+  border: none; 
+  border-radius: 0 8px 8px 0;
   cursor: pointer;
-  padding: 0;
+  writing-mode: vertical-rl; 
+  text-orientation: upright;
+  font-weight: 600; font-size: 0.85rem;
+  letter-spacing: 2px;
+  display: flex; align-items: center; justify-content: center;
+}
+.side-close {
+  position: absolute; top: 6px; right: 10px; background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #888;
+}
+.side-close:hover { color: #000; }
+
+.side-panel input[type="text"] {
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid #e6dccb;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  margin-bottom: 16px;
+  background-color: #ffffff;
 }
 
-.close-btn:hover {
-  color: #332219;
+.side-panel input[type="text"]:focus {
+  border-color: #6f4e37;
+  box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.15);
+}
+.side-panel h6 {
+  margin-bottom: 0.3rem; 
+  font-size: 0.9rem;
+}
+.side-panel p {
+  margin-bottom: 0.5rem; 
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+#greetingOutput {
+  margin-top: 12px;
+  font-size: 0.85rem;
 }
 
+
+
+/* NIGGA THEME */
+body.dark-theme {
+  --color-bg: #16110e;
+  --color-surface: #241b17;
+  --color-text: #ebdcd0;
+  --color-text-light: #b09a8c;
+  --color-border: #3b2c26;
+  --color-primary: #e0a96d; 
+  --color-primary-dark: #f3e9e0;
+}
+
+body.dark-theme .navbar {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+body.dark-theme .floating-badge {
+  background: rgba(36, 27, 23, 0.9);
+  color: var(--color-text);
+}
+
+body.dark-theme .navbar_links a:hover {
+  background-color: #382a24; 
+  color: #fff;
+}
+
+body.dark-theme .form-control,
+body.dark-theme .side-panel input[type="text"] {
+  background-color: #1d1613;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+body.dark-theme .form-control::placeholder,
+body.dark-theme .side-panel input[type="text"]::placeholder {
+  color: #8c786d;
+}
+
+body, 
+.card, 
+.product-card,
+.side-panel, 
+.form-control, 
+.navbar,
+.faq-item {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+.theme-toggle-btn {
+  border: 2px solid var(--color-primary);
+  background: transparent;
+  color: var(--color-primary);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(111, 78, 55, 0.2);
+}
+body.dark-theme .site-footer {
+  background-color: #110c0a; 
+  color: var(--color-text);
+  border-top: 1px solid var(--color-border);
+}
+
+body.dark-theme .site-footer .bottom {
+  border-top-color: var(--color-border);
+  color: var(--color-text-light);
+}
+
+body.dark-theme .side-panel {
+  background-color: var(--color-surface); 
+  border-color: var(--color-border);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .side-panel h6,
+body.dark-theme .side-panel p {
+  color: var(--color-text); 
+}
+
+body.dark-theme .side-trigger {
+  background-color: var(--color-accent); 
+  color: #16110e;                     
+}
