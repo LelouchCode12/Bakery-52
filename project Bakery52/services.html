@@ -120,6 +120,34 @@
                 </article>
             </div>
         </section>
+        <section class="section container recommendations-section" id="recommendations-section">
+            <div class="section_header">
+                <h2>Customer Recommendations & Favourites</h2>
+                <p>Add your favorite bakery items or custom recommendations to our interactive list.</p>
+            </div>
+
+            <div class="recommendations-card">
+                <form id="item-form" class="recommendations-form">
+                    <div class="form-field">
+                        <label for="item-input">New Recommendation:</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="item-input" class="form-control" placeholder="e.g., Fresh Croissant with Coffee" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-add-item">
+                        <span>Add Recommendation</span>
+                    </button>
+                </form>
+
+                <div class="recommendations-list-wrapper">
+                    <div class="list-header">
+                        <span class="list-title">Your Custom List</span>
+                        <span class="item-count-badge">Total items: <strong id="item-count">0</strong></span>
+                    </div>
+                    <ul id="items-list" class="info-list recommendations-list"></ul>
+                </div>
+            </div>
+        </section>    
     </main>
 
     <footer class="site-footer">
@@ -144,7 +172,6 @@
         </div>
         <p class="bottom">&copy; 2026 Bakery. Educational Project.</p>
     </footer>
-    <script src="js/script.js" defer></script>
         <div class="menu-overlay" id="menuOverlay"></div>
 
     <aside class="site-menu" id="siteMenu" aria-label="Site menu">
@@ -169,7 +196,6 @@
             </div>
         </div>
     </aside>
-
     <script src="js/script.js" defer></script>
 </body>
 </html>

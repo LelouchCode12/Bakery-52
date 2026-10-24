@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initMenu();
     initTheme();
     initSearch();
+    initRecommendations();
 });
 
 function initWelcome() {
@@ -176,5 +177,59 @@ function initSearch() {
         if (noResultsMsg) {
             noResultsMsg.style.display = visibleCount === 0 ? "block" : "none";
         }
+    });
+}
+function initRecommendations() {
+    const itemForm = document.getElementById('item-form');
+    const itemInput = document.getElementById('item-input');
+    const itemsList = document.getElementById('items-list');
+    const itemCount = document.getElementById('item-count');
+
+    if (!itemForm || !itemInput || !itemsList || !itemCount) return;
+
+    let totalItems = 0;
+
+    function updateCount() {
+        itemCount.textContent = totalItems;
+    }
+
+    itemForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const text = itemInput.value.trim();
+        if (text === "") return;
+
+        const li = document.createElement('li');
+        li.style.display = "flex";
+        li.style.justifyContent = "space-between";
+        li.style.alignItems = "center";
+        li.style.padding = "0.75rem 1rem";
+        li.style.background = "var(--color-surface)";
+        li.style.border = "1px solid var(--color-border)";
+        li.style.borderRadius = "var(--radius)";
+        li.style.marginBottom = "0.5rem";
+
+        const span = document.createElement('span');
+        span.textContent = text;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = "Remove";
+        deleteBtn.className = "btn btn-outline";
+        deleteBtn.style.padding = "0.25rem 0.75rem";
+        deleteBtn.style.fontSize = "0.85rem";
+
+        deleteBtn.addEventListener('click', function() {
+            li.remove();
+            totalItems--;
+            updateCount();
+        });
+
+        li.appendChild(span);
+        li.appendChild(deleteBtn);
+        itemsList.appendChild(li);
+
+        totalItems++;
+        updateCount();
+        itemInput.value = "";
     });
 }
