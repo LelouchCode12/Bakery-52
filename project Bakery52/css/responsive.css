@@ -1,0 +1,59 @@
+@media (min-width: 48rem) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero_text {
+    flex: 1;
+  }
+
+  .hero_image {
+    flex: 1;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features {
+    flex-direction: row;
+  }
+
+  .feature-card {
+    flex: 1;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4, 2.5rem); 
+    align-items: start;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact-grid {
+    gap: 3.5rem;
+  }
+}

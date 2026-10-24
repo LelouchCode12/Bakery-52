@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Bakery-52</title>
+    <meta name="description" content="Bakery-52 is a local bakery offering artisanal bread, fresh pastries, custom cakes, and specialty coffee.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥐</text></svg>">
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+            <a href="index.html" class="navbar_brand">Bakery<span>-52</span></a>
+            <ul class="navbar_links">
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="section hero container" aria-label="hero_section">
+            <div class="hero_text">
+                <h1>Welcome to Bakery-52</h1>
+                <p>Experience the taste of freshly baked goods made with love and care every morning.</p>
+                <div class="hero_buttons">
+                    <a href="services.html" class="btn btn-primary">Explore Our Menu</a>
+                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero_image">
+                <div class="shef">
+                    <img src="images/imagesshef.jpeg" class="hero_imgxf" alt="Chef preparing fresh baked pastries">
+                </div>
+            </div>
+        </section>
+            <div class="side-widget" id="sideWidget">
+        <!-- Торчащая бирочка -->
+        <button id="widgetToggle" class="widget-tab">
+            <span>Greeting ❯</span>
+        </button>
+        
+        <!-- Выезжающее окно -->
+        <div class="widget-panel">
+            <!-- Кнопка закрытия (крестик) -->
+            <button id="closeBtn" class="close-btn">&times;</button>
+            
+            <h3>Personalized Welcome</h3>
+            <p>Enter your name below:</p>
+            
+            <input type="text" id="userNameInput" placeholder="Your name..." autocomplete="off">
+            <button id="greetBtn" class="btn btn-primary btn-sm">Show Greeting</button>
+            
+            <p id="greetingOutput"></p>
+        </div>
+        </div>
+        <section class="section_muted hero">
+            <div class="container">
+                <div class="section_header">
+                    <h2>Why Choose Us?</h2>
+                    <p>Three core principles that set Bakery-52 apart from typical coffee shops.</p>
+                </div>
+                <div class="features">
+                    <article class="feature-card">
+                        <div class="feature-card_icon" aria-hidden="true">☕</div>
+                        <h3>In-House Roasting</h3>
+                        <p>We source green coffee beans directly and roast them in small batches every week.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-card_icon" aria-hidden="true">🍰</div>
+                        <h3>Freshly Baked Daily</h3>
+                        <p>Croissants and pastries are baked on-site at 5:00 AM without frozen semi-finished products.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-card_icon" aria-hidden="true">❤️</div>
+                        <h3>Community Focus</h3>
+                        <p>We are committed to providing a warm, welcoming environment for our neighborhood.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" aria-label="menu_section">
+            <div class="container">
+                <div class="section_header">
+                    <h2>Featured Desserts & Cakes</h2>
+                    <p>Discover our most popular signature pastries and custom cakes.</p>
+                </div>
+                
+                <div class="card-grid">
+                    <article class="product-card">
+                        <div class="placeholder">
+                            <img src="images/whoopiepie.png" alt="Whoopie Pie Cake">
+                        </div>
+                        <div class="card_content">
+                            <h3>Whoopie Pie Cake</h3>
+                            <p>Rich chocolate sponge layers with natural heavy cream cheese glaze.</p>
+                            <span class="card_price">10 000₸</span>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="placeholder">
+                            <img src="images/honey cake.png" alt="Honey Cake">
+                        </div>
+                        <div class="card_content">
+                            <h3>Honey Cake</h3>
+                            <p>Natural honey sponge with whipped cream cheese and condensed milk.</p>
+                            <span class="card_price">12 000₸</span>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="placeholder">
+                            <img src="images/milkgirl.png" alt="'Milk Girl' cake">
+                        </div>
+                        <div class="card_content">
+                            <h3>'Milk Girl' Cake</h3>
+                            <p>Delicate condensed milk sponge layers with light cream frosting.</p>
+                            <span class="card_price">7 500₸</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section_muted hero">
+            <div class="container">
+                <div class="section_intro">
+                    <h2>What Our Guests Say</h2>
+                </div>
+                <div class="features">
+                    <blockquote class="feature-card">
+                        <p>«The best flat white in this part of town, and a comfortable place to work on a laptop.»</p>
+                        <footer>— Ansar E.</footer>
+                    </blockquote>
+                    <blockquote class="feature-card">
+                        <p>«The pastries are always hot and fresh, and the baristas remember regular guests.»</p>
+                        <footer>— Alisher B.</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h3>Bakery</h3>
+                <p>Freshly baked goods and specialty coffee in the heart of the city.</p>
+            </div>
+            <div>
+                <h3>Navigation</h3>
+                <ul class="info-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contact Us</h3>
+                <p>Expo 5252, Astana city<br>+7 777 777 77 77</p>
+            </div>
+        </div>
+        <p class="bottom">&copy; 2026 Bakery. Educational Project.</p>
+    </footer>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>
