@@ -11,10 +11,10 @@ sideToggle.onclick = () => {
 const handleGreet = () => {
     const name = userNameInput.value.trim();
     if(name){
-    greetingOutput.textContent = `Welcome bro nigga, ${name}!`;
+    greetingOutput.textContent = `Welcome ${name}!`;
     greetingOutput.style.color = 'var(--color-primary)';
     } else {
-    greetingOutput.textContent = 'Please enter your name BRO';
+    greetingOutput.textContent = 'Please enter your name';
     greetingOutput.style.color = '#e65c4f';}
 };
 
