@@ -17,6 +17,10 @@
         <nav class="navbar" aria-label="Main Navigation">
             <a href="index.html" class="navbar_brand">Bakery<span>-52</span></a>
             <ul class="navbar_links">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                <span class="theme-icon">🌙</span> 
+                <span class="theme-text">Dark Mode</span>
+                </button>
                 <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About</a></li>
@@ -38,11 +42,10 @@
             </div>
             <div class="hero_image">
                 <div class="shef">
-                    <img src="images/imagesshef.jpeg" class="hero_img" alt="Chef preparing fresh baked pastries">
+                    <img src="images/imagesshef.jpeg" class="hero_imgxf" alt="Chef preparing fresh baked pastries">
                 </div>
             </div>
         </section>
-
         <section class="section_muted hero">
             <div class="container">
                 <div class="section_header">
@@ -76,6 +79,17 @@
                     <p>Discover our most popular signature pastries and custom cakes.</p>
                 </div>
                 
+                <!-- Компактный и вытянутый блок живого поиска -->
+                <div class="bakery-search-box">
+                    <label for="searchInput">Search Menu:</label>
+                    <input type="text" id="searchInput" placeholder="Type to search desserts, pastries...">
+                    <p id="searchCount" class="bakery-search-count">Found items: 3</p>
+                </div>
+
+                <!-- Сообщение "Ничего не найдено" -->
+                <div id="noResults" class="bakery-no-results">
+                    No results found
+                </div>
                 <div class="card-grid">
                     <article class="product-card">
                         <div class="placeholder">
@@ -154,5 +168,17 @@
         </div>
         <p class="bottom">&copy; 2026 Bakery. Educational Project.</p>
     </footer>
+    <script src="js/script.js" defer></script>
+    <div class="side-welcome" id="sideWelcome">
+        <div class="side-panel">
+            <h6 class="fw-bold mb-1">Personalized Welcome 🥐</h6>
+            <p class="text-muted small mb-2">Enter your name below:</p>
+            <input type="text" id="userNameInput" class="form-control form-control-sm mb-2" placeholder="e.g. Alikhan" autocomplete="off">
+            <button id="greetBtn" class="btn btn-primary btn-sm w-100">Get Greeting</button>
+            <p id="greetingOutput" class="fw-bold small mt-2 mb-0 text-center" style="min-height: 1.2rem;"></p>
+        </div>
+        <button id="sideToggle" class="side-trigger">Greeting ❯</button>
+    </div>
+</div>
 </body>
 </html>
