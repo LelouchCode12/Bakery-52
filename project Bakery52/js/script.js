@@ -1,40 +1,40 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const sideWidget = document.getElementById('sideWidget');
-    const widgetToggle = document.getElementById('widgetToggle');
-    const closeBtn = document.getElementById('closeBtn'); // Кнопка крестика
-    
-    const nameInput = document.getElementById('userNameInput');
-    const greetBtn = document.querySelector('#greetBtn');
-    const greetingOutput = document.getElementById('greetingOutput');
+document.addEventListener("DOMContentLoaded", () => {
+    const sideWelcome = document.getElementById("sideWelcome");
+    const userNameInput = document.getElementById("userNameInput");
+    const greetingOutput = document.getElementById("greetingOutput");
+    const sideToggle = document.getElementById("sideToggle");
+    const greetBtn = document.getElementById("greetBtn");
 
-    // 1. Открытие/закрытие по клику на бирочку
-    widgetToggle.addEventListener('click', () => {
-        sideWidget.classList.toggle('open');
-    });
+sideToggle.onclick = () => {
+    sideWelcome.classList.toggle("open");
+};
+const handleGreet = () => {
+    const name = userNameInput.value.trim();
+    if(name){
+    greetingOutput.textContent = `Welcome bro nigga, ${name}!`;
+    greetingOutput.style.color = 'var(--color-primary)';
+    } else {
+    greetingOutput.textContent = 'Please enter your name BRO';
+    greetingOutput.style.color = '#e65c4f';}
+};
 
-    // 2. Закрытие по клику на крестик
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            sideWidget.classList.remove('open');
-        });
-    }
-
-    // 3. Логика Task 0 (Приветствие)
-    function handleGreeting() {
-        if (!nameInput || !greetingOutput) return;
-
-        const trimmedValue = nameInput.value.trim();
-
-        if (trimmedValue === '') {
-            greetingOutput.textContent = 'Please enter your name!';
-            greetingOutput.style.color = '#c93b2b';
-        } else {
-            greetingOutput.textContent = `Welcome, ${trimmedValue}! 🥐`;
-            greetingOutput.style.color = '#6f4e37';
-        }
-    }
-
-    if (greetBtn) {
-        greetBtn.addEventListener('click', handleGreeting);
-    }
+greetBtn.onclick = handleGreet;
 });
+
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const themeIcon = themeToggleBtn.querySelector('.theme-icon');
+const themeText = themeToggleBtn.querySelector('.theme-text');
+
+themeToggleBtn.onclick = () => {
+    // 1. Переключаем класс темы у body
+    const isDark = document.body.classList.toggle('dark-theme');
+    
+    // 2. Красиво меняем иконку и текст кнопки
+    if (isDark) {
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Light Mode';
+    } else {
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Dark Mode';
+    }
+};

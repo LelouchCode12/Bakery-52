@@ -17,6 +17,10 @@
         <nav class="navbar" aria-label="Main Navigation">
             <a href="index.html" class="navbar_brand">Bakery<span>-52</span></a>
             <ul class="navbar_links">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                <span class="theme-icon">🌙</span> 
+                <span class="theme-text">Dark Mode</span>
+                </button>
                 <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About</a></li>
@@ -42,26 +46,6 @@
                 </div>
             </div>
         </section>
-            <div class="side-widget" id="sideWidget">
-        <!-- Торчащая бирочка -->
-        <button id="widgetToggle" class="widget-tab">
-            <span>Greeting ❯</span>
-        </button>
-        
-        <!-- Выезжающее окно -->
-        <div class="widget-panel">
-            <!-- Кнопка закрытия (крестик) -->
-            <button id="closeBtn" class="close-btn">&times;</button>
-            
-            <h3>Personalized Welcome</h3>
-            <p>Enter your name below:</p>
-            
-            <input type="text" id="userNameInput" placeholder="Your name..." autocomplete="off">
-            <button id="greetBtn" class="btn btn-primary btn-sm">Show Greeting</button>
-            
-            <p id="greetingOutput"></p>
-        </div>
-        </div>
         <section class="section_muted hero">
             <div class="container">
                 <div class="section_header">
@@ -175,5 +159,16 @@
     </footer>
 
     <script src="js/script.js" defer></script>
+    <div class="side-welcome" id="sideWelcome">
+        <div class="side-panel">
+            <h6 class="fw-bold mb-1">Personalized Welcome 🥐</h6>
+            <p class="text-muted small mb-2">Enter your name below:</p>
+            <input type="text" id="userNameInput" class="form-control form-control-sm mb-2" placeholder="e.g. Alikhan" autocomplete="off">
+            <button id="greetBtn" class="btn btn-primary btn-sm w-100">Get Greeting</button>
+            <p id="greetingOutput" class="fw-bold small mt-2 mb-0 text-center" style="min-height: 1.2rem;"></p>
+        </div>
+        <button id="sideToggle" class="side-trigger">Greeting ❯</button>
+    </div>
+</div>
 </body>
 </html>
