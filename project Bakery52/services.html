@@ -15,13 +15,21 @@
     <header>
         <nav class="navbar" aria-label="Main Navigation">
             <a href="index.html" class="navbar_brand">Bakery<span>-52</span></a>
-            <ul class="navbar_links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html" aria-current="page">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="register.html">Register</a></li>
-            </ul>
+
+            <div class="navbar_right">
+                <ul class="navbar_links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" aria-current="page">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
+                    <span class="menu-btn_bar"></span>
+                    <span class="menu-btn_bar"></span>
+                    <span class="menu-btn_bar"></span>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -36,15 +44,11 @@
         
         <section class="section container">
             <h2>Our Catalog</h2>
-
-            <!-- Красивый блок поиска в стиле Bakery-52 -->
             <div class="bakery-search-box">
                 <label for="searchInput">Search Menu:</label>
                 <input type="text" id="searchInput" placeholder="Type to search desserts, pastries...">
                 <p id="searchCount" class="bakery-search-count">Found items: 6</p>
             </div>
-
-            <!-- Сообщение "Ничего не найдено" -->
             <div id="noResults" class="bakery-no-results">
                 No results found
             </div>
@@ -112,6 +116,34 @@
                 </article>
             </div>
         </section>
+        <section class="section container recommendations-section" id="recommendations-section">
+            <div class="section_header">
+                <h2>Customer Recommendations & Favourites</h2>
+                <p>Add your favorite bakery items or custom recommendations to our interactive list.</p>
+            </div>
+
+            <div class="recommendations-card">
+                <form id="item-form" class="recommendations-form">
+                    <div class="form-field">
+                        <label for="item-input">New Recommendation:</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="item-input" class="form-control" placeholder="e.g., Fresh Croissant with Coffee" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-add-item">
+                        <span>Add Recommendation</span>
+                    </button>
+                </form>
+
+                <div class="recommendations-list-wrapper">
+                    <div class="list-header">
+                        <span class="list-title">Your Custom List</span>
+                        <span class="item-count-badge">Total items: <strong id="item-count">0</strong></span>
+                    </div>
+                    <ul id="items-list" class="info-list recommendations-list"></ul>
+                </div>
+            </div>
+        </section>    
     </main>
 
     <footer class="site-footer">
@@ -136,8 +168,30 @@
         </div>
         <p class="bottom">&copy; 2026 Bakery. Educational Project.</p>
     </footer>
+        <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- ОБЯЗАТЕЛЬНО подключение скрипта в самом низу -->
+    <aside class="site-menu" id="siteMenu" aria-label="Site menu">
+        <div class="site-menu_head">
+            <span class="site-menu_title">Menu</span>
+            <button class="site-menu_close" id="menuClose" type="button" aria-label="Close menu">×</button>
+        </div>
+
+        <ul class="site-menu_links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html" aria-current="page">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+
+        <div class="site-menu_section">
+            <p class="settings-label" id="themeLabel">Theme</p>
+            <div class="seg" role="group" aria-labelledby="themeLabel">
+                <button type="button" data-theme-choice="light" aria-pressed="true">Light</button>
+                <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+            </div>
+        </div>
+    </aside>
     <script src="js/script.js" defer></script>
 </body>
 </html>
