@@ -90,50 +90,37 @@ function initTheme() {
         } catch (e) {}
     };
 
-    const switchTheme = (isDark, originEl) => {
-        if (isDark === isDarkNow()) return;
+const switchTheme = (isDark, originEl) => {
+    if (isDark === isDarkNow()) return;
 
-        if (!document.startViewTransition || reduceMotion.matches) {
-            applyTheme(isDark);
-            return;
-        }
+    if (!document.startViewTransition || reduceMotion.matches) {
+        applyTheme(isDark);
+        return;
+    }
 
-        const rect = originEl.getBoundingClientRect();
-        const x = rect.left + rect.width / 2;
-        const y = rect.top + rect.height / 2;
-        const radius = Math.hypot(
-            Math.max(x, window.innerWidth - x),
-            Math.max(y, window.innerHeight - y)
-        );
+    const rect = originEl.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const radius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+    );
 
-        const root = document.documentElement;
-        root.classList.add("theme-switching");
+    const root = document.documentElement;
+    root.style.setProperty("--vt-x", `${x}px`);
+    root.style.setProperty("--vt-y", `${y}px`);
+    root.style.setProperty("--vt-r", `${radius}px`);
+    root.classList.add(isDark ? "to-dark" : "to-light");
 
-        const transition = document.startViewTransition(() => applyTheme(isDark));
+    const transition = document.startViewTransition(() => applyTheme(isDark));
 
-        transition.ready
-            .then(() => {
-                root.animate(
-                    {
-                        clipPath: [
-                            `circle(0px at ${x}px ${y}px)`,
-                            `circle(${radius}px at ${x}px ${y}px)`
-                        ]
-                    },
-                    {
-                        duration: 650,
-                        easing: "ease-in-out",
-                        pseudoElement: "::view-transition-new(root)"
-                    }
-                );
-            })
-            .catch(() => {});
-
-        transition.finished.finally(() => {
-            root.classList.remove("theme-switching");
-        });
-    };
-
+    transition.finished.finally(() => {
+        root.classList.remove("to-dark", "to-light");
+        root.style.removeProperty("--vt-x");
+        root.style.removeProperty("--vt-y");
+        root.style.removeProperty("--vt-r");
+    });
+};
     let savedTheme = null;
     try {
         savedTheme = localStorage.getItem("theme");
