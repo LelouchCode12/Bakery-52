@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥐</text></svg>">
+    <script>!function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.classList.add("dark-theme")}}();</script>
 </head>
 <body>
     <header>
@@ -90,19 +91,43 @@
             <div class="container">
                 <h2>Frequently Asked Questions</h2>
                 <div class="faq-list">
-                    <details class="faq-item">
-                        <summary>What are your opening hours?</summary>
-                        <p>We are open from 9:00 AM to 9:00 PM every day.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Do you offer vegan options?</summary>
-                        <p>Yes, we have a variety of vegan pastries and desserts available.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Can I make a reservation online?</summary>
-                        <p>Yes, you can use the booking form above to reserve a table.</p>
-                    </details>
+                    <div class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" id="faq-btn-1"
+                                    aria-expanded="false" aria-controls="faq-panel-1">
+                                What are your opening hours?
+                            </button>
+                        </h3>
+                        <div class="faq-panel" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1">
+                            <p>We are open from 9:00 AM to 9:00 PM every day.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" id="faq-btn-2"
+                                    aria-expanded="false" aria-controls="faq-panel-2">
+                                Do you offer vegan options?
+                            </button>
+                        </h3>
+                        <div class="faq-panel" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2">
+                            <p>Yes, we have a variety of vegan pastries and desserts available.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" id="faq-btn-3"
+                                    aria-expanded="false" aria-controls="faq-panel-3">
+                                Can I make a reservation online?
+                            </button>
+                        </h3>
+                        <div class="faq-panel" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3">
+                            <p>Yes, you can use the booking form above to reserve a table.</p>
+                        </div>
+                    </div>
                 </div>
+                <p class="faq-status" role="status" aria-live="polite"></p>
             </div>
         </section>
     </main>
@@ -130,6 +155,7 @@
         </div>
         <p class="bottom">&copy; 2026 Bakery. Educational Project.</p>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="js/validation.js"></script>
         <div class="menu-overlay" id="menuOverlay"></div>
 

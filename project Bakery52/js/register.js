@@ -43,7 +43,7 @@
                 event.stopPropagation();
             } else {
                 event.preventDefault();
-                successMessage.classList.remove('d-none');
+                $(successMessage).removeClass('d-none').hide().fadeIn(400);
                 form.classList.remove('was-validated');
                 form.reset();
                 switchesCard.classList.remove('disabled-section');
@@ -58,7 +58,7 @@
             form.classList.remove('was-validated');
             confirm.setCustomValidity("");
             confirm.classList.remove('is-invalid');
-            successMessage.classList.add('d-none');
+            $(successMessage).addClass('d-none');
             switchesCard.classList.remove('disabled-section');
             switchItems.forEach(item => item.disabled = false);
         });
