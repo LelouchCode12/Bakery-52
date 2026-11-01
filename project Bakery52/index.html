@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -88,11 +88,19 @@
                     <input type="text" id="searchInput" placeholder="Type to search desserts, pastries...">
                     <p id="searchCount" class="bakery-search-count">Found items: 3</p>
                 </div>
-                <div id="noResults" class="bakery-no-results">
-                    No results found
+
+                <!-- Category filters (Task 3) -->
+                <div class="category-filters" id="categoryFilters" role="group" aria-label="Filter by category">
+                    <button class="cat-btn active" data-category="all">All</button>
+                    <button class="cat-btn" data-category="cake">Cakes</button>
+                    <button class="cat-btn" data-category="pastry">Pastries</button>
+                </div>
+
+                <div id="noResults" class="bakery-no-results" role="alert" aria-live="polite">
+                    No results found 🥺
                 </div>
                 <div class="card-grid">
-                    <article class="product-card">
+                    <article class="product-card" data-category="cake">
                         <div class="placeholder">
                             <img src="images/whoopiepie.png" alt="Whoopie Pie Cake">
                         </div>
@@ -103,7 +111,7 @@
                         </div>
                     </article>
 
-                    <article class="product-card">
+                    <article class="product-card" data-category="cake">
                         <div class="placeholder">
                             <img src="images/honey cake.png" alt="Honey Cake">
                         </div>
@@ -114,7 +122,7 @@
                         </div>
                     </article>
 
-                    <article class="product-card">
+                    <article class="product-card" data-category="pastry">
                         <div class="placeholder">
                             <img src="images/milkgirl.png" alt="'Milk Girl' cake">
                         </div>
