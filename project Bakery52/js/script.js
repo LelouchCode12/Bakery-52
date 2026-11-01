@@ -1,88 +1,156 @@
-document.addEventListener("DOMContentLoaded", () => {
+$(function () {
     initWelcome();
     initMenu();
     initTheme();
     initSearch();
     initRecommendations();
+    initFaq();
 });
-
+/* ============================================================================================================ */
 function initWelcome() {
-    const sideWelcome = document.getElementById("sideWelcome");
-    const sideToggle = document.getElementById("sideToggle");
-    const userNameInput = document.getElementById("userNameInput");
-    const greetingOutput = document.getElementById("greetingOutput");
-    const greetBtn = document.getElementById("greetBtn");
+    const $sideWelcome = $("#sideWelcome");
+    const $sideToggle = $("#sideToggle");
+    const $userNameInput = $("#userNameInput");
+    const $greetingOutput = $("#greetingOutput");
+    const $greetBtn = $("#greetBtn");
 
-    if (sideWelcome && sideToggle) {
-        sideToggle.addEventListener("click", () => {
-            sideWelcome.classList.toggle("open");
+    if ($sideWelcome.length && $sideToggle.length) {
+        $sideToggle.on("click", function () {
+            $sideWelcome.toggleClass("open");
+            $sideToggle.attr("aria-expanded", String($sideWelcome.hasClass("open")));
         });
     }
 
-    if (greetBtn && userNameInput && greetingOutput) {
-        greetBtn.addEventListener("click", () => {
-            const name = userNameInput.value.trim();
+    if ($greetBtn.length && $userNameInput.length && $greetingOutput.length) {
+        const showGreeting = function () {
+            const name = $userNameInput.val().trim();
 
             if (name) {
-                greetingOutput.textContent = `Welcome, ${name}!`;
-                greetingOutput.style.color = "var(--color-primary)";
+                $greetingOutput
+                    .text(`Welcome, ${name}!`)
+                    .removeClass("greeting-error")
+                    .addClass("greeting-success");
             } else {
-                greetingOutput.textContent = "Please enter your name!";
-                greetingOutput.style.color = "var(--color-error)";
+                $greetingOutput
+                    .text("Please enter your name!")
+                    .removeClass("greeting-success")
+                    .addClass("greeting-error");
+            }
+
+            $greetingOutput.stop(true, true).hide().fadeIn(320);
+        };
+
+        $greetBtn.on("click", showGreeting);
+
+        $userNameInput.on("keydown", function (e) {
+            if (e.key === "Enter") {
+                showGreeting();
             }
         });
     }
 }
+/* ============================================================================================================ */
+function initFaq() {
+    const $questions = $(".faq-question");
+    const $status = $(".faq-status");
 
+    if (!$questions.length) return;
+
+    const showStatus = (text) => {
+        $status.stop(true, true).text(text).fadeTo(200, 1).delay(1500).fadeTo(400, 0);
+    };
+
+    $questions.on("click", function () {
+        const $btn = $(this);
+        const $panel = $("#" + $btn.attr("aria-controls"));
+        const willOpen = $btn.attr("aria-expanded") === "false";
+
+        if (willOpen) {
+            $questions.not($btn).each(function () {
+                const $otherBtn = $(this);
+                if ($otherBtn.attr("aria-expanded") === "true") {
+                    $otherBtn.attr("aria-expanded", "false");
+                    $("#" + $otherBtn.attr("aria-controls")).stop(true, true).slideUp(250);
+                }
+            });
+        }
+
+        $btn.attr("aria-expanded", String(willOpen));
+        $panel.stop(true, true).slideToggle(250);
+        showStatus(willOpen ? "Answer opened" : "Answer closed");
+    });
+
+    $questions.on("keydown", function (e) {
+        const index = $questions.index(this);
+        const last = $questions.length - 1;
+        let target = null;
+
+        if (e.key === "ArrowDown") target = index === last ? 0 : index + 1;
+        else if (e.key === "ArrowUp") target = index === 0 ? last : index - 1;
+        else if (e.key === "Home") target = 0;
+        else if (e.key === "End") target = last;
+
+        if (target !== null) {
+            e.preventDefault();
+            $questions.eq(target).trigger("focus");
+        }
+    });
+}
+/* ============================================================================================================ */
 function initMenu() {
-    const menuBtn = document.getElementById("menuBtn");
-    const siteMenu = document.getElementById("siteMenu");
+    const $menuBtn = $("#menuBtn");
+    const $siteMenu = $("#siteMenu");
 
-    if (!menuBtn || !siteMenu) return;
+    if (!$menuBtn.length || !$siteMenu.length) return;
 
-    const isOpen = () => siteMenu.classList.contains("open");
+    const isOpen = () => $siteMenu.hasClass("open");
 
     const placeMenu = () => {
-        const rect = menuBtn.getBoundingClientRect();
-        siteMenu.style.top = `${rect.bottom + window.scrollY + 10}px`;
-        siteMenu.style.right = `${document.documentElement.clientWidth - rect.right}px`;
+        const rect = $menuBtn[0].getBoundingClientRect();
+        $siteMenu.css({
+            top: rect.bottom + window.scrollY + 10,
+            right: document.documentElement.clientWidth - rect.right
+        });
     };
 
     const setMenu = (open) => {
         if (open) placeMenu();
-        siteMenu.classList.toggle("open", open);
-        menuBtn.setAttribute("aria-expanded", String(open));
-        menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        $siteMenu.toggleClass("open", open);
+        $menuBtn.attr({
+            "aria-expanded": String(open),
+            "aria-label": open ? "Close menu" : "Open menu"
+        });
     };
 
-    menuBtn.addEventListener("click", () => setMenu(!isOpen()));
+    $menuBtn.on("click", () => setMenu(!isOpen()));
 
-    document.addEventListener("click", (e) => {
-        const clickedOutside = !siteMenu.contains(e.target) && !menuBtn.contains(e.target);
+    $(document).on("click", function (e) {
+        const clickedOutside = $(e.target).closest("#siteMenu, #menuBtn").length === 0;
         if (isOpen() && clickedOutside) setMenu(false);
     });
 
-    document.addEventListener("keydown", (e) => {
+    $(document).on("keydown", function (e) {
         if (e.key === "Escape" && isOpen()) setMenu(false);
     });
 
-    window.addEventListener("resize", () => {
+    $(window).on("resize", function () {
         if (isOpen()) placeMenu();
     });
 }
-
+/* ============================================================================================================ */
 function initTheme() {
-    const themeButtons = document.querySelectorAll("[data-theme-choice]");
+    const $themeButtons = $("[data-theme-choice]");
+    const $html = $("html");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    const isDarkNow = () => document.body.classList.contains("dark-theme");
+    const isDarkNow = () => $html.hasClass("dark-theme");
 
     const applyTheme = (isDark) => {
-        document.body.classList.toggle("dark-theme", isDark);
+        $html.toggleClass("dark-theme", isDark);
 
-        themeButtons.forEach((btn) => {
-            const btnIsDark = btn.dataset.themeChoice === "dark";
-            btn.setAttribute("aria-pressed", String(btnIsDark === isDark));
+        $themeButtons.each(function () {
+            const btnIsDark = $(this).data("themeChoice") === "dark";
+            $(this).attr("aria-pressed", String(btnIsDark === isDark));
         });
 
         try {
@@ -90,37 +158,39 @@ function initTheme() {
         } catch (e) {}
     };
 
-const switchTheme = (isDark, originEl) => {
-    if (isDark === isDarkNow()) return;
+    const switchTheme = (isDark, originEl) => {
+        if (isDark === isDarkNow()) return;
 
-    if (!document.startViewTransition || reduceMotion.matches) {
-        applyTheme(isDark);
-        return;
-    }
+        if (!document.startViewTransition || reduceMotion.matches) {
+            applyTheme(isDark);
+            return;
+        }
 
-    const rect = originEl.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    const radius = Math.hypot(
-        Math.max(x, window.innerWidth - x),
-        Math.max(y, window.innerHeight - y)
-    );
+        const rect = originEl.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const radius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+        );
 
-    const root = document.documentElement;
-    root.style.setProperty("--vt-x", `${x}px`);
-    root.style.setProperty("--vt-y", `${y}px`);
-    root.style.setProperty("--vt-r", `${radius}px`);
-    root.classList.add(isDark ? "to-dark" : "to-light");
+        const root = document.documentElement;
+        const $root = $(root);
+        root.style.setProperty("--vt-x", `${x}px`);
+        root.style.setProperty("--vt-y", `${y}px`);
+        root.style.setProperty("--vt-r", `${radius}px`);
+        $root.addClass(isDark ? "to-dark" : "to-light");
 
-    const transition = document.startViewTransition(() => applyTheme(isDark));
+        const transition = document.startViewTransition(() => applyTheme(isDark));
 
-    transition.finished.finally(() => {
-        root.classList.remove("to-dark", "to-light");
-        root.style.removeProperty("--vt-x");
-        root.style.removeProperty("--vt-y");
-        root.style.removeProperty("--vt-r");
-    });
-};
+        transition.finished.finally(() => {
+            $root.removeClass("to-dark to-light");
+            root.style.removeProperty("--vt-x");
+            root.style.removeProperty("--vt-y");
+            root.style.removeProperty("--vt-r");
+        });
+    };
+
     let savedTheme = null;
     try {
         savedTheme = localStorage.getItem("theme");
@@ -129,94 +199,83 @@ const switchTheme = (isDark, originEl) => {
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     applyTheme(savedTheme ? savedTheme === "dark" : prefersDark);
 
-    themeButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            switchTheme(btn.dataset.themeChoice === "dark", btn);
-        });
+    $themeButtons.on("click", function () {
+        switchTheme($(this).data("themeChoice") === "dark", this);
     });
 }
-
+/* ============================================================================================================ */
 function initSearch() {
-    const searchInput = document.getElementById("searchInput");
-    const searchCount = document.getElementById("searchCount");
-    const noResultsMsg = document.getElementById("noResults");
-    const productCards = document.querySelectorAll(".card-grid .product-card");
+    const $searchInput = $("#searchInput");
+    const $searchCount = $("#searchCount");
+    const $noResultsMsg = $("#noResults");
+    const $productCards = $(".card-grid .product-card");
 
-    if (!searchInput) return;
+    if (!$searchInput.length) return;
 
-    searchInput.addEventListener("input", () => {
-        const query = searchInput.value.toLowerCase().trim();
+    $searchInput.on("input", function () {
+        const query = $searchInput.val().toLowerCase().trim();
         let visibleCount = 0;
 
-        productCards.forEach((card) => {
-            const title = card.querySelector("h3");
-            const text = title ? title.textContent.toLowerCase() : "";
+        $productCards.each(function () {
+            const text = $(this).find("h3").text().toLowerCase();
             const matches = text.includes(query);
 
-            card.classList.toggle("hidden", !matches);
+            $(this).toggleClass("hidden", !matches);
             if (matches) visibleCount++;
         });
 
-        if (searchCount) {
-            searchCount.textContent = `Found items: ${visibleCount}`;
-        }
-
-        if (noResultsMsg) {
-            noResultsMsg.style.display = visibleCount === 0 ? "block" : "none";
-        }
+        $searchCount.text(`Found items: ${visibleCount}`);
+        $noResultsMsg.toggle(visibleCount === 0);
     });
 }
+/* ============================================================================================================ */
 function initRecommendations() {
-    const itemForm = document.getElementById('item-form');
-    const itemInput = document.getElementById('item-input');
-    const itemsList = document.getElementById('items-list');
-    const itemCount = document.getElementById('item-count');
+    const $itemForm = $("#item-form");
+    const $itemInput = $("#item-input");
+    const $itemsList = $("#items-list");
+    const $itemCount = $("#item-count");
 
-    if (!itemForm || !itemInput || !itemsList || !itemCount) return;
+    if (!$itemForm.length || !$itemInput.length || !$itemsList.length || !$itemCount.length) return;
 
     let totalItems = 0;
 
-    function updateCount() {
-        itemCount.textContent = totalItems;
-    }
+    const updateCount = () => $itemCount.text(totalItems);
 
-    itemForm.addEventListener('submit', function(event) {
+    $itemForm.on("submit", function (event) {
         event.preventDefault();
 
-        const text = itemInput.value.trim();
+        const text = $itemInput.val().trim();
         if (text === "") return;
 
-        const li = document.createElement('li');
-        li.style.display = "flex";
-        li.style.justifyContent = "space-between";
-        li.style.alignItems = "center";
-        li.style.padding = "0.75rem 1rem";
-        li.style.background = "var(--color-surface)";
-        li.style.border = "1px solid var(--color-border)";
-        li.style.borderRadius = "var(--radius)";
-        li.style.marginBottom = "0.5rem";
-
-        const span = document.createElement('span');
-        span.textContent = text;
-
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = "Remove";
-        deleteBtn.className = "btn btn-outline";
-        deleteBtn.style.padding = "0.25rem 0.75rem";
-        deleteBtn.style.fontSize = "0.85rem";
-
-        deleteBtn.addEventListener('click', function() {
-            li.remove();
-            totalItems--;
-            updateCount();
+        const $li = $("<li>").css({
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "0.75rem 1rem",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
+            borderRadius: "var(--radius)",
+            marginBottom: "0.5rem"
         });
 
-        li.appendChild(span);
-        li.appendChild(deleteBtn);
-        itemsList.appendChild(li);
+        const $span = $("<span>").text(text);
+
+        const $deleteBtn = $("<button>")
+            .attr("type", "button")
+            .text("Remove")
+            .addClass("btn btn-outline")
+            .css({ padding: "0.25rem 0.75rem", fontSize: "0.85rem" })
+            .on("click", function () {
+                $li.remove();
+                totalItems--;
+                updateCount();
+            });
+
+        $li.append($span, $deleteBtn);
+        $itemsList.append($li);
 
         totalItems++;
         updateCount();
-        itemInput.value = "";
+        $itemInput.val("");
     });
 }
