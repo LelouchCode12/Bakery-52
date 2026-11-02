@@ -2,14 +2,12 @@ $(function () {
     initWelcome();
     initMenu();
     initTheme();
-    initSearch();       // Task 3
-    initRecommendations(); // Task 4
+    initSearch();
+    initRecommendations();
     initFaq();
+    initCarousel();
 });
-
-/* ============================================================================================================
-   TASK 1 (from previous student): Personalized Welcome Panel
-   ============================================================================================================ */
+/* ============================================================================================================ */
 function initWelcome() {
     const $sideWelcome    = $("#sideWelcome");
     const $sideToggle     = $("#sideToggle");
@@ -48,9 +46,7 @@ function initWelcome() {
     }
 }
 
-/* ============================================================================================================
-   FAQ Accordion
-   ============================================================================================================ */
+/* ============================================================================================================ */
 function initFaq() {
     const $questions = $(".faq-question");
     const $status    = $(".faq-status");
@@ -98,9 +94,7 @@ function initFaq() {
     });
 }
 
-/* ============================================================================================================
-   Mobile/Side Menu
-   ============================================================================================================ */
+/* ============================================================================================================ */
 function initMenu() {
     const $menuBtn  = $("#menuBtn");
     const $siteMenu = $("#siteMenu");
@@ -139,9 +133,7 @@ function initMenu() {
     });
 }
 
-/* 
-   Theme Switcher (Light / Dark)
-*/
+/* ============================================================================================================ */
 function initTheme() {
     const $themeButtons = $("[data-theme-choice]");
     const $html         = $("html");
@@ -200,9 +192,7 @@ function initTheme() {
     });
 }
 
-/*
-   TASK 3:
- */
+/* ============================================================================================================ */
 function initSearch() {
     const $searchInput   = $("#searchInput");
     const $searchCount   = $("#searchCount");
@@ -251,9 +241,7 @@ function initSearch() {
     applyFilters();
 }
 
-/*
-   TASK 4
-*/
+/* ============================================================================================================ */
 function initRecommendations() {
     const $itemForm     = $("#item-form");
     const $itemInput    = $("#item-input");
@@ -325,4 +313,46 @@ function initRecommendations() {
     });
 
     updateUI();
+}
+/* ============================================================================================================ */
+function initCarousel() {
+    const $track = $("#cakeTrack");
+    const $modal = $("#cakeModal");
+    if (!$track.length) return;
+    const $items = $track.children();
+    for (let i = 0; i < 3; i++) {
+        $items.clone().attr("aria-hidden", "true").appendTo($track);
+    }
+    $track.parent().on("mouseenter", function () {
+        $track[0].getAnimations().forEach(a => a.updatePlaybackRate(0.5));
+    }).on("mouseleave", function () {
+        $track[0].getAnimations().forEach(a => a.updatePlaybackRate(1));
+    });
+
+    if (!$modal.length) return;
+
+    const closeModal = () => {
+        $modal.removeClass("open").attr("aria-hidden", "true");
+    };
+
+    $track.on("click", ".product-card", function () {
+        const $card = $(this);
+        const $img = $card.find("img");
+        $("#modalImg").attr({ src: $img.attr("src"), alt: $img.attr("alt") });
+        $("#modalTitle").text($card.find("h3").text());
+        $("#modalDesc").text($card.data("desc") || "");
+        $("#modalKcal").text($card.data("kcal") || "—");
+        $("#modalProtein").text(($card.data("protein") || "—") + "g");
+        $("#modalFat").text(($card.data("fat") || "—") + "g");
+        $("#modalCarbs").text(($card.data("carbs") || "—") + "g");
+        $modal.addClass("open").attr("aria-hidden", "false");
+    });
+
+    $("#modalClose").on("click", closeModal);
+    $modal.on("click", function (e) {
+        if (e.target === this) closeModal();
+    });
+    $(document).on("keydown", function (e) {
+        if (e.key === "Escape" && $modal.hasClass("open")) closeModal();
+    });
 }

@@ -98,7 +98,9 @@ img {
 }
 
 .shef img {
-    border-radius: 70px;
+  border-radius: 70px;
+  width: min(76vw, 340px);
+  margin: 0 auto;
 }
 .container {
   width: 100%;
@@ -157,9 +159,8 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: var(--space-2);
-  padding: 1rem 2rem;
+  padding: 1rem max(var(--space-3), calc((100% - 1100px) / 2 + var(--space-3)));
   background: var(--color-surface);
 }
 
@@ -180,10 +181,9 @@ img {
 }
 
 .navbar_links {
-  display: flex;
+  display: none;
   align-items: center;
-  gap: var(--space-3);
-  flex-wrap: wrap;
+  gap: clamp(0.4rem, 1.5vw, var(--space-3));
   list-style: none;
   margin: 0;
   padding: 0;
@@ -257,6 +257,10 @@ img {
   border-radius: 0;
 }
 
+.card-grid .product-card .placeholder {
+  padding: 0;
+}
+
 .product-card .placeholder img {
   width: 100%;
   height: 100%;
@@ -323,15 +327,21 @@ img {
   align-items: center;
   gap: var(--space-4);
   flex-wrap: wrap;
-  padding: var(--space-5) 0;
+  padding-block: var(--space-5);
 }
 
 .hero_text {
-  flex: 1 1 360px;
+  flex: 1 1 280px;
 }
 
 .hero_image {
-  flex: 1 1 320px;
+  flex: 1 1 280px;
+}
+
+.hero_buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .team-grid {
@@ -425,6 +435,28 @@ img {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.contact-grid aside {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-grid aside iframe {
+  flex: 1;
+  min-height: 220px;
+}
+
+.contact-grid .info-list {
+  margin-bottom: var(--space-2);
 }
 
 
@@ -764,8 +796,7 @@ html.dark-theme img {
 .navbar_right {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  flex-wrap: wrap;
+  gap: clamp(0.6rem, 1.5vw, var(--space-3));
 }
 
 .menu-btn {
@@ -1017,7 +1048,7 @@ html.dark-theme iframe[title="Our Bakery Map"] {
 }
 /* recomendation*/
 .recommendations-card {
-  max-width: 580px;
+  width: 100%;
   margin: 0 auto;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -1140,12 +1171,6 @@ html.dark-theme iframe[title="Our Bakery Map"] {
   to { opacity: 1; transform: translateY(0); }
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
-}
-
 @keyframes vt-reveal {
     from { clip-path: circle(0px at var(--vt-x) var(--vt-y)); }
     to   { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); }
@@ -1167,9 +1192,7 @@ html.dark-theme iframe[title="Our Bakery Map"] {
 .to-light::view-transition-new(root) { z-index: 1; }
 
 
-/* ============================================================================================================
-   TASK 3: Category Filter Buttons
-   ============================================================================================================ */
+/* ============================================================================================================ */
 .category-filters {
     display: flex;
     flex-wrap: wrap;
@@ -1220,9 +1243,7 @@ html.dark-theme .cat-btn.active {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* ============================================================================================================
-   TASK 4: Dynamic List Enhancements
-   ============================================================================================================ */
+/* ============================================================================================================ */
 
 /* Empty list message */
 .empty-list-msg {
@@ -1274,4 +1295,188 @@ html.dark-theme .cat-btn.active {
     word-break: break-word;
 }
 
-/* Re-use the existing .btn-remove style from style.css for the remove button */
+/* ============================================================================================================ */
+.cake-carousel {
+    overflow: hidden;
+    width: 100%;
+    padding: 0.5rem 0 1rem;
+}
+
+.cake-track {
+    display: flex;
+    gap: var(--space-3);
+    width: max-content;
+    animation: cakeScroll 75s linear infinite;
+}
+
+.cake-track .product-card {
+    width: 300px;
+    flex-shrink: 0;
+    height: auto;
+    cursor: pointer;
+}
+
+.product-card .placeholder_contain img {
+    object-fit: contain;
+    background: #ffffff;
+}
+
+@keyframes cakeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-25% - var(--space-3) / 4)); }
+}
+
+.cake-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    background: rgba(22, 17, 14, 0.65);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.cake-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.cake-modal {
+    position: relative;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    max-width: 440px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    transform: translateY(12px) scale(0.96);
+    transition: transform 0.25s ease;
+}
+
+.cake-modal-overlay.open .cake-modal {
+    transform: translateY(0) scale(1);
+}
+
+.cake-modal_close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cake-modal_close:hover {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    transform: scale(1.08);
+}
+
+.cake-modal_img-wrap {
+    width: 100%;
+    height: 230px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+html.dark-theme .cake-modal_img-wrap {
+    background: #e6e6e6;
+}
+
+.cake-modal_img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cake-modal_body {
+    padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.cake-modal_head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+
+.cake-modal_head h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    color: var(--color-primary-dark);
+}
+
+.cake-modal_price {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+
+.cake-modal_desc {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: 1.1rem;
+    line-height: 1.5;
+}
+
+.cake-modal_sub {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+}
+
+.cake-modal_macros {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.macro-box {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 0.6rem 0.4rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.macro-val {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-primary-dark);
+}
+
+.macro-label {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+}
+

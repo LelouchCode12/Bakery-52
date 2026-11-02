@@ -1,8 +1,52 @@
-# Bakery-52: Forms and Validation (Assignment #5)
+# Bakery-52: Bakery Website with jQuery, Forms and Validation
 
 **Topic:** Artisanal bakery and specialty coffee shop website
 **Group:** MT-2504
 **Live site:** https://lelouchcode12.github.io/Bakery-52/project%20Bakery52/
+**Repository:** https://github.com/LelouchCode12/Bakery-52
+
+## About the project
+
+Bakery-52 is a multi-page website of an artisanal bakery and specialty coffee shop. It is built with HTML, CSS (Bootstrap for forms) and jQuery. User journey: Home, Services, Contact, Register and back to Home. The site has a light and dark theme, a product search with category filters, an FAQ accordion, a recommendations list and two validated forms. It is responsive for about 375 px, 768 px and 1440 px.
+
+## Project structure
+
+```
+Bakery-52/
+├── .gitignore
+└── project Bakery52/
+    ├── index.html, services.html, about.html, contact.html, register.html, demo-result.html
+    ├── README.md
+    ├── css/    style.css, responsive.css, cssregister.css
+    ├── js/     script.js, validation.js, register.js
+    └── images/
+```
+
+## How to run
+
+1. Clone the repository: `git clone https://github.com/LelouchCode12/Bakery-52.git`
+2. Open the `project Bakery52` folder.
+3. Open `index.html` in a browser, or start a local server (for example the VS Code Live Server extension, port 5501).
+4. An internet connection is needed for jQuery, Bootstrap and Google Fonts, which are loaded from a CDN.
+
+## Deployment
+
+The site is published with GitHub Pages. After the latest changes are pushed to the repository, the public link above shows the updated version.
+
+## jQuery function map
+
+| File | Function | What it does | Pages |
+|---|---|---|---|
+| `js/script.js` | `initWelcome()` | Side panel toggle, personalized greeting with error and success states, Enter key support | index |
+| `js/script.js` | `initMenu()` | Opens and closes the site menu, closes on outside click and Escape, repositions on resize | all pages |
+| `js/script.js` | `initTheme()` | Light and dark theme switch, saves the choice in `localStorage` | all pages |
+| `js/script.js` | `initSearch()` | Live product search combined with category filter buttons, shows the result counter and "no results" message | index, services |
+| `js/script.js` | `initRecommendations()` | Add and remove list items with fade animation, empty field validation, item counter and empty state | services |
+| `js/script.js` | `initFaq()` | Accordion with `slideToggle`, only one open answer, `aria-expanded`, arrow keys, Home and End, status message | contact |
+| `js/validation.js` | `checkName()`, `checkEmail()`, `checkMessage()` | Contact form validation with clear error messages, `preventDefault` and a demo success message | contact |
+| `js/register.js` | submit and reset handlers | Registration form: password match check, demo success message with fade, reset | register |
+
+Inline script in the `<head>` of every page applies the saved theme before the page is drawn, so there is no flash of the wrong theme.
 
 ## Team
 
@@ -16,7 +60,7 @@
 ## How to open the forms
 
 - Contact form: open `contact.html`
-- Registration form: open `registration.html`
+- Registration form: open `register.html`
 - Demo result page: `demo-result.html`
 
 No backend or database is used. A valid submission only opens a static demonstration page or shows a demo success message.
