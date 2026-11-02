@@ -21,7 +21,7 @@
             <div class="navbar_right">
                 <ul class="navbar_links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li><a href="services.html">Menu</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html" aria-current="page">Contact</a></li>
                     <li><a href="register.html">Register</a></li>
@@ -36,11 +36,14 @@
     </header>
     <main>
         <section class="section container" aria-label="contact_section">
-            <h1>Contact Us</h1>
             <div class="contact-grid">
                 <div>
+                <h1>Contact Us</h1>
                 <p id="demo-note" class="demo-note">This form is for demonstration purposes only. No data will be submitted or stored.</p>
-                <form action="demo-result.html" aria-describedby="demo-note" novalidate>
+                <div id="formSuccess" class="alert alert-success d-none" role="alert">
+                    Thank you! Your message was sent (demo). <a href="register.html" class="alert-link">Create an account</a> to keep in touch.
+                </div>
+                <form aria-describedby="demo-note" novalidate>
                     <h2>Send us a message&#9996&#128540</h2>
                     <div class="form-field mb-3">
                         <label for="name" class = "form-label">Name:</label>
@@ -64,7 +67,6 @@
                 </form>
                 </div>
                 
-                <!-- инфа сбоку -->
                 <aside>
                     <h2>How to Find Us</h2>
                     <ul class="info-list">
@@ -143,9 +145,10 @@
                 <h3>Navigation</h3>
                 <ul class="info-list">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li><a href="services.html">Menu</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="register.html">Register</a></li>
                 </ul>
             </div>
             <div>
@@ -167,7 +170,7 @@
 
         <ul class="site-menu_links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="services.html">Menu</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html" aria-current="page">Contact</a></li>
             <li><a href="register.html">Register</a></li>
