@@ -1,3 +1,12 @@
+.register-card {
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e6dccb);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 24px rgba(78, 53, 36, 0.06);
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
 .custom-switch-card {
   background-color: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #e6dccb);

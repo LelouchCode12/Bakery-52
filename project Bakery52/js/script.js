@@ -106,7 +106,7 @@ function initMenu() {
     const placeMenu = () => {
         const rect = $menuBtn[0].getBoundingClientRect();
         $siteMenu.css({
-            top:   rect.bottom + window.scrollY + 10,
+            top:   rect.bottom + 10,
             right: document.documentElement.clientWidth - rect.right
         });
     };
