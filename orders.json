@@ -1,0 +1,214 @@
+[
+  {
+    "id": "BK-2406",
+    "date": "05.11.2026, 22:11:32",
+    "customer": "Customer",
+    "method": "Bank Card",
+    "cardLast4": "4242",
+    "total": 12000,
+    "items": {
+      "Honey Cake": {
+        "price": 12000,
+        "qty": 1
+      }
+    },
+    "stripePaymentId": "pi_3UYUCHE3jZLE7uA11yv2TrSh",
+    "stripeDashboardUrl": "https://dashboard.stripe.com/test/payments/pi_3UYUCHE3jZLE7uA11yv2TrSh"
+  },
+  {
+    "id": "BK-7435",
+    "date": "05.11.2026, 20:21:45",
+    "customer": "Customer",
+    "method": "Bank Card",
+    "cardLast4": "4242",
+    "total": 180000,
+    "items": {
+      "Artisan Baguette": {
+        "price": 1800,
+        "qty": 100
+      }
+    },
+    "stripePaymentId": "pi_3UYSU2E3jZLE7uA11R5nZvgs",
+    "stripeDashboardUrl": "https://dashboard.stripe.com/test/payments/pi_3UYSU2E3jZLE7uA11R5nZvgs"
+  },
+  {
+    "id": "BK-2532",
+    "date": "05.11.2026, 19:43:40",
+    "customer": "USDT Wallet",
+    "method": "Cryptocurrency (USDT TRC-20)",
+    "cardLast4": "—",
+    "total": 15000,
+    "items": {
+      "Chocolate Delight Cake": {
+        "price": 15000,
+        "qty": 1
+      }
+    },
+    "stripePaymentId": "pi_3UYRtBE3jZLE7uA10VUgYrpB",
+    "stripeDashboardUrl": "https://dashboard.stripe.com/test/payments/pi_3UYRtBE3jZLE7uA10VUgYrpB"
+  },
+  {
+    "id": "BK-3023",
+    "date": "05.11.2026, 18:38:04",
+    "customer": "Customer",
+    "method": "Bank Card",
+    "cardLast4": "4242",
+    "total": 1800,
+    "items": {
+      "Artisan Baguette": {
+        "price": 1800,
+        "qty": 1
+      }
+    },
+    "stripePaymentId": "pi_3UYQrgE3jZLE7uA11QQrDCzL",
+    "stripeDashboardUrl": "https://dashboard.stripe.com/test/payments/pi_3UYQrgE3jZLE7uA11QQrDCzL"
+  },
+  {
+    "id": "BK-8594",
+    "date": "05.11.2026, 18:20:41",
+    "customer": "Test",
+    "method": "Bank Card",
+    "cardLast4": "—",
+    "total": 4200,
+    "items": {},
+    "stripePaymentId": "pi_3UYQasE3jZLE7uA11hCC1Ug8",
+    "stripeDashboardUrl": "https://dashboard.stripe.com/test/payments/pi_3UYQasE3jZLE7uA11hCC1Ug8"
+  },
+  {
+    "id": "BK-4334",
+    "date": "05.11.2026, 18:16:33",
+    "customer": "Customer",
+    "method": "Bank Card",
+    "cardLast4": "4242",
+    "total": 4200,
+    "items": {
+      "Cream Pie": {
+        "price": 4200,
+        "qty": 1
+      }
+    }
+  },
+  {
+    "id": "BK-7106",
+    "date": "05.11.2026, 18:12:00",
+    "customer": "Customer",
+    "method": "Bank Card",
+    "cardLast4": "4242",
+    "total": 8400,
+    "items": {
+      "Cream Pie": {
+        "price": 4200,
+        "qty": 2
+      }
+    }
+  },
+  {
+    "id": "BK-5408",
+    "date": "05.11.2026, 17:54:32",
+    "customer": "Alibek Test",
+    "method": "Bank Card",
+    "cardLast4": "—",
+    "total": 5000,
+    "items": {}
+  },
+  {
+    "id": "BK-3032",
+    "date": "05.11.2026, 17:52:35",
+    "customer": "Customer",
+    "method": "Bank Card",
+    "cardLast4": "4242",
+    "total": 1800,
+    "items": {
+      "Artisan Baguette": {
+        "price": 1800,
+        "qty": 1
+      }
+    }
+  },
+  {
+    "id": "BK-2902",
+    "date": "05.11.2026, 16:51:45",
+    "customer": "Customer",
+    "cardLast4": "4242",
+    "total": 2500,
+    "items": {
+      "French Croissant": {
+        "price": 2500,
+        "qty": 1
+      }
+    }
+  },
+  {
+    "id": "BK-8520",
+    "date": "05.11.2026, 16:51:40",
+    "customer": "USDT Wallet",
+    "cardLast4": "4242",
+    "total": 2500,
+    "items": {
+      "French Croissant": {
+        "price": 2500,
+        "qty": 1
+      }
+    }
+  },
+  {
+    "id": "BK-6523",
+    "date": "05.11.2026, 16:51:27",
+    "customer": "Guest Customer",
+    "cardLast4": "4242",
+    "total": 2500,
+    "items": {
+      "French Croissant": {
+        "price": 2500,
+        "qty": 1
+      }
+    }
+  },
+  {
+    "id": "BK-7475",
+    "date": "05.11.2026, 16:40:24",
+    "customer": "Guest Customer",
+    "cardLast4": "4242",
+    "total": 879600,
+    "items": {
+      "Artisan Baguette": {
+        "price": 1800,
+        "qty": 22
+      },
+      "Chocolate Delight Cake": {
+        "price": 15000,
+        "qty": 56
+      }
+    }
+  },
+  {
+    "id": "BK-3630",
+    "date": "05.11.2026, 16:39:47",
+    "customer": "Guest Customer",
+    "cardLast4": "4242",
+    "total": 879600,
+    "items": {
+      "Artisan Baguette": {
+        "price": 1800,
+        "qty": 22
+      },
+      "Chocolate Delight Cake": {
+        "price": 15000,
+        "qty": 56
+      }
+    }
+  },
+  {
+    "id": "BK-5786",
+    "date": "05.11.2026, 16:39:17",
+    "customer": "Guest Customer",
+    "cardLast4": "4242",
+    "total": 3600,
+    "items": {
+      "Artisan Baguette": {
+        "price": 1800,
+        "qty": 2
+      }
+    }
+  }
+]

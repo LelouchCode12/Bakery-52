@@ -1,0 +1,91 @@
+@media (min-width: 48rem) {
+  .navbar_links {
+    display: flex;
+  }
+
+  .hero {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero_text {
+    flex: 1;
+  }
+
+  .hero_image {
+    flex: 1;
+  }
+
+  .shef img {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-us-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-us-grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .features {
+    flex-direction: row;
+  }
+
+  .feature-card {
+    flex: 1;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4, 2.5rem); 
+    align-items: stretch;
+  }
+
+  .contact-grid aside {
+    padding-top: 0;
+    border-top: none;
+    padding-left: var(--space-4);
+    border-left: 1px solid var(--color-border);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .why-us-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .why-us-grid > :last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact-grid {
+    gap: 3.5rem;
+  }
+}
