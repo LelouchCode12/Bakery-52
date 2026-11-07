@@ -39,53 +39,60 @@
         </nav>
     </header>
     <main>
-        <section class="section container" aria-label="contact_section">
-            <div class="contact-grid">
-                <div>
-                <h1>Contact Us</h1>
-                <p id="demo-note" class="demo-note">This form is for demonstration purposes only. No data will be submitted or stored.</p>
-                <form id="contactForm" action="demo-result.html" aria-describedby="demo-note" novalidate>
-                    <h2>Send us a message&#9996;&#128540;</h2>
-                    <div class="form-field mb-3">
-                        <label for="name" class = "form-label">Name:</label>
-                        <input type="text" id="name" name="name" autocomplete="name" minlength="2" required placeholder="Shelly from Brawl Stars &#128165;&#128299;&#129312;" class = "form-control">
-                        <div class="valid-feedback">Looks good!</div>
-                        <div class="invalid-feedback">Name must be at least 2 characters long.</div>
+        <section class="section contact-hero-section" aria-label="contact_section">
+            <div class="contact-hero-bg">
+                <img src="images/site/interior/outside.webp" alt="Bakery-52 storefront exterior" class="contact-hero-bg_img" loading="eager" decoding="async">
+            </div>
+            <div class="container">
+                <div class="contact-card">
+                    <div class="contact-grid">
+                        <div>
+                        <h1>Contact Us</h1>
+                        <p id="demo-note" class="demo-note">This form is for demonstration purposes only. No data will be submitted or stored.</p>
+                        <form id="contactForm" action="demo-result.html" aria-describedby="demo-note" novalidate>
+                            <h2>Send us a message&#9996;&#128540;</h2>
+                            <div class="form-field mb-3">
+                                <label for="name" class = "form-label">Name:</label>
+                                <input type="text" id="name" name="name" autocomplete="name" minlength="2" required placeholder="Shelly from Brawl Stars &#128165;&#128299;&#129312;" class = "form-control">
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">Name must be at least 2 characters long.</div>
+                            </div>
+                            <div class="form-field mb-3">
+                                <label for="contactemail" class = "form-label">Email:</label>
+                                <input type="email" id="contactemail" name="contactemail" autocomplete="email" required placeholder="shelly@brawlstars.com" class = "form-control">
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+                            <div class="form-field mb-3">
+                                <label for="message" class = "form-label">Message:</label>
+                                <textarea id="message" name="message" rows="4" minlength="10" maxlength="500" required placeholder="please write your message here" class="form-control"></textarea>
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">Message must be between 10 and 500 characters.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                        </div>
+                        
+                        <aside>
+                            <h2>How to Find Us</h2>
+                            <ul class="info-list">
+                                <li><strong>Address:</strong> Expo 5252, Astana city </li>
+                                <li><strong>Phone:</strong> +7 777 777 77 77</li>
+                                <li><strong>Opening Hours:</strong> 9:00 AM - 9:00 PM</li>
+                                <li><strong>Email:</strong> info@bakery52.com</li>
+                            </ul>
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2505.748135870932!2d71.4147043768822!3d51.0899989414275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424585a6055d214f%3A0x63351221b6605a90!2sAstana%20IT%20University!5e0!3m2!1sen!2skz!4v1710000000000!5m2!1sen!2skz" 
+                                 width="100%" 
+                                 height="200" 
+                                 style="border:0; border-radius: var(--radius, 10px);" 
+                                 loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                 title="Our Bakery Map">
+                            </iframe>
+                        </aside>
                     </div>
-                    <div class="form-field mb-3">
-                        <label for="contactemail" class = "form-label">Email:</label>
-                        <input type="email" id="contactemail" name="contactemail" autocomplete="email" required placeholder="shelly@brawlstars.com" class = "form-control">
-                        <div class="valid-feedback">Looks good!</div>
-                        <div class="invalid-feedback">Please enter a valid email address.</div>
-                    </div>
-                    <div class="form-field mb-3">
-                        <label for="message" class = "form-label">Message:</label>
-                        <textarea id="message" name="message" rows="4" minlength="10" maxlength="500" required placeholder="please write your message here please please please" class="form-control"></textarea>
-                        <div class="valid-feedback">Looks good!</div>
-                        <div class="invalid-feedback">Message must be between 10 and 500 characters.</div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
                 </div>
-                
-                <aside>
-                    <h2>How to Find Us</h2>
-                    <ul class="info-list">
-                        <li><strong>Address:</strong> Expo 5252, Astana city </li>
-                        <li><strong>Phone:</strong> +7 777 777 77 77</li>
-                        <li><strong>Opening Hours:</strong> 9:00 AM - 9:00 PM</li>
-                        <li><strong>Email:</strong> info@bakery52.com</li>
-                    </ul>
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2505.748135870932!2d71.4147043768822!3d51.0899989414275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424585a6055d214f%3A0x63351221b6605a90!2sAstana%20IT%20University!5e0!3m2!1sen!2skz!4v1710000000000!5m2!1sen!2skz" 
-                         width="100%" 
-                         height="200" 
-                         style="border:0; border-radius: var(--radius, 10px);" 
-                         loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                         title="Our Bakery Map">
-                    </iframe>
-                </aside>
             </div>
         </section>
 

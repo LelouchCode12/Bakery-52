@@ -1,5 +1,21 @@
 [
   {
+    "id": "BK-8778",
+    "date": "06.11.2026, 01:15:50",
+    "customer": "Customer",
+    "method": "Bank Card",
+    "cardLast4": "4242",
+    "total": 16200,
+    "items": {
+      "Artisan Baguette": {
+        "price": 1800,
+        "qty": 9
+      }
+    },
+    "stripePaymentId": "pi_3UYX4dE3jZLE7uA10RWwWWsj",
+    "stripeDashboardUrl": "https://dashboard.stripe.com/test/payments/pi_3UYX4dE3jZLE7uA10RWwWWsj"
+  },
+  {
     "id": "BK-2406",
     "date": "05.11.2026, 22:11:32",
     "customer": "Customer",
