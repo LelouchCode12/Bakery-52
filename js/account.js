@@ -232,7 +232,6 @@
         }).join('');
     }
 
-    // Re-render orders live if user places an order from the navbar cart while on account.html
     window.addEventListener('bakery:orderPlaced', function () {
         render();
     });
@@ -283,7 +282,6 @@
         render();
     });
 
-    // Resize avatar client-side before storing in localStorage
     const avatarInput = $('accAvatarInput');
     if (avatarInput) {
         avatarInput.addEventListener('change', function (e) {

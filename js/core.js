@@ -45,10 +45,6 @@ function initMenu() {
     });
 }
 
-/**
- * Smoothly scrolls to the top instead of reloading when clicking a navigation link
- * that points to the page currently being viewed.
- */
 function initSamePageScroll() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const normPath = (path) => path.replace(/\/index\.html$/, "/") || "/";
@@ -719,8 +715,6 @@ function initCart() {
         }
     });
 
-    // Optional: if frontend stays on GitHub Pages while backend is on Render/Railway,
-    // set your deployed backend URL here (e.g. "https://bakery-52.onrender.com").
     const REMOTE_BACKEND_URL = window.BAKERY_BACKEND_URL || "";
 
     const resolveCheckoutApiUrl = () => {
@@ -881,7 +875,6 @@ function initCart() {
                 showCheckoutError(err.message);
                 return;
             }
-            // Fallback if backend is asleep/offline (e.g. cold start or static preview)
             handleSuccess("BK-" + Math.floor(1000 + Math.random() * 9000));
         });
     };
@@ -1237,14 +1230,12 @@ function initAccount() {
     const fullName = (u) => [u.firstName, u.lastName].filter(Boolean).join(" ");
     const isAccountPage = /account\.html$/.test(window.location.pathname);
 
-    /* ---------- Log out ---------- */
     $(document).on("click", "[data-account-logout]", function (e) {
         e.preventDefault();
         window.BakeryAuth.logout();
         window.location.href = "index.html";
     });
 
-    /* ---------- Header dropdown (desktop) ---------- */
     const $dropdownCover = $("<div>", { "class": "account-dropdown_cover" }).append(
         $("<img>", { src: "images/site/bakery-croissants.webp", alt: "Bakery-52", "class": "account-dropdown_img", loading: "lazy" }),
         $("<div>", { "class": "account-dropdown_cover-overlay" }).append(
@@ -1287,7 +1278,6 @@ function initAccount() {
         });
     }
 
-    /* ---------- Side menu (mobile) ---------- */
     const menuLink = (attr, iconName, text) =>
         $("<li>").append($("<a>", Object.assign({ href: "#", "class": "account-link" }, attr)).append(icon(iconName), $("<span>").text(text)));
     $(".site-menu_links a[href='register.html']").closest("li").replaceWith(
@@ -1296,6 +1286,5 @@ function initAccount() {
     );
     if (isAccountPage) $(".site-menu_links a[href='account.html']").attr("aria-current", "page");
 
-    /* ---------- Footer ---------- */
     $(".info-list a[href='register.html']").text("My account").attr("href", "account.html");
 }

@@ -214,7 +214,6 @@ function initTestimonials() {
         });
     });
 
-    // Clear any previously saved reviews so added reviews only live until page refresh
     try {
         localStorage.removeItem(STORAGE_KEY);
     } catch (e) {}

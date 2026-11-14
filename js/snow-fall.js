@@ -1,36 +1,28 @@
-/**
- * Autumn-enhanced <snow-fall> Web Component (compatible with @zachleat/snow-fall API).
- * Supports `text`, `count`, and `mode` ("page" | "element") attributes.
- */
 (function () {
     const LEAF_PALETTES = [
-        { top: "#ebb155", bottom: "#c47123", vein: "rgba(110, 52, 12, 0.38)" }, // Warm Caramel Amber
-        { top: "#dc6e3d", bottom: "#a13e1f", vein: "rgba(92, 26, 10, 0.36)" },  // Maple Terracotta
-        { top: "#c96534", bottom: "#8a3818", vein: "rgba(74, 24, 8, 0.38)" },   // Roasted Cinnamon
-        { top: "#e6a73e", bottom: "#b26918", vein: "rgba(104, 54, 8, 0.35)" },  // Harvest Ochre
-        { top: "#cb4d30", bottom: "#882817", vein: "rgba(72, 16, 8, 0.38)" }    // Deep Russet
+        { top: "#ebb155", bottom: "#c47123", vein: "rgba(110, 52, 12, 0.38)" },
+        { top: "#dc6e3d", bottom: "#a13e1f", vein: "rgba(92, 26, 10, 0.36)" },
+        { top: "#c96534", bottom: "#8a3818", vein: "rgba(74, 24, 8, 0.38)" },
+        { top: "#e6a73e", bottom: "#b26918", vein: "rgba(104, 54, 8, 0.35)" },
+        { top: "#cb4d30", bottom: "#882817", vein: "rgba(72, 16, 8, 0.38)" }
     ];
 
     const LEAF_SHAPES = [
-        // Maple leaf
         {
             viewBox: "0 0 32 32",
             path: "M16 2.5 L18.3 8.8 L24 6.6 L21.7 12.6 L28.5 13.8 L23.5 18.2 L25.6 21.8 L19.6 21.4 L17.3 24.4 L16.7 29.8 L15.3 29.8 L14.7 24.4 L12.4 21.4 L6.4 21.8 L8.5 18.2 L3.5 13.8 L10.3 12.6 L8 6.6 L13.7 8.8 Z",
             veins: "M16 4.5 V24.5 M16 14 L23 8.5 M16 14 L9 8.5 M16 18 L24.5 15 M16 18 L7.5 15"
         },
-        // Oak leaf
         {
             viewBox: "0 0 32 32",
             path: "M16 2.5 C19 4.5 21 6.5 20.5 9.2 C23.5 9 25.5 11.2 24 14 C26.5 15.2 26.2 18.4 23.2 19.4 C24.2 21.8 22 24.4 18.8 23.8 C17.8 25.6 16.9 26.2 16.7 29.8 L15.3 29.8 C15.1 26.2 14.2 25.6 13.2 23.8 C10 24.4 7.8 21.8 8.8 19.4 C5.8 18.4 5.5 15.2 8 14 C6.5 11.2 8.5 9 11.5 9.2 C11 6.5 13 4.5 16 2.5 Z",
             veins: "M16 4.5 V24.5 M16 11 L21.5 11.5 M16 11 L10.5 11.5 M16 16 L22 17 M16 16 L10 17 M16 20.5 L20 21.5 M16 20.5 L12 21.5"
         },
-        // Birch / Elm leaf
         {
             viewBox: "0 0 32 32",
             path: "M16 2.5 C22 7.5 25.5 13.5 24 20 C22.8 24.2 19.5 26.2 16.8 26.4 L16.7 30 L15.3 30 L15.2 26.4 C12.5 26.2 9.2 24.2 8 20 C6.5 13.5 10 7.5 16 2.5 Z",
             veins: "M16 4.5 V26.2 M16 10.5 L21.2 13.5 M16 10.5 L10.8 13.5 M16 16 L22.2 19.2 M16 16 L9.8 19.2 M16 21 L20.2 23.2 M16 21 L11.8 23.2"
         },
-        // Ginkgo-inspired fan leaf
         {
             viewBox: "0 0 32 32",
             path: "M16 29.5 L15.2 21.8 C9.5 19.5 4.8 14.2 4.5 8.5 C7.8 5.2 12.2 4.5 14.8 6.8 L16 11.5 L17.2 6.8 C19.8 4.5 24.2 5.2 27.5 8.5 C27.2 14.2 22.5 19.5 16.8 21.8 L16 29.5 Z",
@@ -295,7 +287,6 @@
                 const flake = document.createElement("div");
                 flake.className = `snowflake snowflake--${tier}`;
 
-                // Stratified horizontal placement prevents awkward clustering
                 const xPos = Math.min(97, Math.max(1, i * bucketWidth + rand(0, bucketWidth)));
                 const fallDelay = -rand(0, fallDuration);
                 const swayDuration = rand(3.2, 6.4);

@@ -1,6 +1,3 @@
-/* ==========================================================================
-   Full-Page Personal Cabinet (Account Page)
-   ========================================================================== */
 .account-hero {
   position: relative;
   width: 100%;
@@ -196,7 +193,7 @@ html.dark-theme .account-hero_img {
   font-size: 0.95rem;
 }
 
-/* Profile Information Grid (Clean, unboxed data rows) */
+/* Profile Information */
 .account-info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -415,9 +412,8 @@ html.dark-theme .account-pref-switch .form-check-input:checked {
   gap: 0.5rem;
 }
 
-/* Login Activity Section (Clean, unboxed) */
+/* Login Activity */
 .account-activity-panel {
-  /* inherits .account-panel */
 }
 .account-activity-list {
   display: grid;
@@ -461,9 +457,8 @@ html.dark-theme .account-pref-switch .form-check-input:checked {
   margin-left: 0.35rem;
 }
 
-/* Favorite Items Section (Wide, unboxed) */
+/* Favorite Items */
 .account-favorites-panel {
-  /* inherits .account-panel */
 }
 .account-favorites-grid {
   display: grid;
@@ -571,7 +566,7 @@ html.dark-theme .text-muted {
 }
 
 
-/* My Orders (Purchase History - unboxed, clean rows) */
+/* My Orders */
 .account-orders-list {
   display: flex;
   flex-direction: column;
@@ -683,7 +678,7 @@ html.dark-theme .account-order-status.is-completed {
   color: var(--color-text-light);
 }
 
-/* Security & Account Section (Change Password + Delete Account, unboxed) */
+/* Security & Account */
 .account-security-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

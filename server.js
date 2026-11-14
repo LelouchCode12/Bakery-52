@@ -128,7 +128,6 @@ function processStripePayment(order) {
     });
 }
 
-/* ============================================================================================================ */
 let orderQueue = Promise.resolve();
 function saveOrderSafely(order) {
     orderQueue = orderQueue.then(() => {
@@ -143,7 +142,6 @@ function saveOrderSafely(order) {
     return orderQueue;
 }
 
-/* ============================================================================================================ */
 const server = http.createServer((req, res) => {
     const headers = {
         'Access-Control-Allow-Origin': '*',

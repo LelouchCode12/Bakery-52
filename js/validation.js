@@ -7,14 +7,12 @@ $(function () {
 
     if (!$form.length) return;
 
-    /* ============================================================================================================ */
     const setState = ($field, error) => {
         $field.toggleClass('is-valid', !error).toggleClass('is-invalid', !!error);
         $field.siblings('.invalid-feedback').text(error || '');
         return !error;
     };
 
-    /* ============================================================================================================ */
     const checkName = () => {
         const value = $nameInput.val().trim();
         if (value === '') return setState($nameInput, 'Please enter your name.');
@@ -37,7 +35,6 @@ $(function () {
         return setState($messageInput, '');
     };
 
-    /* ============================================================================================================ */
     $nameInput.on('input blur', function () {
         if ($nameInput.val().trim().length > 0 || $nameInput.hasClass('is-invalid')) {
             checkName();
@@ -56,7 +53,6 @@ $(function () {
         }
     });
 
-    /* ============================================================================================================ */
     $form.on('submit', function (event) {
         event.preventDefault();
 

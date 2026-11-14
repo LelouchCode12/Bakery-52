@@ -1,8 +1,3 @@
-/**
- * Synchronously resolves the logged-in Bakery-52 user from localStorage and
- * renders the navbar account button before first paint to prevent header flash
- * and layout shift during page navigation.
- */
 (function (global) {
     const USERS_KEY = "bakery_users";
     const CURRENT_KEY = "bakery_currentUser";
@@ -16,7 +11,6 @@
         }
     }
 
-    // Seed test account "BOss 228" (email: test@gmail.com, password: qwerty) without auto-logging in
     (function syncBossAccount() {
         try {
             const users = readJson(USERS_KEY, {});
