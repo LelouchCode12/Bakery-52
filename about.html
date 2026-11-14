@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Bakery-52</title>
     <meta name="description" content="Learn more about Bakery-52: our story, philosophy, passionate team, and love for fresh baked goods.">
+    <link rel="canonical" href="https://lelouchcode12.github.io/Bakery-52/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bakery-52">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="About Us — Bakery-52">
+    <meta property="og:description" content="Learn more about Bakery-52: our story, philosophy, passionate team, and love for fresh baked goods.">
+    <meta property="og:url" content="https://lelouchcode12.github.io/Bakery-52/about.html">
+    <meta property="og:image" content="https://lelouchcode12.github.io/Bakery-52/images/site/about/our-story.webp">
+    <meta property="og:image:alt" content="Bakery-52 artisanal pastry chef portioning freshly baked brownie cake">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us — Bakery-52">
+    <meta name="twitter:description" content="Learn more about Bakery-52: our story, philosophy, passionate team, and love for fresh baked goods.">
+    <meta name="twitter:image" content="https://lelouchcode12.github.io/Bakery-52/images/site/about/our-story.webp">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Bakery-52",
+      "url": "https://lelouchcode12.github.io/Bakery-52/about.html",
+      "description": "Learn more about Bakery-52: our story, philosophy, passionate team, and love for fresh baked goods.",
+      "mainEntity": {
+        "@type": "Bakery",
+        "name": "Bakery-52",
+        "url": "https://lelouchcode12.github.io/Bakery-52/"
+      }
+    }
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +40,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥐</text></svg>">
 
     <script>!function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.classList.add("dark-theme")}}();</script>
+    <script src="js/header-auth.js"></script>
 </head>
 <body>
     <header>
@@ -26,9 +54,9 @@
                     <li><a href="about.html" aria-current="page">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="register.html">Register</a></li>
-                </ul>
+                </ul><script>window.BakeryHeaderAuth&&window.BakeryHeaderAuth.syncNavbar();</script>
                 <button id="cartBtn" type="button" aria-label="Cart">
-                    <img src="images/site/ico/cart.webp" alt="Cart" class="cart-btn_icon">
+                    <img src="images/site/ico/cart.webp" alt="" aria-hidden="true" class="cart-btn_icon">
                     <span id="cartCount">0</span><script>!function(){try{var s=JSON.parse(localStorage.getItem("bakeryCart")||"{}"),q=0;if(Array.isArray(s)){s.forEach(function(i){q+=i&&i.qty||1})}else{for(var k in s){if(s[k]&&s[k].qty>0)q+=s[k].qty}}var el=document.getElementById("cartCount");if(el)el.textContent=q}catch(e){}}();</script>
                 </button>
                 <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
@@ -41,7 +69,7 @@
     </header>
 
     <main>
-        <section class="section hero hero_banner hero_banner--about" aria-label="about_hero_section">
+        <section class="section hero hero_banner hero_banner--about" aria-label="About Bakery-52">
             <div class="container">
                 <div class="hero_text">
                     <h1>About Bakery-52</h1>
@@ -54,7 +82,7 @@
             <div class="container">
                 <div class="story-grid">
                     <div class="story-visual-wrap">
-                        <svg class="story-svg-defs" width="0" height="0" aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;">
+                        <svg class="story-svg-defs" width="0" height="0" aria-hidden="true">
                             <defs>
                                 <clipPath id="storySplitClip" clipPathUnits="objectBoundingBox">
                                     <rect x="0" y="0.083" width="0.48" height="0.912" rx="0.034" ry="0.043"></rect>
@@ -72,21 +100,24 @@
                         </div>
                     </div>
 
-                    <div class="story-text-wrap">
+                    <div class="story-text-wrap story-card">
                         <div class="story-header">
                             <h2 class="story-title">Our Story &amp; Philosophy</h2>
-                            <p class="story-tagline">How a small family vision grew into a beloved local spot cherished by hundreds of guests daily.</p>
+                            <p class="story-tagline">Early morning ovens, wild-yeast sourdough, and a neighborhood table on Expo 5252.</p>
                         </div>
 
-                        <div class="story-body">
+                        <div class="story-body" tabindex="0" role="region" aria-label="Our Story &amp; Philosophy content">
                             <p>
-                                <strong>Bakery-52</strong> was born from a genuine passion for authentic baking and honest food. What began as an intimate family kitchen experimenting with sourdough starters and laminated dough has grown into a cherished neighborhood sanctuary. From our very first batch of fresh bread, our mission has remained simple: to bring people together with comforting aromas and homemade warmth.
+                                <strong>Bakery-52</strong> began in a modest test kitchen with a single jar of sourdough starter and a straightforward idea: bake real bread and laminated pastries early enough that they are still warm when the doors open at 9:00 AM. Over time, that small counter grew into our corner bakery and espresso bar in Astana.
                             </p>
                             <p>
-                                At the heart of our craft is an uncompromising commitment to natural ingredients and slow baking. Our bakers arrive at 5:00 AM daily, honoring traditional fermentation without artificial additives, preservatives, or premixes. We bake exclusively with farm-fresh butter, stone-ground flour, real cream, Belgian chocolate, and seasonal fruits.
+                                Everything in our display case is made from scratch—no boxed bakery mixes, artificial flavors, or shelf-life improvers. Prep begins at 5:00 AM with cultured butter, unbleached stone-ground flour, fresh cream, Belgian chocolate, and seasonal fruit. Our sourdough loaves ferment slowly in cold proofing boxes for 24 to 36 hours so the crumb stays open and tender while the crust bakes crisp and blistered.
                             </p>
                             <p>
-                                Today, Bakery-52 is a warm community hub where neighbors connect and everyday moments turn sweet. Whether you stop by for a morning espresso and warm croissant, or order a custom cake for a celebration, we greet every visitor as family. We continually refresh our seasonal menu while keeping our promise: crafting every bite with care, warmth, and love.
+                                Alongside daily rye loaves, cinnamon rolls, and flaky butter croissants, our pastry team builds layered honey cakes, berry drip cakes, and custom bento boxes for birthdays and family dinners. We focus on light sponge textures and balanced sweetness so every slice finishes cleanly instead of feeling overly sugary.
+                            </p>
+                            <p>
+                                Our coffee bar runs beside the ovens for a reason: freshly roasted Arabica beans dialed in each morning for espresso, flat whites, and filter brews that cut cleanly through warm pastry. Whether you stop in for ten minutes before work or stay at a window table all afternoon, our kitchen is set up for regular neighbors as much as special occasions.
                             </p>
                         </div>
                     </div>
@@ -97,26 +128,26 @@
         <section class="section container">
             <div class="section_header">
                 <h2>Inside Our Bakery</h2>
-                <p>A visual collection of our cozy space — each corner crafted with warmth, emotion, and style.</p>
+                <p>A glimpse around our kitchen, display counter, and dining space.</p>
             </div>
             <div class="bakery-gallery">
                 <div class="bakery-gallery_item">
-                    <img src="images/site/interior/outside.webp" alt="Bakery-52 exterior view">
+                    <img src="images/site/interior/outside.webp" alt="Storefront entrance and outdoor sign of Bakery-52">
                 </div>
                 <div class="bakery-gallery_item">
-                    <img src="images/site/interior/ecu vitrina.webp" alt="Freshly baked pastries in display">
+                    <img src="images/site/interior/ecu vitrina.webp" alt="Glass pastry case lined with freshly baked cakes and croissants">
                 </div>
                 <div class="bakery-gallery_item">
-                    <img src="images/site/interior/left part.webp" alt="Bakery interior left view">
+                    <img src="images/site/interior/left part.webp" alt="Wooden seating area along the left window wall of the bakery">
                 </div>
                 <div class="bakery-gallery_item">
-                    <img src="images/site/interior/right part.webp" alt="Bakery interior right view">
+                    <img src="images/site/interior/right part.webp" alt="Coffee prep bar and warm pendant lighting along the right wall">
                 </div>
                 <div class="bakery-gallery_item">
-                    <img src="images/site/interior/vitrina and cashier.webp" alt="Display case and cashier area">
+                    <img src="images/site/interior/vitrina and cashier.webp" alt="Service counter with espresso machine, register, and cake display">
                 </div>
                 <div class="bakery-gallery_item">
-                    <img src="images/site/interior/wide shot.webp" alt="Wide shot of Bakery-52 interior">
+                    <img src="images/site/interior/wide shot.webp" alt="Wide interior view across tables, counter, and pastry shelves at Bakery-52">
                 </div>
             </div>
         </section>
@@ -195,35 +226,29 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <h3>Bakery</h3>
-                <p>Freshly baked goods and specialty coffee in the heart of the city.</p>
+    <footer class="site-footer site-footer--coffee-v1">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2>Bakery-52</h2>
+                    <p>Expo 5252<br>Astana city, Kazakhstan</p>
+                </div>
+                <div class="footer-col">
+                    <h2>Hours</h2>
+                    <p>Mon - Fri: 09:00 - 21:00<br>Sat - Sun: 09:00 - 21:00</p>
+                </div>
+                <div class="footer-col">
+                    <h2>Contact</h2>
+                    <p><a href="tel:+77777777777">+7 (777) 777-77-77</a><br><a href="mailto:info@bakery52.com">info@bakery52.com</a></p>
+                </div>
             </div>
-            <div>
-                <h3>Navigation</h3>
-                <ul class="info-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Menu</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="register.html">Register</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Contact Us</h3>
-                <p>Expo 5252, Astana city<br>+7 777 777 77 77</p>
-            </div>
+            <p class="bottom">&copy; 2026 Bakery-52. Artisan Bakery &amp; Specialty Coffee.</p>
         </div>
-        <p class="bottom">&copy; 2026 Bakery. Educational Project.</p>
     </footer>
-        <div class="menu-overlay" id="menuOverlay"></div>
 
     <aside class="site-menu" id="siteMenu" aria-label="Site menu">
         <div class="site-menu_head">
             <span class="site-menu_title">Menu</span>
-            <button class="site-menu_close" id="menuClose" type="button" aria-label="Close menu">×</button>
         </div>
 
         <ul class="site-menu_links">
@@ -243,6 +268,7 @@
         </div>
     </aside>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/snow-fall.js" defer></script>
+    <script src="js/core.js" defer></script>
 </body>
 </html>

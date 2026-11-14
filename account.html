@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Bakery-52</title>
+    <meta name="description" content="Manage your Bakery-52 profile, saved favorites, password settings, and order history.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bakery-52">
+    <meta property="og:title" content="My Account — Bakery-52">
+    <meta property="og:description" content="Manage your Bakery-52 profile, saved favorites, password settings, and order history.">
+    <meta property="og:url" content="https://lelouchcode12.github.io/Bakery-52/account.html">
+    <meta property="og:image" content="https://lelouchcode12.github.io/Bakery-52/images/site/bakery-artisan.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Account — Bakery-52">
+    <meta name="twitter:description" content="Manage your Bakery-52 profile, saved favorites, password settings, and order history.">
+    <meta name="twitter:image" content="https://lelouchcode12.github.io/Bakery-52/images/site/bakery-artisan.webp">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥐</text></svg>">
+    <script>!function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.classList.add("dark-theme")}try{if(!localStorage.getItem("bakery_currentUser")){location.replace("register.html")}}catch(e){}}();</script>
+    <script src="js/header-auth.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+            <a href="index.html" class="navbar_brand">Bakery<span>-52</span></a>
+
+            <div class="navbar_right">
+                <ul class="navbar_links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul><script>window.BakeryHeaderAuth&&window.BakeryHeaderAuth.syncNavbar();</script>
+                <button id="cartBtn" type="button" aria-label="Cart">
+                    <img src="images/site/ico/cart.webp" alt="" aria-hidden="true" class="cart-btn_icon">
+                    <span id="cartCount">0</span><script>!function(){try{var s=JSON.parse(localStorage.getItem("bakeryCart")||"{}"),q=0;if(Array.isArray(s)){s.forEach(function(i){q+=i&&i.qty||1})}else{for(var k in s){if(s[k]&&s[k].qty>0)q+=s[k].qty}}var el=document.getElementById("cartCount");if(el)el.textContent=q}catch(e){}}();</script>
+                </button>
+                <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
+                    <span class="menu-btn_bar"></span>
+                    <span class="menu-btn_bar"></span>
+                    <span class="menu-btn_bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="account-hero" aria-label="Account Overview">
+            <div class="account-hero_bg" aria-hidden="true">
+                <img src="images/site/bakery-artisan.webp" alt="Bakery-52 warm artisan bread" class="account-hero_img">
+                <div class="account-hero_overlay"></div>
+            </div>
+            <div class="container account-hero_content">
+                <div class="account-hero_user">
+                    <div class="account-avatar-wrap">
+                        <div class="account-avatar" id="accAvatar">
+                            <span class="ico ico-user" aria-hidden="true"></span>
+                        </div>
+                        <label for="accAvatarInput" class="account-avatar_btn" title="Change photo" aria-label="Change photo">
+                            <span class="ico ico-camera" aria-hidden="true"></span>
+                        </label>
+                        <input type="file" id="accAvatarInput" accept="image/*" class="d-none">
+                    </div>
+                    <div class="account-hero_info">
+                        <h1 id="accName">Loading...</h1>
+                        <p id="accEmail" class="account-hero_email"></p>
+                        <button type="button" id="accAvatarRemoveBtn" class="account-avatar_remove d-none">Remove photo</button>
+                    </div>
+                </div>
+                <div class="account-hero_actions" id="accHeroActions">
+                    <button type="button" class="btn btn-outline account-action" id="accEditBtn">
+                        <span class="ico ico-edit" aria-hidden="true"></span>
+                        <span>Edit Profile</span>
+                    </button>
+                    <button type="button" class="btn btn-primary account-action" data-account-logout>
+                        <span class="ico ico-logout" aria-hidden="true"></span>
+                        <span>Log out</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="account-section" aria-label="Profile and Favorites">
+            <div class="container">
+
+                <div id="accViewSection" class="account-panel">
+                    <div class="account-panel_header">
+                        <div>
+                            <h2 class="account-panel_title">Profile Information</h2>
+                            <p class="account-panel_subtitle">Your contact information, location, and bakery preferences.</p>
+                        </div>
+                    </div>
+
+                    <div class="account-info-grid" id="accInfoGrid"></div>
+
+                    <div class="account-info-card account-info-card_full account-pref-card">
+                        <div class="account-info-icon account-pref-icon" aria-hidden="true">🍂</div>
+                        <div class="account-info-text account-pref-text">
+                            <label class="account-info-label" for="leavesToggle">Autumn Leaves</label>
+                            <span class="account-pref-desc">Gentle falling leaves animation across all pages</span>
+                        </div>
+                        <div class="form-check form-switch account-pref-switch">
+                            <input class="form-check-input switch-item" type="checkbox" role="switch" id="leavesToggle" aria-label="Autumn Leaves">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="accEditSection" class="account-panel d-none-account">
+                    <div class="account-panel_header">
+                        <div>
+                            <h2 class="account-panel_title">Edit Profile</h2>
+                            <p class="account-panel_subtitle">Update your personal details. Changes will be saved immediately.</p>
+                        </div>
+                    </div>
+
+                    <form id="accEditForm" class="account-edit-form" novalidate>
+                        <div class="account-form-row">
+                            <label class="account-field" for="accFirstName">
+                                <span>First name <span class="text-danger">*</span></span>
+                                <input id="accFirstName" type="text" required minlength="2" autocomplete="given-name" placeholder="First name">
+                            </label>
+                            <label class="account-field" for="accLastName">
+                                <span>Last name <span class="text-danger">*</span></span>
+                                <input id="accLastName" type="text" required minlength="2" autocomplete="family-name" placeholder="Last name">
+                            </label>
+                        </div>
+
+                        <div class="account-form-row">
+                            <label class="account-field" for="accPhone">
+                                <span>Phone number</span>
+                                <input id="accPhone" type="tel" pattern="[0-9+\(\)\s\-]{6,20}" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+                            </label>
+                            <label class="account-field" for="accCountry">
+                                <span>Country <span class="text-danger">*</span></span>
+                                <select id="accCountry" required>
+                            <option value="" disabled>Choose your country...</option>
+                            <option value="Kazakhstan">Kazakhstan</option>
+                            <option value="Afghanistan">Afghanistan</option>
+                            <option value="Albania">Albania</option>
+                            <option value="Algeria">Algeria</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Armenia">Armenia</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Azerbaijan">Azerbaijan</option>
+                            <option value="Belarus">Belarus</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Canada">Canada</option>
+                            <option value="China">China</option>
+                            <option value="Czech Republic">Czech Republic</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Egypt">Egypt</option>
+                            <option value="Finland">Finland</option>
+                            <option value="France">France</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Greece">Greece</option>
+                            <option value="Hungary">Hungary</option>
+                            <option value="India">India</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Kyrgyzstan">Kyrgyzstan</option>
+                            <option value="Mexico">Mexico</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="Norway">Norway</option>
+                            <option value="Poland">Poland</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Qatar">Qatar</option>
+                            <option value="South Korea">South Korea</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Sweden">Sweden</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Turkey">Turkey</option>
+                            <option value="Turkmenistan">Turkmenistan</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="United Arab Emirates">United Arab Emirates</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="United States">United States</option>
+                            <option value="Uzbekistan">Uzbekistan</option>
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="Other">Other</option>
+                        </select>
+                            </label>
+                        </div>
+
+                        <div class="account-field" role="group" aria-labelledby="accHobbiesLabel">
+                            <span id="accHobbiesLabel">Hobbies &amp; Interests</span>
+                            <div class="account-checks-grid">
+                                <label class="account-check">
+                                    <input type="checkbox" id="accHobbyBaking" value="Baking">
+                                    <span>Home Baking &amp; Pastry Craft</span>
+                                </label>
+                                <label class="account-check">
+                                    <input type="checkbox" id="accHobbyCoffee" value="Coffee">
+                                    <span>Specialty Coffee &amp; Roasting</span>
+                                </label>
+                            </div>
+                            <input id="accHobbyCustom" type="text" placeholder="Other hobbies or interests (e.g. Tea, Desserts)..." aria-label="Custom hobbies">
+                        </div>
+
+                        <div class="account-field" role="group" aria-labelledby="accPersonalLabel">
+                            <span id="accPersonalLabel">Personal Details</span>
+                            <label class="account-check">
+                                <input type="checkbox" id="accPreferNotToSay">
+                                <span>Prefer not to say</span>
+                            </label>
+                            <div class="custom-switch-card" id="accSwitchesCard">
+                                <div class="switch-row">
+                                    <span class="text-start">Male</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input switch-item" type="checkbox" role="switch" id="accGenderToggle" aria-label="Gender toggle: Male or Female">
+                                    </div>
+                                    <span class="text-end">Female</span>
+                                </div>
+                                <hr class="switch-divider">
+                                <div class="switch-row">
+                                    <span class="text-start">Straight</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input switch-item" type="checkbox" role="switch" id="accOrientationToggle" aria-label="Orientation toggle: Straight or Gay">
+                                    </div>
+                                    <span class="text-end">Gay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="account-edit_error" id="accError" role="alert"></p>
+
+                        <div class="account-actions">
+                            <button type="submit" class="btn btn-primary account-action">
+                                <span>Save Changes</span>
+                            </button>
+                            <button type="button" class="btn btn-outline account-action" id="accCancelBtn">
+                                <span>Cancel</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="account-panel account-favorites-panel">
+                    <div class="account-panel_header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <div>
+                            <h2 class="account-panel_title">Favorite Items</h2>
+                            <p class="account-panel_subtitle">Pastries and treats you saved from our menu.</p>
+                        </div>
+                        <a href="services.html" class="btn btn-outline btn-sm">Explore Menu</a>
+                    </div>
+                    <div id="accFavoritesList" class="account-favorites-grid"></div>
+                </div>
+
+                <div class="account-panel account-orders-panel" id="accOrdersSection">
+                    <div class="account-panel_header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <div>
+                            <h2 class="account-panel_title">My Orders</h2>
+                            <p class="account-panel_subtitle">Your purchase history, ordered pastries, and current status.</p>
+                        </div>
+                    </div>
+                    <div id="accOrdersList" class="account-orders-list"></div>
+                </div>
+
+                <div class="account-panel account-activity-panel">
+                    <div class="account-panel_header">
+                        <div>
+                            <h2 class="account-panel_title">Login activity</h2>
+                            <p class="account-panel_subtitle">Session and access history for your account.</p>
+                        </div>
+                    </div>
+                    <div class="account-activity-list">
+                        <div class="account-activity-item">
+                            <span class="account-activity-label">First access to site</span>
+                            <span class="account-activity-val" id="accFirstAccess">—</span>
+                        </div>
+                        <div class="account-activity-item">
+                            <span class="account-activity-label">Last access to site</span>
+                            <span class="account-activity-val" id="accLastAccess">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="account-panel account-security-panel" id="accSecuritySection">
+                    <div class="account-panel_header">
+                        <div>
+                            <h2 class="account-panel_title">Security &amp; Account</h2>
+                            <p class="account-panel_subtitle">Change your password or permanently delete your account.</p>
+                        </div>
+                    </div>
+
+                    <div class="account-security-grid">
+                        <form id="accPasswordForm" class="account-password-form" novalidate>
+                            <h3 class="account-subhead">Change Password</h3>
+                            <label class="account-field" for="accOldPassword">
+                                <span>Current password <span class="text-danger">*</span></span>
+                                <input id="accOldPassword" type="password" required autocomplete="current-password" placeholder="Enter current password">
+                            </label>
+                            <label class="account-field" for="accNewPassword">
+                                <span>New password <span class="text-danger">*</span></span>
+                                <input id="accNewPassword" type="password" required minlength="8" autocomplete="new-password" placeholder="Min. 8 chars (A-Z, a-z, 0-9)">
+                            </label>
+                            <p class="account-edit_error" id="accPasswordMsg" role="status" aria-live="polite"></p>
+                            <div class="account-actions">
+                                <button type="submit" class="btn btn-primary account-action" id="accPasswordBtn">
+                                    <span class="ico ico-lock" aria-hidden="true"></span>
+                                    <span>Update Password</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="account-delete-block">
+                            <h3 class="account-subhead">Delete Account</h3>
+                            <p class="account-delete-desc">
+                                Deleting your account will permanently erase your profile, favorite items, and order history from this browser. You will be returned to the home page as a guest.
+                            </p>
+                            <div id="accDeletePrompt">
+                                <button type="button" class="btn btn-danger-outline account-action" id="accDeleteInitBtn">
+                                    <span class="ico ico-trash" aria-hidden="true"></span>
+                                    <span>Delete Account</span>
+                                </button>
+                            </div>
+                            <div id="accDeleteConfirmWrap" class="account-delete-confirm d-none-account">
+                                <p class="account-delete-warn">Are you sure you want to permanently delete your account?</p>
+                                <div class="account-actions">
+                                    <button type="button" class="btn btn-danger-solid account-action" id="accDeleteConfirmBtn">
+                                        <span class="ico ico-trash" aria-hidden="true"></span>
+                                        <span>Yes, Delete My Account</span>
+                                    </button>
+                                    <button type="button" class="btn btn-outline account-action" id="accDeleteCancelBtn">
+                                        <span>Cancel</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer site-footer--coffee-v1">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2>Bakery-52</h2>
+                    <p>Expo 5252<br>Astana city, Kazakhstan</p>
+                </div>
+                <div class="footer-col">
+                    <h2>Hours</h2>
+                    <p>Mon - Fri: 09:00 - 21:00<br>Sat - Sun: 09:00 - 21:00</p>
+                </div>
+                <div class="footer-col">
+                    <h2>Contact</h2>
+                    <p><a href="tel:+77777777777">+7 (777) 777-77-77</a><br><a href="mailto:info@bakery52.com">info@bakery52.com</a></p>
+                </div>
+            </div>
+            <p class="bottom">&copy; 2026 Bakery-52. Artisan Bakery &amp; Specialty Coffee.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/snow-fall.js" defer></script>
+    <script src="js/core.js" defer></script>
+    <script src="js/account.js" defer></script>
+
+    <aside class="site-menu" id="siteMenu" aria-label="Site menu">
+        <div class="site-menu_head">
+            <span class="site-menu_title">Menu</span>
+        </div>
+
+        <ul class="site-menu_links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Menu</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+
+        <div class="site-menu_section">
+            <p class="settings-label" id="themeLabel">Theme</p>
+            <div class="seg" role="group" aria-labelledby="themeLabel">
+                <button type="button" data-theme-choice="light" aria-pressed="true">Light</button>
+                <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+            </div>
+        </div>
+    </aside>
+</body>
+</html>

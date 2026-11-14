@@ -1,0 +1,13 @@
+{
+  "name": "bakery-52",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bakery-52 artisanal bakery website and Stripe checkout backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

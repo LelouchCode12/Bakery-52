@@ -22,13 +22,41 @@ if (fs.existsSync(envPath)) {
 
 const PORT = process.env.PORT || 3000;
 const ORDERS_FILE = path.join(__dirname, 'orders.json');
+const NOT_FOUND_FILE = path.join(__dirname, '404.html');
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
+
+const MIME_TYPES = {
+    '.html': 'text/html; charset=utf-8',
+    '.css': 'text/css; charset=utf-8',
+    '.js': 'application/javascript; charset=utf-8',
+    '.json': 'application/json; charset=utf-8',
+    '.svg': 'image/svg+xml',
+    '.webp': 'image/webp',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.ico': 'image/x-icon',
+    '.woff2': 'font/woff2',
+    '.txt': 'text/plain; charset=utf-8',
+    '.xml': 'application/xml; charset=utf-8'
+};
+
+const BLOCKED_FILES = new Set(['.env', 'orders.json', 'server.js', '.gitignore', 'package.json', 'package-lock.json']);
 
 if (!fs.existsSync(ORDERS_FILE)) {
     fs.writeFileSync(ORDERS_FILE, JSON.stringify([], null, 2), 'utf8');
 }
 
-/* ============================================================================================================ */
+function send404Page(res, method) {
+    if (fs.existsSync(NOT_FOUND_FILE)) {
+        const html = fs.readFileSync(NOT_FOUND_FILE);
+        res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(method === 'HEAD' ? undefined : html);
+        return;
+    }
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end(method === 'HEAD' ? undefined : '404 Not Found');
+}
 function processStripePayment(order) {
     if (!STRIPE_SECRET_KEY) {
         return Promise.resolve({ success: false, skipped: true });
@@ -100,7 +128,6 @@ function processStripePayment(order) {
     });
 }
 
-/* ============================================================================================================ */
 let orderQueue = Promise.resolve();
 function saveOrderSafely(order) {
     orderQueue = orderQueue.then(() => {
@@ -115,7 +142,6 @@ function saveOrderSafely(order) {
     return orderQueue;
 }
 
-/* ============================================================================================================ */
 const server = http.createServer((req, res) => {
     const headers = {
         'Access-Control-Allow-Origin': '*',
@@ -250,11 +276,46 @@ const server = http.createServer((req, res) => {
         return;
     }
 
+    if (req.url.startsWith('/api/')) {
+        res.writeHead(404, headers);
+        res.end(JSON.stringify({ error: 'Route not found' }));
+        return;
+    }
+
+    if (req.method === 'GET' || req.method === 'HEAD') {
+        let pathname = '/';
+        try {
+            pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+        } catch (err) {
+            send404Page(res, req.method);
+            return;
+        }
+
+        const relPath = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
+        const segments = relPath.split('/').filter(Boolean);
+        const hasHiddenOrBlocked = segments.some((seg) => seg.startsWith('.') || BLOCKED_FILES.has(seg));
+        const resolved = path.resolve(__dirname, relPath);
+        const isInsideRoot = resolved.startsWith(__dirname + path.sep);
+
+        if (!hasHiddenOrBlocked && isInsideRoot && fs.existsSync(resolved)) {
+            const stat = fs.statSync(resolved);
+            if (stat.isFile()) {
+                const ext = path.extname(resolved).toLowerCase();
+                const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+                res.writeHead(200, { 'Content-Type': contentType });
+                res.end(req.method === 'HEAD' ? undefined : fs.readFileSync(resolved));
+                return;
+            }
+        }
+
+        send404Page(res, req.method);
+        return;
+    }
+
     res.writeHead(404, headers);
     res.end(JSON.stringify({ error: 'Route not found' }));
 });
 
-/* ============================================================================================================ */
 server.listen(PORT, () => {
     console.log(`Bakery-52 Payment Server running on http://localhost:${PORT}`);
     if (STRIPE_SECRET_KEY) {

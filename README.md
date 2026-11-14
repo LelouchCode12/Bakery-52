@@ -1,4 +1,4 @@
-# Bakery-52: Bakery Website with jQuery, Forms and Validation
+# Bakery-52: Bakery Website with jQuery, Forms, Cart & Checkout Server
 
 **Topic:** Artisanal bakery and specialty coffee shop website
 **Group:** MT-2504
@@ -7,45 +7,73 @@
 
 ## About the project
 
-Bakery-52 is a multi-page website of an artisanal bakery and specialty coffee shop. It is built with HTML, CSS (Bootstrap for forms) and jQuery. User journey: Home, Services, Contact, Register and back to Home. The site has a light and dark theme, a product search with category filters, an FAQ accordion, a recommendations list and two validated forms. It is responsive for about 375 px, 768 px and 1440 px.
+Bakery-52 is a multi-page website of an artisanal bakery and specialty coffee shop built with HTML, CSS (Bootstrap utilities on form/account pages), jQuery, vanilla JavaScript modules, and a lightweight Node.js backend (`server.js`). Key features include light and dark themes, a persistent shopping cart and checkout drawer, `localStorage`-based customer accounts and favorites, live menu search with category filters, a custom cake price estimator, an FAQ accordion, customer testimonials, and responsive layouts across mobile, tablet, and desktop breakpoints.
 
 ## Project structure
 
-```
+```text
 Bakery-52/
 ├── .gitignore
-├── .vscode/    settings.json
-├── index.html, services.html, about.html, contact.html, register.html, demo-result.html
 ├── README.md
-├── css/        style.css, responsive.css, cssregister.css
-├── js/         script.js, validation.js, register.js
-└── images/     (including webp/)
+├── server.js
+├── index.html
+├── services.html
+├── about.html
+├── contact.html
+├── register.html
+├── account.html
+├── demo-result.html
+├── 404.html
+├── css/
+│   ├── style.css
+│   ├── home.css
+│   ├── account.css
+│   ├── cssregister.css
+│   └── responsive.css
+├── js/
+│   ├── header-auth.js
+│   ├── core.js
+│   ├── snow-fall.js
+│   ├── home.js
+│   ├── services.js
+│   ├── faq.js
+│   ├── validation.js
+│   ├── register.js
+│   └── account.js
+└── images/
+    ├── catalog/
+    ├── site/
+    └── leaf.png
 ```
+
+> Note: Runtime and local config files (`.env`, `orders.json`, `.DS_Store`, `.vscode/`) are excluded via `.gitignore`. `server.js` automatically creates an empty `orders.json` on startup if one does not already exist.
 
 ## How to run
 
 1. Clone the repository: `git clone https://github.com/LelouchCode12/Bakery-52.git`
-2. Open `index.html` in a browser, or start a local server (for example the VS Code Live Server extension, port 5500).
-4. An internet connection is needed for jQuery, Bootstrap and Google Fonts, which are loaded from a CDN.
+2. **With Node.js backend (recommended):** run `node server.js` from the project root and open `http://localhost:3000`. The server serves static assets, custom `404.html`, `POST /api/checkout`, and `GET /api/orders`. Optionally configure `PORT` and `STRIPE_SECRET_KEY` in `.env` (without a Stripe key, checkout runs in mock mode).
+3. **Static preview:** open `index.html` via a static server (e.g., Live Server or GitHub Pages). When the Node backend is unavailable, checkout falls back to client-side demo order history in `localStorage`.
+4. An internet connection is needed for Google Fonts, jQuery CDN, and Bootstrap CSS (`register.html`, `account.html`).
 
 ## Deployment
 
-The site is published with GitHub Pages. After the latest changes are pushed to the repository, the public link above shows the updated version.
+The static frontend is published with GitHub Pages. After pushing updated files to the repository, the public link above serves the latest static build.
 
-## jQuery function map
+## JavaScript module map
 
-| File | Function | What it does | Pages |
+| File | Key functions / exports | What it does | Pages |
 |---|---|---|---|
-| `js/script.js` | `initWelcome()` | Side panel toggle, personalized greeting with error and success states, Enter key support | index |
-| `js/script.js` | `initMenu()` | Opens and closes the site menu, closes on outside click and Escape, repositions on resize | all pages |
-| `js/script.js` | `initTheme()` | Light and dark theme switch, saves the choice in `localStorage` | all pages |
-| `js/script.js` | `initSearch()` | Live product search combined with category filter buttons, shows the result counter and "no results" message | index, services |
-| `js/script.js` | `initRecommendations()` | Add and remove list items with fade animation, empty field validation, item counter and empty state | services |
-| `js/script.js` | `initFaq()` | Accordion with `slideToggle`, only one open answer, `aria-expanded`, arrow keys, Home and End, status message | contact |
-| `js/validation.js` | `checkName()`, `checkEmail()`, `checkMessage()` | Contact form validation with clear error messages, `preventDefault` and a demo success message | contact |
-| `js/register.js` | submit and reset handlers | Registration form: password match check, demo success message with fade, reset | register |
+| `js/header-auth.js` | `BakeryHeaderAuth` (`getCurrentUser()`, `createAccountItem()`, `syncNavbar()`) | Synchronously renders the logged-in navbar account button before first paint | all pages |
+| `js/core.js` | `initMenu()`, `initSamePageScroll()`, `initTheme()`, `initLeaves()`, `initCart()`, `BakeryAuth`, `initAccount()` | Site menu, smooth same-page scroll, light/dark theme toggle, leaf animation toggle, cart & checkout drawer, `localStorage` auth/orders, account dropdown sync | all pages |
+| `js/snow-fall.js` | `<snow-fall>` Web Component | Autumn leaf particle overlay | all pages |
+| `js/home.js` | `initWelcome()`, `initCarousel()`, `initTestimonials()` | Home side welcome panel, hero/product carousel, interactive testimonials slider & review form | `index.html` |
+| `js/services.js` | `initSearch()`, `initRecommendations()`, `initCustomCakeForm()`, `initFavorites()` | Live menu search & category filters, recommendations list, custom cake calculator modal, favorites toggle | `services.html` |
+| `js/faq.js` | `initFaq()` | Accessible FAQ accordion with `slideToggle`, `aria-expanded`, arrow keys, `Home`/`End`, status feedback | `contact.html` |
+| `js/validation.js` | `checkName()`, `checkEmail()`, `checkMessage()` | Contact form validation with error feedback and redirect to `demo-result.html` | `contact.html` |
+| `js/register.js` | `saveAccount()`, `showLoginMode()`, `validatePasswords()` | Registration & login form handling, phone mask, gender/orientation toggle switches, password match check, reset | `register.html` |
+| `js/account.js` | Account IIFE (`render()`, profile/password/delete handlers) | Profile editing (including gender/orientation switches & avatar upload), password change, order history, favorites, account deletion | `account.html` |
 
-Inline script in the `<head>` of every page applies the saved theme before the page is drawn, so there is no flash of the wrong theme.
+An inline script in the `<head>` of every page also applies the saved `theme` before first paint to prevent theme flash.
 
 ## Team
 
@@ -59,10 +87,11 @@ Inline script in the `<head>` of every page applies the saved theme before the p
 ## How to open the forms
 
 - Contact form: open `contact.html`
-- Registration form: open `register.html`
+- Registration & login form: open `register.html`
+- Account dashboard: open `account.html` (redirects to `register.html` when signed out)
 - Demo result page: `demo-result.html`
 
-No backend or database is used. A valid submission only opens a static demonstration page or shows a demo success message.
+The contact form redirects to `demo-result.html` without backend storage; registration and profile state persist in browser `localStorage`, while cart checkout submits to `/api/checkout` when `server.js` is running.
 
 ## Forms overview
 
@@ -74,18 +103,17 @@ Fields: Name (text), Email (email), Message (textarea) and a Send Message button
 - `minlength="2"` on the name input
 - `minlength="10"` and `maxlength="500"` on the message textarea
 - Every label is connected to its control with `for` and `id`
-- Bootstrap classes: `form-label`, `form-control`, grid classes, `valid-feedback` and `invalid-feedback`, plus helper text
+- Validation states: `form-control`, `valid-feedback` and `invalid-feedback`
 
 ### Registration form
-
 - First Name and Last Name: required, minimum 2 characters
-- Email: required, email format
-- Password and Confirm Password: required, minimum 8 characters. JavaScript checks that both values match and clears the error after correction
-- Gender: optional radio group with "Prefer not to say", grouped with `fieldset` and `legend`
-- Interests: optional checkboxes
+- Email: required email format
+- Phone: optional masked phone input
+- Password and Confirm Password: required, minimum 8 characters with live match validation
+- Personal Details: optional `"Prefer not to say"` checkbox controlling Gender (`Male` / `Female`) and Orientation (`Straight` / `Gay`) toggle switches grouped with `fieldset` and `legend`
+- Hobbies & Interests: optional checkboxes plus custom text input
 - Country: required select with an empty default option
-- Submit and Reset buttons. Reset clears the entered data and all validation feedback
-- After valid input, a demonstration success message is shown
+- Submit, Reset, and `"Log in"` mode toggle buttons
 
 ## Test results
 
@@ -98,7 +126,7 @@ Fields: Name (text), Email (email), Message (textarea) and a Send Message button
 | 5 | Password too short | `abc123` (6 characters) | Error: minimum 8 characters | Password field marked invalid; form did not submit |
 | 6 | Passwords do not match | `Password1` and `Password2` | Error: passwords do not match; error disappears after correction | Mismatch error shown; it cleared when the values became equal |
 | 7 | No country selected | Country left on the empty option | Error: select a country | Select field marked invalid; form did not submit |
-| 8 | All required values valid | Valid sample data in every required field | Form is accepted and the success message or demo page appears | Success message was displayed |
+| 8 | All required values valid | Valid sample data in every required field | Form is accepted and the success message or demo page appears | Account created or demo page displayed |
 | 9 | Reset after errors | Trigger errors, then click Reset | Fields and error styles are cleared | All fields were emptied and validation styles removed |
 | 10 | Mobile layout | Screen width about 375 px | One-column layout | Fields were stacked in one column |
-| 11 | Desktop layout | Screen width 992 px and above | Multi-column layout |
+| 11 | Desktop layout | Screen width 992 px and above | Multi-column layout | Fields arranged in multiple columns |

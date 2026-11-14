@@ -5,13 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Bakery-52</title>
     <meta name="description" content="Bakery-52 is a local bakery offering artisanal bread, fresh pastries, custom cakes, and specialty coffee.">
+    <link rel="canonical" href="https://lelouchcode12.github.io/Bakery-52/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bakery-52">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Bakery-52 — Artisanal Bakery &amp; Specialty Coffee">
+    <meta property="og:description" content="Bakery-52 is a local bakery offering artisanal bread, fresh pastries, custom cakes, and specialty coffee in Astana.">
+    <meta property="og:url" content="https://lelouchcode12.github.io/Bakery-52/">
+    <meta property="og:image" content="https://lelouchcode12.github.io/Bakery-52/images/site/interior/ecu%20vitrina.webp">
+    <meta property="og:image:alt" content="Bakery-52 pastry showcase with fresh pastries and celebration cakes">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bakery-52 — Artisanal Bakery &amp; Specialty Coffee">
+    <meta name="twitter:description" content="Bakery-52 is a local bakery offering artisanal bread, fresh pastries, custom cakes, and specialty coffee in Astana.">
+    <meta name="twitter:image" content="https://lelouchcode12.github.io/Bakery-52/images/site/interior/ecu%20vitrina.webp">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Bakery",
+      "name": "Bakery-52",
+      "url": "https://lelouchcode12.github.io/Bakery-52/",
+      "image": "https://lelouchcode12.github.io/Bakery-52/images/site/interior/ecu%20vitrina.webp",
+      "telephone": "+7-777-777-77-77",
+      "email": "info@bakery52.com",
+      "priceRange": "₸₸",
+      "servesCuisine": ["Bakery", "Pastries", "Cakes", "Specialty Coffee"],
+      "hasMenu": "https://lelouchcode12.github.io/Bakery-52/services.html",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Expo 5252",
+        "addressLocality": "Astana",
+        "addressCountry": "KZ"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "21:00"
+        }
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥐</text></svg>">
     <script>!function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.classList.add("dark-theme")}}();</script>
+    <script src="js/header-auth.js"></script>
 </head>
 <body>
     <header>
@@ -25,9 +68,9 @@
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="register.html">Register</a></li>
-        </ul>
+        </ul><script>window.BakeryHeaderAuth&&window.BakeryHeaderAuth.syncNavbar();</script>
         <button id="cartBtn" type="button" aria-label="Cart">
-            <img src="images/site/ico/cart.webp" alt="Cart" class="cart-btn_icon">
+            <img src="images/site/ico/cart.webp" alt="" aria-hidden="true" class="cart-btn_icon">
             <span id="cartCount">0</span><script>!function(){try{var s=JSON.parse(localStorage.getItem("bakeryCart")||"{}"),q=0;if(Array.isArray(s)){s.forEach(function(i){q+=i&&i.qty||1})}else{for(var k in s){if(s[k]&&s[k].qty>0)q+=s[k].qty}}var el=document.getElementById("cartCount");if(el)el.textContent=q}catch(e){}}();</script>
         </button>
         <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
@@ -40,7 +83,7 @@
     </header>
 
     <main id="main-content">
-        <section class="section hero hero_banner" aria-label="hero_section">
+        <section class="section hero hero_banner" aria-label="Featured Bakery Highlights">
             <div class="container">
                 <div class="hero_text">
                     <h1>Welcome to Bakery-52</h1>
@@ -52,7 +95,7 @@
                 </div>
             </div>
         </section>
-        <section class="section section_muted" aria-label="menu_section">
+        <section class="section section_muted" aria-label="Featured Desserts and Cakes">
             <div class="container">
                 <div class="section_header">
                     <h2>Featured Desserts & Cakes</h2>
@@ -151,13 +194,13 @@
                             </div>
                         </article>
 
-                        <article class="product-card" data-category="cake" data-desc="Flaky golden pastry crust filled with rich Madagascar vanilla pastry cream and topped with airy whipped cream peaks." data-kcal="320" data-protein="12.4" data-fat="16.5" data-carbs="31.0">
-                            <div class="placeholder">
-                                <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=400" alt="Cream Pie">
+                        <article class="product-card" data-category="pie" data-desc="Tender biscuit crust layered with ripe bananas, golden toffee caramel, and airy whipped cream." data-kcal="320" data-protein="12.4" data-fat="16.5" data-carbs="31.0">
+                            <div class="placeholder placeholder_contain">
+                                <img src="images/catalog/pies/banoffee-pie.webp" alt="Cream Pie">
                             </div>
                             <div class="card_content">
                                 <h3>Cream Pie</h3>
-                                <p>Vanilla custard & cream</p>
+                                <p>Toffee caramel & whipped cream</p>
                             </div>
                         </article>
                     </div>
@@ -200,71 +243,219 @@
             </div>
         </section>
 
-        <section class="section_muted hero">
+        <section id="testimonials" class="section_muted testimonials-section" aria-label="Guest testimonials">
             <div class="container">
-                <div class="section_header">
-                    <h2>What Our Guests Say</h2>
-                </div>
-                <div class="features">
-                    <blockquote class="feature-card">
-                        <p>«The best flat white in this part of town, and a comfortable place to work on a laptop.»</p>
-                        <footer>— Ansar E.</footer>
-                    </blockquote>
-                    <blockquote class="feature-card">
-                        <p>«The pastries are always hot and fresh, and the baristas remember regular guests.»</p>
-                        <footer>— Alisher B.</footer>
-                    </blockquote>
+                <div class="testimonials-grid" id="animatedTestimonials" data-interval="6000">
+                    <div class="testimonials-left">
+                        <div class="testimonials-left_inner">
+                            <div class="testimonials-intro" id="testimonialsIntro">
+                                <h2 class="testimonials-title">What Our Guests Say</h2>
+
+                                <p class="testimonials-subtitle">
+                                    Don't just take our word for it. See what our regular guests and coffee lovers have to say about Bakery-52.
+                                </p>
+                            </div>
+
+                            <div class="testimonials-controls">
+                                <div class="testimonials-dots" id="testimonialsDots" role="tablist" aria-label="Select testimonial">
+                                    <button type="button" class="testimonials-dot active" data-index="0" role="tab" aria-selected="true" aria-label="View testimonial 1"></button>
+                                    <button type="button" class="testimonials-dot" data-index="1" role="tab" aria-selected="false" aria-label="View testimonial 2"></button>
+                                    <button type="button" class="testimonials-dot" data-index="2" role="tab" aria-selected="false" aria-label="View testimonial 3"></button>
+                                </div>
+
+                                <button type="button" class="testimonials-add-btn" id="toggleReviewFormBtn" aria-expanded="false" aria-controls="testimonialFormWrap">
+                                    + Write a Review
+                                </button>
+                            </div>
+
+                            <div class="testimonial-form-wrap" id="testimonialFormWrap" hidden>
+                                <form id="testimonialForm" class="testimonial-form" novalidate>
+                                    <div class="testimonial-form_row">
+                                        <label class="testimonial-form_label" for="reviewAuthorInput">Your Name</label>
+                                        <input type="text" id="reviewAuthorInput" class="testimonial-form_input" placeholder="e.g. Dana M." maxlength="40" required>
+                                    </div>
+
+                                    <div class="testimonial-form_row">
+                                        <span class="testimonial-form_label" id="reviewRatingLabel">Your Rating</span>
+                                        <div class="testimonial-rating-picker" id="reviewRatingPicker" role="radiogroup" aria-labelledby="reviewRatingLabel">
+                                            <button type="button" class="rating-star-btn active" data-value="1" aria-label="1 star" aria-checked="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                            </button>
+                                            <button type="button" class="rating-star-btn active" data-value="2" aria-label="2 stars" aria-checked="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                            </button>
+                                            <button type="button" class="rating-star-btn active" data-value="3" aria-label="3 stars" aria-checked="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                            </button>
+                                            <button type="button" class="rating-star-btn active" data-value="4" aria-label="4 stars" aria-checked="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                            </button>
+                                            <button type="button" class="rating-star-btn active" data-value="5" aria-label="5 stars" aria-checked="true">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="testimonial-form_row">
+                                        <label class="testimonial-form_label" for="reviewTextInput">Your Review</label>
+                                        <textarea id="reviewTextInput" class="testimonial-form_textarea" rows="2" placeholder="Share your experience with our pastries and coffee..." maxlength="280" required></textarea>
+                                    </div>
+
+                                    <p class="testimonial-form_error" id="reviewFormError" aria-live="polite"></p>
+
+                                    <div class="testimonial-form_actions">
+                                        <button type="submit" class="btn btn-primary testimonial-form_submit">Publish Review</button>
+                                        <button type="button" class="btn btn-outline testimonial-form_cancel" id="cancelReviewFormBtn">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonials-right">
+                        <div class="testimonials-decor testimonials-decor--bl" aria-hidden="true"></div>
+                        <div class="testimonials-decor testimonials-decor--tr" aria-hidden="true"></div>
+
+                        <div class="testimonials-cards">
+                            <article class="testimonial-card-item active" data-index="0" aria-hidden="false">
+                                <div class="testimonial-card-box">
+                                    <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+
+                                    <div class="testimonial-quote-wrap">
+                                        <svg class="testimonial-quote-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                                            <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                                        </svg>
+                                        <p class="testimonial-quote-text">"The best flat white in this part of town, and a comfortable place to work on a laptop. The aroma of freshly roasted beans and warm croissants makes every morning special."</p>
+                                    </div>
+
+                                    <div class="testimonial-separator" role="separator"></div>
+
+                                    <div class="testimonial-author">
+                                        <div class="testimonial-avatar" aria-hidden="true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                        <h3 class="testimonial-author-name">Ansar E.</h3>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="testimonial-card-item" data-index="1" aria-hidden="true">
+                                <div class="testimonial-card-box">
+                                    <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+
+                                    <div class="testimonial-quote-wrap">
+                                        <svg class="testimonial-quote-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                                            <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                                        </svg>
+                                        <p class="testimonial-quote-text">"The pastries are always hot and fresh, and the baristas remember regular guests. Their French butter croissants and honey cake are hands down the best in Astana!"</p>
+                                    </div>
+
+                                    <div class="testimonial-separator" role="separator"></div>
+
+                                    <div class="testimonial-author">
+                                        <div class="testimonial-avatar" aria-hidden="true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                        <h3 class="testimonial-author-name">Alisher B.</h3>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="testimonial-card-item" data-index="2" aria-hidden="true">
+                                <div class="testimonial-card-box">
+                                    <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="testimonial-star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+
+                                    <div class="testimonial-quote-wrap">
+                                        <svg class="testimonial-quote-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                                            <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                                        </svg>
+                                        <p class="testimonial-quote-text">"We ordered a custom berry drip cake for our family celebration and everyone was blown away! Not only did it look stunning, the sponge and cream were cloud-light."</p>
+                                    </div>
+
+                                    <div class="testimonial-separator" role="separator"></div>
+
+                                    <div class="testimonial-author">
+                                        <div class="testimonial-avatar" aria-hidden="true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                        <h3 class="testimonial-author-name">Aigerim K.</h3>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <h3>Bakery</h3>
-                <p>Freshly baked goods and specialty coffee in the heart of the city.</p>
+    <footer class="site-footer site-footer--coffee-v1">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2>Bakery-52</h2>
+                    <p>Expo 5252<br>Astana city, Kazakhstan</p>
+                </div>
+                <div class="footer-col">
+                    <h2>Hours</h2>
+                    <p>Mon - Fri: 09:00 - 21:00<br>Sat - Sun: 09:00 - 21:00</p>
+                </div>
+                <div class="footer-col">
+                    <h2>Contact</h2>
+                    <p><a href="tel:+77777777777">+7 (777) 777-77-77</a><br><a href="mailto:info@bakery52.com">info@bakery52.com</a></p>
+                </div>
             </div>
-            <div>
-                <h3>Navigation</h3>
-                <ul class="info-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Menu</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="register.html">Register</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Contact Us</h3>
-                <p>Expo 5252, Astana city<br>+7 777 777 77 77</p>
-            </div>
+            <p class="bottom">&copy; 2026 Bakery-52. Artisan Bakery &amp; Specialty Coffee.</p>
         </div>
-        <p class="bottom">&copy; 2026 Bakery. Educational Project.</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/snow-fall.js" defer></script>
+    <script src="js/core.js" defer></script>
+    <script src="js/home.js" defer></script>
     <div class="side-welcome" id="sideWelcome">
         <div class="side-panel">
-            <h6 class="fw-bold mb-1">Personalized Welcome 🥐</h6>
-            <p class="text-muted small mb-2">Enter your name below:</p>
-            <input type="text" id="userNameInput" class="form-control form-control-sm mb-2" placeholder="e.g. Alikhan" autocomplete="off" aria-label="Your name">
-            <button id="greetBtn" type="button" class="btn btn-primary btn-sm w-100">Get Greeting</button>
-            <p id="greetingOutput" class="fw-bold small mt-2 mb-0 text-center" style="min-height: 1.2rem;" aria-live="polite"></p>
+            <p class="side-panel_title">Personalized Welcome 🥐</p>
+            <p class="side-panel_hint">Enter your name below:</p>
+            <input type="text" id="userNameInput" class="side-panel_input" placeholder="e.g. Alikhan" autocomplete="off" aria-label="Your name">
+            <button id="greetBtn" type="button" class="btn btn-primary side-panel_btn">Get Greeting</button>
+            <p id="greetingOutput" class="side-panel_output" aria-live="polite"></p>
         </div>
         <button id="sideToggle" class="side-trigger" type="button" aria-expanded="false" aria-controls="sideWelcome">Greeting <span aria-hidden="true">❯</span></button>
     </div>
-      <div class="menu-overlay" id="menuOverlay"></div>
 
     <aside class="site-menu" id="siteMenu" aria-label="Site menu">
         <div class="site-menu_head">
             <span class="site-menu_title">Menu</span>
-            <button class="site-menu_close" id="menuClose" type="button" aria-label="Close menu">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
-                     stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-                    <path d="M5 5l14 14M19 5L5 19"/>
-                </svg>
-            </button>
         </div>
 
         <ul class="site-menu_links">
@@ -275,7 +466,7 @@
             <li><a href="register.html">Register</a></li>
         </ul>
 
-        <div class=" site-menu_section">
+        <div class="site-menu_section">
             <p class="settings-label" id="themeLabel">Theme</p>
             <div class="seg" role="group" aria-labelledby="themeLabel">
                 <button type="button" data-theme-choice="light" aria-pressed="true">Light</button>
@@ -288,11 +479,11 @@
         <div class="cake-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
             <button type="button" class="cake-modal_close" id="modalClose" aria-label="Close modal">×</button>
             <div class="cake-modal_img-wrap">
-                <img src="" alt="" id="modalImg">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E" alt="" id="modalImg">
             </div>
             <div class="cake-modal_body">
                 <div class="cake-modal_head">
-                    <h3 id="modalTitle"></h3>
+                    <h2 id="modalTitle"></h2>
                 </div>
                 <p class="cake-modal_desc" id="modalDesc"></p>
                 <p class="cake-modal_sub">Nutrition Facts (per 100g)</p>
