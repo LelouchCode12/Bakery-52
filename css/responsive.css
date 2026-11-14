@@ -16,11 +16,6 @@
     flex: 1;
   }
 
-  .shef img {
-    width: 100%;
-    max-width: 420px;
-  }
-
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -37,14 +32,6 @@
     grid-column: 1 / -1;
   }
 
-  .features {
-    flex-direction: row;
-  }
-
-  .feature-card {
-    flex: 1;
-  }
-
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -57,10 +44,6 @@
     border-top: none;
     padding-left: var(--space-4);
     border-left: 1px solid var(--color-border);
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -79,10 +62,6 @@
 
   .why-us-grid > :last-child:nth-child(odd) {
     grid-column: auto;
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 
   .contact-grid {

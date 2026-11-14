@@ -4,6 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu &amp; Services - Bakery-52</title>
+    <meta name="description" content="Explore the full Bakery-52 menu: fresh pastries, artisan bread, desserts, pies, cheesecakes, bento cakes, custom cakes, and kids celebration cakes in Astana.">
+    <link rel="canonical" href="https://lelouchcode12.github.io/Bakery-52/services.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bakery-52">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Menu &amp; Services — Bakery-52">
+    <meta property="og:description" content="Explore the full Bakery-52 menu: fresh pastries, artisan bread, desserts, pies, cheesecakes, bento cakes, and celebration cakes.">
+    <meta property="og:url" content="https://lelouchcode12.github.io/Bakery-52/services.html">
+    <meta property="og:image" content="https://lelouchcode12.github.io/Bakery-52/images/site/interior/cu%20vitrina.webp">
+    <meta property="og:image:alt" content="Bakery-52 pastry display case filled with fresh pastries and baked treats">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Menu &amp; Services — Bakery-52">
+    <meta name="twitter:description" content="Explore the full Bakery-52 menu: fresh pastries, artisan bread, desserts, pies, cheesecakes, bento cakes, and celebration cakes.">
+    <meta name="twitter:image" content="https://lelouchcode12.github.io/Bakery-52/images/site/interior/cu%20vitrina.webp">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Bakery-52 Menu & Services",
+      "url": "https://lelouchcode12.github.io/Bakery-52/services.html",
+      "description": "Full artisanal catalog of pastries, breads, desserts, pies, cheesecakes, bento cakes, custom cakes, and celebration cakes from Bakery-52.",
+      "isPartOf": {
+        "@type": "Bakery",
+        "name": "Bakery-52",
+        "url": "https://lelouchcode12.github.io/Bakery-52/"
+      }
+    }
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +39,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥐</text></svg>">
     <script>!function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.classList.add("dark-theme")}}();</script>
+    <script src="js/header-auth.js"></script>
 </head>
 <body>
     <header>
@@ -24,9 +53,9 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="register.html">Register</a></li>
-                </ul>
+                </ul><script>window.BakeryHeaderAuth&&window.BakeryHeaderAuth.syncNavbar();</script>
                 <button id="cartBtn" type="button" aria-label="Cart">
-                    <img src="images/site/ico/cart.webp" alt="Cart" class="cart-btn_icon">
+                    <img src="images/site/ico/cart.webp" alt="" aria-hidden="true" class="cart-btn_icon">
                     <span id="cartCount">0</span><script>!function(){try{var s=JSON.parse(localStorage.getItem("bakeryCart")||"{}"),q=0;if(Array.isArray(s)){s.forEach(function(i){q+=i&&i.qty||1})}else{for(var k in s){if(s[k]&&s[k].qty>0)q+=s[k].qty}}var el=document.getElementById("cartCount");if(el)el.textContent=q}catch(e){}}();</script>
                 </button>
                 <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
@@ -39,7 +68,7 @@
     </header>
 
     <main>
-        <section class="section hero hero_banner hero_banner--menu" aria-label="menu_section">
+        <section class="section hero hero_banner hero_banner--menu" aria-label="Menu and Bakery Services">
             <div class="container">
                 <div class="hero_text">
                     <div class="floating-badge">
@@ -59,14 +88,21 @@
             <div class="bakery-search-box">
                 <label for="searchInput">Search Menu:</label>
                 <input type="text" id="searchInput" placeholder="Type to search desserts, pastries...">
-                <p id="searchCount" class="bakery-search-count">Found items: 13</p>
+                <p id="searchCount" class="bakery-search-count">Found items: 85</p>
             </div>
 
             <div class="category-filters" id="categoryFilters" role="group" aria-label="Filter by category">
-                <button class="cat-btn active" data-category="all">All</button>
-                <button class="cat-btn" data-category="pastry">Pastries</button>
-                <button class="cat-btn" data-category="bread">Bread</button>
-                <button class="cat-btn" data-category="cake">Cakes</button>
+                <button type="button" class="cat-btn active" data-category="all" aria-pressed="true">All</button>
+                <button type="button" class="cat-btn" data-category="pastry" aria-pressed="false">Pastries</button>
+                <button type="button" class="cat-btn" data-category="bread" aria-pressed="false">Bread</button>
+                <button type="button" class="cat-btn" data-category="dessert" aria-pressed="false">Desserts</button>
+                <button type="button" class="cat-btn" data-category="pie" aria-pressed="false">Pies</button>
+                <button type="button" class="cat-btn" data-category="cheesecake" aria-pressed="false">Cheesecakes</button>
+                <button type="button" class="cat-btn" data-category="bento" aria-pressed="false">Bento Cakes</button>
+                <button type="button" class="cat-btn" data-category="cake" aria-pressed="false">Classic Cakes</button>
+                <button type="button" class="cat-btn" data-category="custom-cake" aria-pressed="false">Custom Cakes</button>
+                <button type="button" class="cat-btn" data-category="decorated-cake" aria-pressed="false">Decorated Cakes</button>
+                <button type="button" class="cat-btn" data-category="kids-cake" aria-pressed="false">Kids Cakes</button>
             </div>
 
             <div id="noResults" class="bakery-no-results" role="alert" aria-live="polite">
@@ -76,7 +112,8 @@
             <div class="card-grid">
                 <article class="product-card" data-category="pastry">
                     <div class="placeholder">
-                        <img src="images/catalog/pastries/frenchcroissant.webp" alt="French Croissant">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/frenchcroissant.webp" alt="French Croissant" decoding="async">
                     </div>
                     <div class="card_content">
                         <h3>French Croissant</h3>
@@ -84,7 +121,178 @@
                         <span class="card_price">2 500₸</span>
                         <div class="card-cart-row">
                             <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pastry">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/beef-samsa.webp" alt="Golden baked Beef Samsa pastry" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Beef Samsa</h3>
+                        <p>Flaky golden puff pastry filled with seasoned minced beef and onions.</p>
+                        <span class="card_price">950₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pastry">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/cheese-samsa.webp" alt="Golden baked Cheese Samsa pastry" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Cheese Samsa</h3>
+                        <p>Layered butter pastry baked with rich melted suluguni and feta cheese.</p>
+                        <span class="card_price">850₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pastry">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/chicken-samsa.webp" alt="Golden baked Chicken Samsa pastry" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Chicken Samsa</h3>
+                        <p>Crisp puff triangle stuffed with tender spiced chicken and herbs.</p>
+                        <span class="card_price">900₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pastry">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/potato-borek.webp" alt="Flaky Potato Borek pastry" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Potato Borek</h3>
+                        <p>Flaky savory pastry filled with creamy mashed potatoes and black pepper.</p>
+                        <span class="card_price">950₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pastry">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/cabbage-pirozhki.webp" alt="Baked Cabbage Pirozhki bun" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Cabbage Pirozhki</h3>
+                        <p>Soft golden-baked yeast bun stuffed with braised cabbage and herbs.</p>
+                        <span class="card_price">650₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pastry">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/potato-pirozhki.webp" alt="Baked Potato Pirozhki bun" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Potato Pirozhki</h3>
+                        <p>Oven-baked fluffy yeast pastry filled with warm savory potatoes.</p>
+                        <span class="card_price">650₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pastry">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/sausage-roll.webp" alt="Baked Sausage Roll in puff pastry" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Flaky Sausage Roll</h3>
+                        <p>Savory sausage wrapped in buttery baked puff pastry with sesame seeds.</p>
+                        <span class="card_price">850₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pastry">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/mini-pizza.webp" alt="Savory Bakery Mini Pizza" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Bakery Mini Pizza</h3>
+                        <p>Soft artisan dough topped with tomato sauce, melted cheese, and sausage.</p>
+                        <span class="card_price">1 200₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pastry">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/mini-chicken-mushroom-quiche.webp" alt="Mini Chicken and Mushroom Quiche" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Chicken &amp; Mushroom Mini Quiche</h3>
+                        <p>Savory shortcrust tartlet baked with chicken, mushrooms, and cream custard.</p>
+                        <span class="card_price">1 400₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
                                 <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
                                 <span class="card-qty-val item-cart-qty">0</span>
                                 <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
@@ -94,7 +302,8 @@
                 </article>
                 <article class="product-card" data-category="bread">
                     <div class="placeholder">
-                        <img src="images/catalog/pastries/Artisan Baguette.webp" alt="Artisan Baguette">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pastries/Artisan Baguette.webp" alt="Artisan Baguette" loading="lazy" decoding="async">
                     </div>
                     <div class="card_content">
                         <h3>Artisan Baguette</h3>
@@ -102,7 +311,520 @@
                         <span class="card_price">1 800₸</span>
                         <div class="card-cart-row">
                             <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/chocolate-eclairs.webp" alt="Chocolate glazed Eclairs" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Chocolate Eclairs</h3>
+                        <p>Light choux pastry filled with vanilla custard and dipped in dark chocolate glaze.</p>
+                        <span class="card_price">1 600₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/cinnamon-rolls.webp" alt="Box of glazed Cinnamon Rolls" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Cinnamon Rolls Box</h3>
+                        <p>Warm swirled brioche rolls frosted with vanilla cream cheese icing.</p>
+                        <span class="card_price">3 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/cupcakes.webp" alt="Assorted frosted Cupcakes" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Assorted Cream Cupcakes</h3>
+                        <p>Tender vanilla and chocolate sponge cupcakes topped with whipped berry cream swirls.</p>
+                        <span class="card_price">4 200₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/curd-ring.webp" alt="Curd Cream Choux Ring pastry" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Curd Cream Choux Ring</h3>
+                        <p>Golden choux ring generously filled with whipped vanilla cottage cheese cream.</p>
+                        <span class="card_price">1 200₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/donuts.webp" alt="Assorted Glazed Bakery Donuts" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Glazed Bakery Donuts</h3>
+                        <p>Soft ring donuts finished with smooth chocolate and sugar glazes.</p>
+                        <span class="card_price">1 100₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/milk-girl-trifle.webp" alt="Milk Girl layered dessert trifle cup" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>&#x27;Milk Girl&#x27; Dessert Trifle</h3>
+                        <p>Individual layered dessert cup with condensed milk sponge and airy cream.</p>
+                        <span class="card_price">2 200₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/oriental-tartlet.webp" alt="Oriental Nut and Dried Fruit Tartlet" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Oriental Nut &amp; Fruit Tartlet</h3>
+                        <p>Crisp butter shortcrust tartlet filled with walnuts, raisins, and dried apricots.</p>
+                        <span class="card_price">1 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/pistachio-cookies.webp" alt="Artisanal Pistachio Butter Cookies" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Pistachio Butter Cookies</h3>
+                        <p>Crumbly artisanal shortbread cookies studded with roasted green pistachios.</p>
+                        <span class="card_price">2 400₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/profiteroles.webp" alt="Cream-filled Choux Profiteroles" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Cream Profiteroles</h3>
+                        <p>Delicate choux puffs piped full of smooth vanilla pastry cream.</p>
+                        <span class="card_price">2 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="dessert">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/desserts/snickers-tartlet.webp" alt="Snickers Caramel Peanut Tartlet" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Snickers Caramel Tartlet</h3>
+                        <p>Rich chocolate tartlet layered with salted caramel, roasted peanuts, and ganache.</p>
+                        <span class="card_price">1 700₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/angels-tears-pie.webp" alt="Angel&#x27;s Tears Cottage Cheese Meringue Pie" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Angel&#x27;s Tears Pie</h3>
+                        <p>Tender shortcrust tart with creamy cottage cheese filling and airy meringue.</p>
+                        <span class="card_price">7 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/banoffee-pie.webp" alt="Cream Pie topped with whipped cream and chocolate shavings" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Cream Pie</h3>
+                        <p>Biscuit crust layered with ripe bananas, toffee caramel, and whipped cream.</p>
+                        <span class="card_price">7 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/beef-pie.webp" alt="Savory Golden Crust Beef Pie" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Savory Beef Pie</h3>
+                        <p>Hearty golden-crust bakery pie stuffed with tender beef and caramelized onions.</p>
+                        <span class="card_price">6 900₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/chicken-pie.webp" alt="Savory Golden Crust Chicken Pie" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Savory Chicken Pie</h3>
+                        <p>Warm flaky pie filled with roasted chicken breast, potatoes, and herbs.</p>
+                        <span class="card_price">6 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/kara-kyz-pie.webp" alt="Kara Kyz Dark Chocolate Pie" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Kara Kyz Chocolate Pie</h3>
+                        <p>Moist cocoa sponge pie covered in velvety dark chocolate glaze.</p>
+                        <span class="card_price">7 200₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/oriental-pie.webp" alt="Oriental Walnut and Dried Fruit Pie" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Oriental Walnut &amp; Fruit Pie</h3>
+                        <p>Buttery shortcrust pie baked with walnuts, dried apricots, raisins, and cream.</p>
+                        <span class="card_price">7 400₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/peach-sour-cream-pie.webp" alt="Peach and Sour Cream Bakery Pie" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Peach &amp; Sour Cream Pie</h3>
+                        <p>Delicate shortbread tart baked with juicy peach slices and vanilla sour cream custard.</p>
+                        <span class="card_price">6 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/pistachio-pie.webp" alt="Pistachio Custard Bakery Pie" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Pistachio Custard Pie</h3>
+                        <p>Nutty pastry shell filled with silky pistachio cream and crushed pistachios.</p>
+                        <span class="card_price">8 200₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/poppy-seed-meringue-pie.webp" alt="Poppy Seed Meringue Pie" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Poppy Seed Meringue Pie</h3>
+                        <p>Fragrant poppy seed cake base crowned with crisp toasted meringue.</p>
+                        <span class="card_price">7 600₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="pie">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/pies/snickers-pie.webp" alt="Snickers Chocolate Peanut Pie" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Snickers Peanut Pie</h3>
+                        <p>Chocolate tart layered with soft caramel, roasted peanuts, and milk chocolate ganache.</p>
+                        <span class="card_price">8 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cheesecake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cheesecakes/dubai-cheesecake.webp" alt="Dubai Chocolate Pistachio Cheesecake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Dubai Pistachio Cheesecake</h3>
+                        <p>Creamy cheesecake topped with crispy kataifi pastry, pistachio cream, and chocolate.</p>
+                        <span class="card_price">13 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cheesecake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cheesecakes/san-sebastian-cheesecake.webp" alt="San Sebastian Basque Burnt Cheesecake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>San Sebastian Cheesecake</h3>
+                        <p>Creamy Basque burnt cheesecake with caramelized top and velvety cream cheese center.</p>
+                        <span class="card_price">11 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cheesecake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cheesecakes/tary-cheesecake.webp" alt="Tary Roasted Millet Cheesecake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Tary Millet Cheesecake</h3>
+                        <p>Kazakh-inspired cheesecake crafted with toasted golden millet and smooth cream cheese.</p>
+                        <span class="card_price">11 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="bento">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/bento-cakes/bento-chocolate.webp" alt="Chocolate Bento Mini Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Chocolate Bento Cake</h3>
+                        <p>Personal mini sponge cake layered with silky dark chocolate ganache.</p>
+                        <span class="card_price">5 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="bento">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/bento-cakes/bento-milk-girl.webp" alt="Milk Girl Bento Mini Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>&#x27;Milk Girl&#x27; Bento Cake</h3>
+                        <p>Mini condensed milk sponge layers paired with light whipped cream.</p>
+                        <span class="card_price">5 200₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="bento">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/bento-cakes/bento-pistachio.webp" alt="Pistachio Bento Mini Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Pistachio Bento Cake</h3>
+                        <p>Petite pistachio sponge bento cake finished with nutty cream cheese frosting.</p>
+                        <span class="card_price">5 900₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="bento">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/bento-cakes/bento-whoopie-pie.webp" alt="Whoopie Pie Bento Mini Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Whoopie Pie Bento Cake</h3>
+                        <p>Rich cocoa bento cake filled with signature whipped cream cheese.</p>
+                        <span class="card_price">5 600₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
                                 <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
                                 <span class="card-qty-val item-cart-qty">0</span>
                                 <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
@@ -112,7 +834,8 @@
                 </article>
                 <article class="product-card" data-category="cake">
                     <div class="placeholder">
-                        <img src="images/catalog/cakes/Chocolate Delight Cake.webp" alt="Chocolate Delight Cake">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/Chocolate Delight Cake.webp" alt="Chocolate Delight Cake" loading="lazy" decoding="async">
                     </div>
                     <div class="card_content">
                         <h3>Chocolate Delight Cake</h3>
@@ -120,7 +843,7 @@
                         <span class="card_price">15 000₸</span>
                         <div class="card-cart-row">
                             <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
+                            <div class="card-qty-controls">
                                 <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
                                 <span class="card-qty-val item-cart-qty">0</span>
                                 <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
@@ -130,61 +853,8 @@
                 </article>
                 <article class="product-card" data-category="cake">
                     <div class="placeholder">
-                        <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=400" alt="Cream Pie">
-                    </div>
-                    <div class="card_content">
-                        <h3>Cream Pie</h3>
-                        <p>Flaky pastry crust filled with rich vanilla custard and topped with whipped cream.</p>
-                        <span class="card_price">4 200₸</span>
-                        <div class="card-cart-row">
-                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
-                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
-                                <span class="card-qty-val item-cart-qty">0</span>
-                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card" data-category="bread">
-                    <div class="placeholder">
-                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400" alt="Sourdough Bread">
-                    </div>
-                    <div class="card_content">
-                        <h3>Sourdough Rye Bread</h3>
-                        <p>Healthy yeast-free rye bread baked using traditional recipes.</p>
-                        <span class="card_price">3 100₸</span>
-                        <div class="card-cart-row">
-                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
-                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
-                                <span class="card-qty-val item-cart-qty">0</span>
-                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card" data-category="pastry">
-                    <div class="placeholder">
-                        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=400" alt="Cinnamon Roll">
-                    </div>
-                    <div class="card_content">
-                        <h3>Cinnamon Roll</h3>
-                        <p>Soft and fluffy pastry roll filled with cinnamon and cream glaze.</p>
-                        <span class="card_price">2 900₸</span>
-                        <div class="card-cart-row">
-                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
-                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
-                                <span class="card-qty-val item-cart-qty">0</span>
-                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card" data-category="cake">
-                    <div class="placeholder">
-                        <img src="images/catalog/cakes/whoopiepie.webp" alt="Whoopie Pie Cake">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/whoopiepie.webp" alt="Whoopie Pie Cake" loading="lazy" decoding="async">
                     </div>
                     <div class="card_content">
                         <h3>Whoopie Pie Cake</h3>
@@ -192,7 +862,7 @@
                         <span class="card_price">10 000₸</span>
                         <div class="card-cart-row">
                             <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
+                            <div class="card-qty-controls">
                                 <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
                                 <span class="card-qty-val item-cart-qty">0</span>
                                 <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
@@ -202,7 +872,8 @@
                 </article>
                 <article class="product-card" data-category="cake">
                     <div class="placeholder">
-                        <img src="images/catalog/cakes/honey cake.webp" alt="Honey Cake">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/honey cake.webp" alt="Honey Cake" loading="lazy" decoding="async">
                     </div>
                     <div class="card_content">
                         <h3>Honey Cake</h3>
@@ -210,7 +881,7 @@
                         <span class="card_price">12 000₸</span>
                         <div class="card-cart-row">
                             <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
+                            <div class="card-qty-controls">
                                 <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
                                 <span class="card-qty-val item-cart-qty">0</span>
                                 <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
@@ -218,17 +889,18 @@
                         </div>
                     </div>
                 </article>
-                <article class="product-card" data-category="pastry">
+                <article class="product-card" data-category="cake">
                     <div class="placeholder">
-                        <img src="images/catalog/cakes/milkgirl.webp" alt="'Milk Girl' cake">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/milkgirl.webp" alt="&#x27;Milk Girl&#x27; cake" loading="lazy" decoding="async">
                     </div>
                     <div class="card_content">
-                        <h3>'Milk Girl' Cake</h3>
+                        <h3>&#x27;Milk Girl&#x27; Cake</h3>
                         <p>Delicate condensed milk sponge layers with light cream frosting.</p>
                         <span class="card_price">7 500₸</span>
                         <div class="card-cart-row">
                             <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
+                            <div class="card-qty-controls">
                                 <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
                                 <span class="card-qty-val item-cart-qty">0</span>
                                 <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
@@ -238,61 +910,8 @@
                 </article>
                 <article class="product-card" data-category="cake">
                     <div class="placeholder placeholder_contain">
-                        <img src="images/catalog/decorated-cakes/berrycake.webp" alt="Chocolate Berry Drip Cake">
-                    </div>
-                    <div class="card_content">
-                        <h3>Chocolate Berry Drip Cake</h3>
-                        <p>Dark chocolate sponge topped with fresh strawberries and ganache drips.</p>
-                        <span class="card_price">14 000₸</span>
-                        <div class="card-cart-row">
-                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
-                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
-                                <span class="card-qty-val item-cart-qty">0</span>
-                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card" data-category="cake">
-                    <div class="placeholder placeholder_contain">
-                        <img src="images/catalog/custom-cakes/weddingcake.webp" alt="Royal Tiered Wedding Cake">
-                    </div>
-                    <div class="card_content">
-                        <h3>Royal Wedding Cake</h3>
-                        <p>Four-tier vanilla sponge with delicate buttercream piping and floral topper.</p>
-                        <span class="card_price">45 000₸</span>
-                        <div class="card-cart-row">
-                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
-                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
-                                <span class="card-qty-val item-cart-qty">0</span>
-                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card" data-category="cake">
-                    <div class="placeholder placeholder_contain">
-                        <img src="images/catalog/decorated-cakes/crowncake.webp" alt="Vintage Crown Cake">
-                    </div>
-                    <div class="card_content">
-                        <h3>Vintage Crown Cake</h3>
-                        <p>Classic Lambeth-style cream cake adorned with ribbons and a golden crown.</p>
-                        <span class="card_price">18 500₸</span>
-                        <div class="card-cart-row">
-                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
-                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
-                                <span class="card-qty-val item-cart-qty">0</span>
-                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card" data-category="cake">
-                    <div class="placeholder placeholder_contain">
-                        <img src="images/catalog/cakes/squarecake.webp" alt="Classic Celebration Cake">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/squarecake.webp" alt="Classic Celebration Cake" loading="lazy" decoding="async">
                     </div>
                     <div class="card_content">
                         <h3>Classic Celebration Cake</h3>
@@ -300,7 +919,805 @@
                         <span class="card_price">11 000₸</span>
                         <div class="card-cart-row">
                             <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                            <div class="card-qty-controls" style="display: none;">
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/caramel-latte-cake.webp" alt="Caramel Latte Layer Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Caramel Latte Cake</h3>
+                        <p>Espresso-infused sponge layers paired with salted caramel and coffee cream.</p>
+                        <span class="card_price">12 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/caramel-napoleon.webp" alt="Caramel Napoleon Puff Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Caramel Napoleon Cake</h3>
+                        <p>Crisp caramelized puff pastry sheets layered with rich vanilla custard cream.</p>
+                        <span class="card_price">13 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/cherry-cake.webp" alt="Cherry and Dark Chocolate Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Cherry Chocolate Cake</h3>
+                        <p>Moist chocolate sponge layered with juicy sour cherries and whipped cream.</p>
+                        <span class="card_price">12 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/mango-passionfruit-cake.webp" alt="Mango Passionfruit Tropical Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Mango Passionfruit Cake</h3>
+                        <p>Light vanilla sponge layered with tropical mango mousse and tangy passionfruit curd.</p>
+                        <span class="card_price">13 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/milk-girl-alt.webp" alt="Milk Girl Whole Cake and Slice" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>&#x27;Milk Girl&#x27; Signature Whole Cake</h3>
+                        <p>Full signature condensed milk layer cake served with airy mascarpone cream.</p>
+                        <span class="card_price">11 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/ptichye-moloko-cake.webp" alt="Ptichye Moloko Souffle Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Ptichye Moloko Cake</h3>
+                        <p>Classic airy vanilla souffle cake glazed in smooth dark chocolate.</p>
+                        <span class="card_price">11 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/red-velvet-cake.webp" alt="Red Velvet Cream Cheese Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Red Velvet Cake</h3>
+                        <p>Velvety cocoa-tinted crimson sponge paired with tangy cream cheese frosting.</p>
+                        <span class="card_price">12 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/royal-cake.webp" alt="Royal Caramel Walnut Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Royal Caramel Walnut Cake</h3>
+                        <p>Rich honey-nut sponge layers coated in smooth cream and caramelized walnuts.</p>
+                        <span class="card_price">13 200₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/strawberry-cake.webp" alt="Fresh Strawberry Cream Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Strawberry Cream Cake</h3>
+                        <p>Soft sponge cake layered with fresh sweet strawberries and whipped cream.</p>
+                        <span class="card_price">12 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/cakes/whoopie-pie-alt.webp" alt="Whoopie Pie Layered Slice Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Whoopie Pie Coconut Cake</h3>
+                        <p>Deep dark cocoa layer cake with vanilla cream cheese filling and coconut flakes.</p>
+                        <span class="card_price">11 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/weddingcake.webp" alt="Royal Tiered Wedding Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Royal Wedding Cake</h3>
+                        <p>Four-tier vanilla sponge with delicate buttercream piping and floral topper.</p>
+                        <span class="card_price">45 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/custom-banana-cake.webp" alt="Custom Banana Caramel Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Custom Banana Caramel Cake</h3>
+                        <p>Made-to-order moist banana sponge layered with caramel mousse and vanilla cream.</p>
+                        <span class="card_price">14 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/custom-blackcurrant-cake.webp" alt="Custom Blackcurrant Berry Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Custom Blackcurrant Cake</h3>
+                        <p>Artisan layered sponge with tangy blackcurrant compote and silky cream frosting.</p>
+                        <span class="card_price">14 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/custom-carrot-cake.webp" alt="Custom Spiced Carrot Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Custom Spiced Carrot Cake</h3>
+                        <p>Cinnamon carrot walnut sponge finished with smooth spiced cream cheese frosting.</p>
+                        <span class="card_price">14 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/custom-chocoboom-cake.webp" alt="Custom Chocoboom Triple Chocolate Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Custom Chocoboom Cake</h3>
+                        <p>Triple-chocolate celebration sponge layered with fudge ganache and crispy pearls.</p>
+                        <span class="card_price">15 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/custom-honey-cake.webp" alt="Custom Signature Honey Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Custom Signature Honey Cake</h3>
+                        <p>Slow-baked caramelized honey layers filled with whipped sour cream frosting.</p>
+                        <span class="card_price">14 200₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/custom-nutella-cake.webp" alt="Custom Nutella Hazelnut Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Custom Nutella Hazelnut Cake</h3>
+                        <p>Rich chocolate sponge filled with creamy Nutella hazelnut spread and roasted nuts.</p>
+                        <span class="card_price">15 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/custom-pistachio-cake.webp" alt="Custom Pistachio Cream Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Custom Pistachio Berry Cake</h3>
+                        <p>Delicate pistachio sponge paired with pistachio praline cream and raspberry notes.</p>
+                        <span class="card_price">16 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/custom-snickers-cake.webp" alt="Custom Snickers Peanut Caramel Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Custom Snickers Crunch Cake</h3>
+                        <p>Chocolate sponge layered with caramel peanut nougat cream and glossy ganache.</p>
+                        <span class="card_price">15 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="custom-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/custom-cakes/custom-turtle-cake.webp" alt="Custom Chocolate Turtle Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Custom Chocolate Turtle Cake</h3>
+                        <p>Rich cocoa layers coated with dark chocolate glaze, caramel drizzle, and walnuts.</p>
+                        <span class="card_price">14 800₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/berrycake.webp" alt="Chocolate Berry Drip Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Chocolate Berry Drip Cake</h3>
+                        <p>Dark chocolate sponge topped with fresh strawberries and ganache drips.</p>
+                        <span class="card_price">14 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/crowncake.webp" alt="Vintage Crown Cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Vintage Crown Cake</h3>
+                        <p>Classic Lambeth-style cream cake adorned with ribbons and a golden crown.</p>
+                        <span class="card_price">18 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-01.webp" alt="White cream cake with fresh raspberries, blueberries, and angel decor" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Berry &amp; Blossom Tribute Cake</h3>
+                        <p>White cream celebration cake decorated with fresh berries and golden figurine.</p>
+                        <span class="card_price">17 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-02.webp" alt="Heart-shaped celebration cake with cherries and burgundy bows" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Cherry Velvet Heart Cake</h3>
+                        <p>Heart-shaped white cream cake finished with ripe cherries and burgundy velvet bows.</p>
+                        <span class="card_price">18 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-03.webp" alt="Minimalist white cylinder cake with silver glitter top" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Silver Shimmer Birthday Cake</h3>
+                        <p>Minimalist white tall cake topped with silver sparkle and metallic birthday script.</p>
+                        <span class="card_price">16 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-04.webp" alt="Emerald green celebration cake with birthday topper" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Emerald Celebration Cake</h3>
+                        <p>Rich emerald cream cake playfully decorated for milestone birthday surprises.</p>
+                        <span class="card_price">19 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-05.webp" alt="Blush pink birthday cake adorned with piped roses" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Pink Rose Bouquet Cake</h3>
+                        <p>Soft blush cream cake adorned with hand-piped pink buttercream roses.</p>
+                        <span class="card_price">17 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-06.webp" alt="Burgundy vintage piped cake with gold shimmer top" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Burgundy Lambeth Gold Cake</h3>
+                        <p>Deep burgundy Lambeth-piped ruffle cake crowned with golden sugar shimmer.</p>
+                        <span class="card_price">18 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-07.webp" alt="Black and red split heart milestone cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Split Heart Milestone Cake</h3>
+                        <p>Two-tone black and crimson split heart cake crafted for 30th birthday parties.</p>
+                        <span class="card_price">19 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-08.webp" alt="Chocolate drip celebration cake with golden stars" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Gold Star Chocolate Drip Cake</h3>
+                        <p>Ganache-dripped white celebration cake accented with chocolate spheres and gold stars.</p>
+                        <span class="card_price">18 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-09.webp" alt="Royal blue Lambeth cake with gold star details" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Midnight Starry Lambeth Cake</h3>
+                        <p>Royal blue piped vintage cake sprinkled with delicate golden stars.</p>
+                        <span class="card_price">17 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="decorated-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/decorated-cakes/decorated-cake-10.webp" alt="Crimson vintage piped cake with gold shimmer and birthday topper" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Crimson Ribbon Birthday Cake</h3>
+                        <p>Vibrant red Lambeth-piped cake topped with golden glitter and birthday script.</p>
+                        <span class="card_price">18 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-01.webp" alt="Pink and blue split kids birthday cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Pink &amp; Blue Split Party Cake</h3>
+                        <p>Two-sided pink and sky-blue cream cake crowned with playful cartoon party toppers.</p>
+                        <span class="card_price">22 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-02.webp" alt="Sky blue baby welcome cake with stork design" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Sky Blue Baby Welcome Cake</h3>
+                        <p>Sky-blue frosted newborn welcome cake decorated with custom stork illustration.</p>
+                        <span class="card_price">19 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-03.webp" alt="White birthday cake with orange drip and cartoon kittens" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Orange Drip Kitten Party Cake</h3>
+                        <p>White cream cake with bright orange glaze drip, paw prints, and cartoon kitten toppers.</p>
+                        <span class="card_price">21 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-04.webp" alt="Lime green kids cake with playful ogre ears" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Green Ogre Ears Kids Cake</h3>
+                        <p>Vibrant lime green piped cake playfully topped with sculpted ogre ears.</p>
+                        <span class="card_price">17 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-05.webp" alt="Pastel blue baby arrival cake with stork topper" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Pastel Stork Baby Arrival Cake</h3>
+                        <p>Soft pastel blue dotted baby celebration cake topped with whimsical stork art.</p>
+                        <span class="card_price">19 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-06.webp" alt="White birthday cake with gold sparkle top and ballerina decor" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Golden Ballerina Pearl Cake</h3>
+                        <p>Pearl-accented white birthday cake finished with gold shimmer and ballerina artwork.</p>
+                        <span class="card_price">20 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-07.webp" alt="Orange racing cars birthday cake with checkered flags" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Racing Track Flame Cake</h3>
+                        <p>Bright orange birthday cake decorated with speed flames, race cars, and checkered flags.</p>
+                        <span class="card_price">21 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-08.webp" alt="Red ninja kids birthday cake with toy block accents" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Red Ninja Blocks Birthday Cake</h3>
+                        <p>Bold red ninja birthday cake garnished with colorful building bricks and warrior toppers.</p>
+                        <span class="card_price">23 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-09.webp" alt="Midnight blue superhero trio kids birthday cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Night Hero Trio Party Cake</h3>
+                        <p>Midnight blue kids cake with city skyline silhouette, stars, and trio hero toppers.</p>
+                        <span class="card_price">23 500₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
+                                <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
+                                <span class="card-qty-val item-cart-qty">0</span>
+                                <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-category="kids-cake">
+                    <div class="placeholder placeholder_contain">
+                        <button type="button" class="btn-fav" aria-label="Add to favorites" title="Add to favorites"><span class="ico-heart-btn" aria-hidden="true"></span></button>
+                        <img src="images/catalog/kids-cakes/kids-cake-10.webp" alt="Square pixel adventure themed kids birthday cake" loading="lazy" decoding="async">
+                    </div>
+                    <div class="card_content">
+                        <h3>Pixel Adventure Square Cake</h3>
+                        <p>Square chocolate and green pixel-block cake topped with adventure character figures.</p>
+                        <span class="card_price">24 000₸</span>
+                        <div class="card-cart-row">
+                            <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                            <div class="card-qty-controls">
                                 <button type="button" class="card-qty-btn card-qty-dec" aria-label="Decrease quantity">−</button>
                                 <span class="card-qty-val item-cart-qty">0</span>
                                 <button type="button" class="card-qty-btn card-qty-inc" aria-label="Increase quantity">+</button>
@@ -313,6 +1730,43 @@
         </section>
 
 
+        <section class="section feedback-section" id="customCakeSection">
+            <div class="container">
+                <div class="feedback-card">
+                    <div class="feedback-card_img-wrap">
+                        <img src="images/catalog/feedback.webp" alt="Custom cake" class="feedback-card_img">
+                    </div>
+                    <div class="feedback-card_content">
+                        <h2 class="feedback-card_title">
+                            Shall we create the cake<br>
+                            <span class="feedback-card_title-accent">of your dreams?</span>
+                        </h2>
+                        <p class="feedback-card_desc">
+                            Leave your contact details and our manager will contact you to discuss every detail.
+                        </p>
+                        <form class="feedback-form" id="customCakeForm" novalidate>
+                            <div class="feedback-input-group">
+                                <input type="text" id="feedbackName" class="feedback-input" placeholder="Your name" minlength="2" required autocomplete="name" aria-label="Your name" aria-describedby="feedbackNameError">
+                                <p class="feedback-error" id="feedbackNameError" role="alert" aria-live="polite"></p>
+                            </div>
+                            <div class="feedback-input-group">
+                                <input type="tel" id="feedbackPhone" class="feedback-input" placeholder="+7 (___) ___-__-__" inputmode="tel" required autocomplete="tel" aria-label="Your phone number" aria-describedby="feedbackPhoneError">
+                                <p class="feedback-error" id="feedbackPhoneError" role="alert" aria-live="polite"></p>
+                            </div>
+                            <button type="submit" class="feedback-btn" id="feedbackSubmitBtn">
+                                <span>Send Request</span>
+                            </button>
+                            <p class="feedback-disclaimer">
+                                By clicking «Send Request», you agree to the processing of personal data.
+                            </p>
+                            <p class="feedback-success-text" id="feedbackSuccess" role="status" aria-live="polite">
+                                Received, thank you!
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="section container recommendations-section" id="recommendations-section">
             <div class="section_header">
                 <h2>Customer Recommendations &amp; Favourites</h2>
@@ -326,7 +1780,7 @@
                         <div class="input-wrapper">
                             <input type="text" id="item-input" class="form-control" placeholder="e.g., Fresh Croissant with Coffee">
                         </div>
-                        <p id="item-error" class="input-error" role="alert" aria-live="polite" style="display:none;">
+                        <p id="item-error" class="input-error" role="alert" aria-live="polite">
                              Please enter a recommendation before adding.
                         </p>
                     </div>
@@ -349,72 +1803,31 @@
                 </div>
             </div>
         </section>
-        <section class="section feedback-section" id="customCakeSection">
-            <div class="container">
-                <div class="feedback-card">
-                    <div class="feedback-card_img-wrap">
-                        <img src="images/catalog/feedback.webp" alt="Custom cake" class="feedback-card_img">
-                    </div>
-                    <div class="feedback-card_content">
-                        <h2 class="feedback-card_title">
-                            Shall we create the cake<br>
-                            <span class="feedback-card_title-accent">of your dreams?</span>
-                        </h2>
-                        <p class="feedback-card_desc">
-                            Leave your contact details and our manager will contact you to discuss every detail.
-                        </p>
-                        <form class="feedback-form" id="customCakeForm" novalidate>
-                            <div class="feedback-input-group">
-                                <input type="text" id="feedbackName" class="feedback-input" placeholder="Your name" required autocomplete="name" aria-label="Your name">
-                            </div>
-                            <div class="feedback-input-group">
-                                <input type="tel" id="feedbackPhone" class="feedback-input" placeholder="+7 (___) ___-__-__" inputmode="tel" required autocomplete="tel" aria-label="Your phone number">
-                            </div>
-                            <button type="submit" class="feedback-btn" id="feedbackSubmitBtn">
-                                <span>Send Request</span>
-                            </button>
-                            <p class="feedback-disclaimer">
-                                By clicking «Send Request», you agree to the processing of personal data.
-                            </p>
-                            <p class="feedback-success-text" id="feedbackSuccess" role="status" aria-live="polite">
-                                Received, thank you!
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <h3>Bakery</h3>
-                <p>Freshly baked goods and specialty coffee in the heart of the city.</p>
+    <footer class="site-footer site-footer--coffee-v1">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2>Bakery-52</h2>
+                    <p>Expo 5252<br>Astana city, Kazakhstan</p>
+                </div>
+                <div class="footer-col">
+                    <h2>Hours</h2>
+                    <p>Mon - Fri: 09:00 - 21:00<br>Sat - Sun: 09:00 - 21:00</p>
+                </div>
+                <div class="footer-col">
+                    <h2>Contact</h2>
+                    <p><a href="tel:+77777777777">+7 (777) 777-77-77</a><br><a href="mailto:info@bakery52.com">info@bakery52.com</a></p>
+                </div>
             </div>
-            <div>
-                <h3>Navigation</h3>
-                <ul class="info-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Menu</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="register.html">Register</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Contact Us</h3>
-                <p>Expo 5252, Astana city<br>+7 777 777 77 77</p>
-            </div>
+            <p class="bottom">&copy; 2026 Bakery-52. Artisan Bakery &amp; Specialty Coffee.</p>
         </div>
-        <p class="bottom">&copy; 2026 Bakery. Educational Project.</p>
     </footer>
-        <div class="menu-overlay" id="menuOverlay"></div>
 
     <aside class="site-menu" id="siteMenu" aria-label="Site menu">
         <div class="site-menu_head">
             <span class="site-menu_title">Menu</span>
-            <button class="site-menu_close" id="menuClose" type="button" aria-label="Close menu">×</button>
         </div>
 
         <ul class="site-menu_links">
@@ -434,6 +1847,8 @@
         </div>
     </aside>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/snow-fall.js" defer></script>
+    <script src="js/core.js" defer></script>
+    <script src="js/services.js" defer></script>
 </body>
 </html>

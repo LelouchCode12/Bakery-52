@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /account.html
+Disallow: /demo-result.html
+Disallow: /404.html
+
+Sitemap: https://lelouchcode12.github.io/Bakery-52/sitemap.xml
