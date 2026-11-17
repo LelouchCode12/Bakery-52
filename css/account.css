@@ -1,10 +1,10 @@
 .account-hero {
   position: relative;
   width: 100%;
-  min-height: 220px;
+  min-height: clamp(274px, 40.5svh, 333px);
   display: flex;
   align-items: flex-end;
-  padding: clamp(2.5rem, 5vw, 3.5rem) 0 2rem;
+  padding: calc(84px + clamp(1.5rem, 3vw, 2.5rem)) 0 2rem;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   overflow: hidden;
@@ -20,12 +20,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 60%;
   display: block;
-  filter: brightness(0.65) blur(1px);
+  filter: brightness(0.7);
 }
 html.dark-theme .account-hero_img {
-  filter: brightness(0.45) blur(1px);
+  filter: brightness(0.5);
 }
 .account-hero_overlay {
   position: absolute;
@@ -52,7 +52,6 @@ html.dark-theme .account-hero_img {
   gap: 1.25rem;
 }
 
-/* Avatar with upload support */
 .account-avatar-wrap {
   position: relative;
   display: inline-block;
@@ -162,7 +161,6 @@ html.dark-theme .account-hero_img {
   min-height: 60vh;
 }
 
-/* Account content panels */
 .account-panel {
   padding-block: var(--space-4);
   border-bottom: 1px solid var(--color-border);
@@ -193,7 +191,6 @@ html.dark-theme .account-hero_img {
   font-size: 0.95rem;
 }
 
-/* Profile Information */
 .account-info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -328,7 +325,6 @@ html.dark-theme .account-pref-switch .form-check-input:checked {
   --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2316110e'/%3e%3c/svg%3e");
 }
 
-/* Edit Form */
 .account-edit-form {
   display: flex;
   flex-direction: column;
@@ -412,7 +408,6 @@ html.dark-theme .account-pref-switch .form-check-input:checked {
   gap: 0.5rem;
 }
 
-/* Login Activity */
 .account-activity-panel {
 }
 .account-activity-list {
@@ -457,7 +452,6 @@ html.dark-theme .account-pref-switch .form-check-input:checked {
   margin-left: 0.35rem;
 }
 
-/* Favorite Items */
 .account-favorites-panel {
 }
 .account-favorites-grid {
@@ -565,8 +559,6 @@ html.dark-theme .text-muted {
   color: var(--color-text-light) !important;
 }
 
-
-/* My Orders */
 .account-orders-list {
   display: flex;
   flex-direction: column;
@@ -678,7 +670,6 @@ html.dark-theme .account-order-status.is-completed {
   color: var(--color-text-light);
 }
 
-/* Security & Account */
 .account-security-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -767,7 +758,6 @@ html.dark-theme .btn-danger-outline:hover {
   color: #ffffff;
 }
 
-/* Personal Details Switches in Edit Profile */
 .custom-switch-card {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -836,3 +826,70 @@ html.dark-theme .account-edit-form .form-switch .form-check-input:checked {
   pointer-events: none;
 }
 
+
+/* Layout: section nav + content */
+.account-layout {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+.account-nav {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--color-border);
+}
+.account-nav a {
+  padding: 0.5rem 1rem;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  color: var(--color-text-light);
+  font-weight: 500;
+  text-decoration: none;
+}
+.account-nav a:hover { color: var(--color-text); }
+.account-nav a.is-active {
+  color: var(--color-primary-dark);
+  border-left-color: var(--color-accent);
+  font-weight: 700;
+}
+.account-nav a:focus-visible,
+.account-avatar_btn:focus-within {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.account-content { min-width: 0; }
+.account-panel { scroll-margin-top: 100px; }
+.account-hero_meta {
+  margin: 0.2rem 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+.account-hint {
+  color: var(--color-text-light);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+@media (max-width: 860px) {
+  .account-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  .account-nav {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    border-left: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .account-nav a {
+    margin: 0 0 -1px;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+  .account-nav a.is-active { border-bottom-color: var(--color-accent); }
+}
+
+@media (min-width: 48rem) {
+  .account-hero { min-height: clamp(333px, 42.8svh, 417px); }
+}

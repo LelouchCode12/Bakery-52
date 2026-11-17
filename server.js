@@ -224,7 +224,7 @@ const server = http.createServer((req, res) => {
                         newOrder.stripeDashboardUrl = stripeResult.url;
                         stripeStatusMsg = 'Payment approved by Stripe';
                         console.log(`[Stripe API] Transaction confirmed: ${stripeResult.id}`);
-                        console.log(`  🔗 View in Stripe Dashboard: ${stripeResult.url}`);
+                        console.log(`  View in Stripe Dashboard: ${stripeResult.url}`);
                     } else if (!stripeResult.offline) {
                         res.writeHead(400, headers);
                         res.end(JSON.stringify({

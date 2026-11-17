@@ -97,6 +97,15 @@
             }
         }
 
+        const metaEl = $('accMeta');
+        if (metaEl) {
+            const n = (u.orders || []).length;
+            const f = (u.favorites || []).length;
+            const since = new Date(u.firstAccess || u.createdAt || Date.now());
+            const sinceTxt = isNaN(since.getTime()) ? '' : ' · Member since ' + new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(since);
+            metaEl.textContent = `${n} ${n === 1 ? 'order' : 'orders'} · ${f} ${f === 1 ? 'favorite' : 'favorites'}${sinceTxt}`;
+        }
+
         const hobbies = (u.hobbies || []).filter(Boolean);
         const hobbiesHtml = hobbies.length
             ? hobbies.map((h) => `<span class="account-tag">${escapeHtml(h)}</span>`).join('')
@@ -353,6 +362,8 @@
         if (editSection) editSection.classList.toggle('d-none-account', !editing);
         if (heroActions) heroActions.classList.toggle('d-none-account', editing);
         if (errorEl) errorEl.textContent = '';
+        const profileLink = document.querySelector('[data-nav-profile]');
+        if (profileLink) profileLink.setAttribute('href', editing ? '#accEditSection' : '#accViewSection');
         if (!editing) return;
 
         const u = auth.current();
@@ -378,8 +389,24 @@
     if (cancelBtn) cancelBtn.addEventListener('click', () => setEditing(false));
 
     if (form) {
+        const firstInput = $('accFirstName');
+        const lastInput = $('accLastName');
+
+        const validateAccName = (input, label) => {
+            if (!input) return true;
+            const ok = input.value.trim().length >= 2;
+            input.setCustomValidity(ok ? '' : label + ' must be at least 2 characters.');
+            return ok;
+        };
+
+        if (firstInput) firstInput.addEventListener('input', () => validateAccName(firstInput, 'First name'));
+        if (lastInput) lastInput.addEventListener('input', () => validateAccName(lastInput, 'Last name'));
+        if (phoneInput) phoneInput.addEventListener('input', () => phoneInput.setCustomValidity(''));
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+            validateAccName(firstInput, 'First name');
+            validateAccName(lastInput, 'Last name');
             if (phoneInput) {
                 const phoneVal = phoneInput.value.trim();
                 if (phoneVal) {
@@ -499,6 +526,23 @@
             auth.deleteAccount();
             window.location.replace('index.html');
         });
+    }
+
+    const navLinks = Array.from(document.querySelectorAll('.account-nav a'));
+    const panels = ['accViewSection', 'accEditSection', 'accFavorites', 'accOrdersSection', 'accActivity', 'accSecuritySection']
+        .map($).filter(Boolean);
+    if ('IntersectionObserver' in window && navLinks.length) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((en) => {
+                if (!en.isIntersecting) return;
+                const id = en.target.id === 'accEditSection' ? 'accViewSection' : en.target.id;
+                navLinks.forEach((a) => {
+                    const href = a.getAttribute('href').slice(1);
+                    a.classList.toggle('is-active', href === id || (id === 'accViewSection' && href === 'accEditSection'));
+                });
+            });
+        }, { rootMargin: '-30% 0px -60% 0px' });
+        panels.forEach((p) => io.observe(p));
     }
 
     render();

@@ -57,7 +57,7 @@
     <script src="js/header-auth.js"></script>
 </head>
 <body>
-    <header>
+    <header id="siteHeader">
 <nav class="navbar" aria-label="Main Navigation">
     <a href="index.html" class="navbar_brand">Bakery<span>-52</span></a>
     
@@ -83,15 +83,32 @@
     </header>
 
     <main id="main-content">
-        <section class="section hero hero_banner" aria-label="Featured Bakery Highlights">
-            <div class="container">
-                <div class="hero_text">
-                    <h1>Welcome to Bakery-52</h1>
-                    <p>Experience the taste of freshly baked goods made with love and care every morning.</p>
-                    <div class="hero_buttons">
-                        <a href="services.html" class="btn btn-primary">Explore Our Menu</a>
-                        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+        <section class="hero-volumetric" id="heroVolumetric" aria-label="Featured Bakery Highlights">
+            <div class="hero-backdrop" aria-hidden="true">
+                <img src="images/site/hero-sourdough-bg.webp" alt="" class="hero-backdrop_img" decoding="async" fetchpriority="high">
+            </div>
+            <div class="hero-volumetric_scrim" aria-hidden="true"></div>
+
+            <div class="hero-volumetric_inner">
+                <div class="hero-volumetric_content">
+                    <p class="hero-volumetric_kicker">Artisan Bakery &amp; Specialty Coffee &middot; Astana</p>
+                    <h1 class="hero-volumetric_title">Bakery<span>-52</span></h1>
+                    <div class="hero-volumetric_meta">
+                        <p class="hero-volumetric_desc">Experience the taste of freshly baked goods made with love and care every morning.</p>
+                        <div class="hero-volumetric_actions">
+                            <div class="hero-split-bar">
+                                <span class="hero-split-bar_info">
+                                    <svg class="hero-split-bar_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                    <span>Daily &middot; 09:00 &ndash; 21:00</span>
+                                </span>
+                                <a href="services.html" class="hero-split-bar_cta">Explore Our Menu</a>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <div class="hero-loaf" aria-hidden="true">
+                    <img src="images/site/hero-sourdough-loaf.webp" alt="" class="hero-loaf_img" decoding="async" fetchpriority="high">
                 </div>
             </div>
         </section>
@@ -104,103 +121,103 @@
             </div>
             <div class="cake-carousel">
                     <div class="cake-track" id="cakeTrack">
-                        <article class="product-card" data-category="cake" data-desc="Rich dark chocolate sponge layers filled with silky natural heavy cream cheese frosting and topped with dark cocoa glaze." data-kcal="385" data-protein="5.4" data-fat="21.0" data-carbs="43.5">
-                            <div class="placeholder">
-                                <img src="images/catalog/cakes/whoopiepie.webp" alt="Whoopie Pie Cake">
-                            </div>
-                            <div class="card_content">
-                                <h3>Whoopie Pie Cake</h3>
-                                <p>Chocolate & cream cheese</p>
-                            </div>
-                        </article>
-
-                        <article class="product-card" data-category="cake" data-desc="Eight thin caramelized honey sponge layers soaked in whipped sour cream, cream cheese, and sweet condensed milk." data-kcal="410" data-protein="5.8" data-fat="19.5" data-carbs="52.0">
-                            <div class="placeholder">
-                                <img src="images/catalog/cakes/honey cake.webp" alt="Honey Cake">
-                            </div>
-                            <div class="card_content">
-                                <h3>Honey Cake</h3>
-                                <p>Natural honey & cream</p>
-                            </div>
-                        </article>
-
-                        <article class="product-card" data-category="pastry" data-desc="Delicate air-light sponge layers baked on sweet condensed milk and layered with cloud-soft vanilla Chantilly cream." data-kcal="350" data-protein="6.2" data-fat="16.8" data-carbs="44.0">
-                            <div class="placeholder">
-                                <img src="images/catalog/cakes/milkgirl.webp" alt="'Milk Girl' cake">
-                            </div>
-                            <div class="card_content">
-                                <h3>'Milk Girl' Cake</h3>
-                                <p>Condensed milk sponge</p>
-                            </div>
-                        </article>
-
-                        <article class="product-card" data-category="cake" data-desc="Moist Belgian chocolate sponge layered with chocolate truffle cream, Belgian ganache drips, and fresh ripe strawberries." data-kcal="395" data-protein="5.1" data-fat="22.4" data-carbs="42.8">
+                        <article class="product-card" data-category="cake" data-desc="Velvety cocoa-tinted crimson sponge layers paired with silky, tangy cream cheese frosting." data-kcal="390" data-protein="5.6" data-fat="20.5" data-carbs="45.8">
                             <div class="placeholder placeholder_contain">
-                                <img src="images/catalog/decorated-cakes/berrycake.webp" alt="Chocolate Berry Drip Cake">
+                                <img src="images/catalog/cakes/red-velvet-cake.webp" alt="Red Velvet Cake">
                             </div>
                             <div class="card_content">
-                                <h3>Chocolate Berry Drip Cake</h3>
-                                <p>Dark chocolate & berries</p>
+                                <h3>Red Velvet Cake</h3>
+                                <p>Crimson sponge &amp; cream cheese</p>
                             </div>
                         </article>
 
-                        <article class="product-card" data-category="cake" data-desc="Grand four-tier Madagascar vanilla sponge cake with raspberry confit filling, Swiss meringue buttercream, and handcrafted sugar flowers." data-kcal="365" data-protein="4.9" data-fat="18.0" data-carbs="46.2">
+                        <article class="product-card" data-category="cake" data-desc="Moist dark chocolate sponge layered with juicy sour cherries and whipped chocolate cream." data-kcal="375" data-protein="5.3" data-fat="18.9" data-carbs="46.0">
                             <div class="placeholder placeholder_contain">
-                                <img src="images/catalog/custom-cakes/weddingcake.webp" alt="Royal Tiered Wedding Cake">
+                                <img src="images/catalog/cakes/cherry-cake.webp" alt="Cherry Chocolate Cake">
                             </div>
                             <div class="card_content">
-                                <h3>Royal Wedding Cake</h3>
-                                <p>Four-tier vanilla cake</p>
+                                <h3>Cherry Chocolate Cake</h3>
+                                <p>Dark chocolate &amp; sour cherries</p>
                             </div>
                         </article>
 
-                        <article class="product-card" data-category="cake" data-desc="Classic vintage Lambeth-piped sponge cake with mascarpone berry filling, satin ribbons, and a decorative golden crown." data-kcal="375" data-protein="5.5" data-fat="19.2" data-carbs="45.0">
+                        <article class="product-card" data-category="cheesecake" data-desc="Creamy cheesecake topped with crispy kataifi pastry, roasted pistachio cream, and dark Belgian chocolate glaze." data-kcal="445" data-protein="7.8" data-fat="28.4" data-carbs="39.5">
                             <div class="placeholder placeholder_contain">
-                                <img src="images/catalog/decorated-cakes/crowncake.webp" alt="Vintage Crown Cake">
+                                <img src="images/catalog/cheesecakes/dubai-cheesecake.webp" alt="Dubai Pistachio Cheesecake">
                             </div>
                             <div class="card_content">
-                                <h3>Vintage Crown Cake</h3>
-                                <p>Lambeth cream & crown</p>
+                                <h3>Dubai Pistachio Cheesecake</h3>
+                                <p>Kataifi pastry &amp; pistachio cream</p>
                             </div>
                         </article>
 
-                        <article class="product-card" data-category="cake" data-desc="Light vanilla chiffon square cake frosted with smooth whipped dairy cream and delicate shell-piped borders." data-kcal="330" data-protein="5.0" data-fat="15.4" data-carbs="42.5">
+                        <article class="product-card" data-category="cheesecake" data-desc="Creamy Basque burnt cheesecake with a caramelized top, velvety cream cheese center, and rich chocolate ganache." data-kcal="415" data-protein="7.2" data-fat="26.0" data-carbs="37.8">
                             <div class="placeholder placeholder_contain">
-                                <img src="images/catalog/cakes/squarecake.webp" alt="Classic Celebration Cake">
+                                <img src="images/catalog/cheesecakes/san-sebastian-cheesecake.webp" alt="San Sebastian Cheesecake">
                             </div>
                             <div class="card_content">
-                                <h3>Classic Celebration Cake</h3>
-                                <p>Whipped cream sponge</p>
+                                <h3>San Sebastian Cheesecake</h3>
+                                <p>Basque cheesecake &amp; chocolate</p>
                             </div>
                         </article>
 
-                        <article class="product-card" data-category="pastry" data-desc="Crispy, golden-brown French croissant laminated with 82% farm-fresh butter, flaky on the outside and honeycomb-soft inside." data-kcal="406" data-protein="8.2" data-fat="21.0" data-carbs="45.8">
-                            <div class="placeholder">
-                                <img src="images/catalog/pastries/frenchcroissant.webp" alt="French Croissant">
-                            </div>
-                            <div class="card_content">
-                                <h3>French Croissant</h3>
-                                <p>Crispy butter croissant</p>
-                            </div>
-                        </article>
-
-                        <article class="product-card" data-category="cake" data-desc="Rich cocoa sponge cake layered with velvety chocolate mousse and coated with premium dark Belgian chocolate." data-kcal="420" data-protein="6.0" data-fat="23.5" data-carbs="46.0">
-                            <div class="placeholder">
-                                <img src="images/catalog/cakes/Chocolate Delight Cake.webp" alt="Chocolate Delight Cake">
-                            </div>
-                            <div class="card_content">
-                                <h3>Chocolate Delight Cake</h3>
-                                <p>Belgian dark chocolate</p>
-                            </div>
-                        </article>
-
-                        <article class="product-card" data-category="pie" data-desc="Tender biscuit crust layered with ripe bananas, golden toffee caramel, and airy whipped cream." data-kcal="320" data-protein="12.4" data-fat="16.5" data-carbs="31.0">
+                        <article class="product-card" data-category="cake" data-desc="Espresso-infused sponge layers paired with house-made salted caramel and velvety coffee cream." data-kcal="385" data-protein="5.5" data-fat="19.8" data-carbs="46.2">
                             <div class="placeholder placeholder_contain">
-                                <img src="images/catalog/pies/banoffee-pie.webp" alt="Cream Pie">
+                                <img src="images/catalog/cakes/caramel-latte-cake.webp" alt="Caramel Latte Cake">
                             </div>
                             <div class="card_content">
-                                <h3>Cream Pie</h3>
-                                <p>Toffee caramel & whipped cream</p>
+                                <h3>Caramel Latte Cake</h3>
+                                <p>Espresso sponge &amp; salted caramel</p>
+                            </div>
+                        </article>
+
+                        <article class="product-card" data-category="custom-cake" data-desc="Rich chocolate sponge layered with caramel peanut nougat cream and coated in glossy peanut-studded chocolate ganache." data-kcal="450" data-protein="8.4" data-fat="25.6" data-carbs="46.5">
+                            <div class="placeholder placeholder_contain">
+                                <img src="images/catalog/custom-cakes/custom-snickers-cake.webp" alt="Custom Snickers Crunch Cake">
+                            </div>
+                            <div class="card_content">
+                                <h3>Custom Snickers Crunch Cake</h3>
+                                <p>Caramel, roasted peanuts &amp; ganache</p>
+                            </div>
+                        </article>
+
+                        <article class="product-card" data-category="cake" data-desc="Crisp caramelized puff pastry sheets generously layered with rich vanilla bean custard cream." data-kcal="405" data-protein="5.9" data-fat="22.0" data-carbs="45.9">
+                            <div class="placeholder placeholder_contain">
+                                <img src="images/catalog/cakes/caramel-napoleon.webp" alt="Caramel Napoleon Cake">
+                            </div>
+                            <div class="card_content">
+                                <h3>Caramel Napoleon Cake</h3>
+                                <p>Flaky puff pastry &amp; caramel custard</p>
+                            </div>
+                        </article>
+
+                        <article class="product-card" data-category="custom-cake" data-desc="Artisan chocolate sponge layered with tangy blackcurrant compote and whipped berry cream frosting." data-kcal="360" data-protein="5.1" data-fat="17.5" data-carbs="45.4">
+                            <div class="placeholder placeholder_contain">
+                                <img src="images/catalog/custom-cakes/custom-blackcurrant-cake.webp" alt="Custom Blackcurrant Cake">
+                            </div>
+                            <div class="card_content">
+                                <h3>Custom Blackcurrant Cake</h3>
+                                <p>Blackcurrant compote &amp; berry cream</p>
+                            </div>
+                        </article>
+
+                        <article class="product-card" data-category="cake" data-desc="Classic airy vanilla soufflé cake on a tender sponge base glazed in smooth dark Belgian chocolate." data-kcal="340" data-protein="4.8" data-fat="16.9" data-carbs="42.0">
+                            <div class="placeholder placeholder_contain">
+                                <img src="images/catalog/cakes/ptichye-moloko-cake.webp" alt="Ptichye Moloko Cake">
+                            </div>
+                            <div class="card_content">
+                                <h3>Ptichye Moloko Cake</h3>
+                                <p>Airy vanilla soufflé &amp; dark glaze</p>
+                            </div>
+                        </article>
+
+                        <article class="product-card" data-category="pie" data-desc="Crisp nutty shortcrust shell filled with silky roasted pistachio custard cream and tart berries." data-kcal="395" data-protein="7.4" data-fat="22.8" data-carbs="39.6">
+                            <div class="placeholder placeholder_contain">
+                                <img src="images/catalog/pies/pistachio-pie.webp" alt="Pistachio Custard Pie">
+                            </div>
+                            <div class="card_content">
+                                <h3>Pistachio Custard Pie</h3>
+                                <p>Silky pistachio cream &amp; berries</p>
                             </div>
                         </article>
                     </div>
@@ -217,8 +234,8 @@
                         <div class="why-us-card_bg"></div>
                         <div class="why-us-card_overlay"></div>
                         <div class="why-us-card_content">
-                            <h3 class="why-us-card_title">In-House Roasting</h3>
-                            <p class="why-us-card_desc">We source green coffee beans directly and roast them in small batches every week.</p>
+                            <h3 class="why-us-card_title">Custom Celebration Cakes</h3>
+                            <p class="why-us-card_desc">Every signature cake and dessert is handcrafted from scratch with natural cream, Belgian chocolate, and fresh fruit.</p>
                         </div>
                     </article>
 
@@ -442,7 +459,7 @@
     <script src="js/snow-fall.js" defer></script>
     <script src="js/core.js" defer></script>
     <script src="js/home.js" defer></script>
-    <div class="side-welcome" id="sideWelcome">
+    <div class="side-welcome" id="sideWelcome" hidden aria-hidden="true">
         <div class="side-panel">
             <p class="side-panel_title">Personalized Welcome 🥐</p>
             <p class="side-panel_hint">Enter your name below:</p>
@@ -454,10 +471,6 @@
     </div>
 
     <aside class="site-menu" id="siteMenu" aria-label="Site menu">
-        <div class="site-menu_head">
-            <span class="site-menu_title">Menu</span>
-        </div>
-
         <ul class="site-menu_links">
             <li><a href="index.html" aria-current="page">Home</a></li>
             <li><a href="services.html">Menu</a></li>

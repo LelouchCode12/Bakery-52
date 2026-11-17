@@ -1,13 +1,20 @@
 # Bakery-52: Bakery Website with jQuery, Forms, Cart & Checkout Server
 
-**Topic:** Artisanal bakery and specialty coffee shop website
+**Topic:** Artisan bakery and specialty coffee shop website
 **Group:** MT-2504
 **Live site:** https://lelouchcode12.github.io/Bakery-52/
 **Repository:** https://github.com/LelouchCode12/Bakery-52
 
 ## About the project
 
-Bakery-52 is a multi-page website of an artisanal bakery and specialty coffee shop built with HTML, CSS (Bootstrap utilities on form/account pages), jQuery, vanilla JavaScript modules, and a lightweight Node.js backend (`server.js`). Key features include light and dark themes, a persistent shopping cart and checkout drawer, `localStorage`-based customer accounts and favorites, live menu search with category filters, a custom cake price estimator, an FAQ accordion, customer testimonials, and responsive layouts across mobile, tablet, and desktop breakpoints.
+Bakery-52 is a multi-page website for an artisan bakery and specialty coffee shop built with HTML, CSS (including Bootstrap 5 on the registration and account pages), jQuery, vanilla JavaScript, and a Node.js server (`server.js`).
+
+Main features:
+- Light and dark themes saved in `localStorage`
+- Shopping cart and checkout drawer with card validation and `/api/checkout` integration
+- Registration, login, profile editing, favorites, and order history stored in `localStorage`
+- Live menu search, category filters, quick-view modal, recommendations, and a custom cake price estimator (`services.html`)
+- Contact form validation, FAQ accordion, and home page carousel and testimonials
 
 ## Project structure
 
@@ -15,6 +22,7 @@ Bakery-52 is a multi-page website of an artisanal bakery and specialty coffee sh
 Bakery-52/
 ├── .gitignore
 ├── README.md
+├── package.json
 ├── server.js
 ├── index.html
 ├── services.html
@@ -24,9 +32,13 @@ Bakery-52/
 ├── account.html
 ├── demo-result.html
 ├── 404.html
+├── robots.txt
+├── sitemap.xml
 ├── css/
 │   ├── style.css
 │   ├── home.css
+│   ├── services.css
+│   ├── about.css
 │   ├── account.css
 │   ├── cssregister.css
 │   └── responsive.css
@@ -42,38 +54,37 @@ Bakery-52/
 │   └── account.js
 └── images/
     ├── catalog/
-    ├── site/
-    └── leaf.png
+    └── site/
 ```
 
-> Note: Runtime and local config files (`.env`, `orders.json`, `.DS_Store`, `.vscode/`) are excluded via `.gitignore`. `server.js` automatically creates an empty `orders.json` on startup if one does not already exist.
+Runtime and local files (`.env`, `orders.json`, `.DS_Store`, `.vscode/`) are excluded via `.gitignore`. On startup, `server.js` creates an empty `orders.json` file if one does not already exist.
 
 ## How to run
 
 1. Clone the repository: `git clone https://github.com/LelouchCode12/Bakery-52.git`
-2. **With Node.js backend (recommended):** run `node server.js` from the project root and open `http://localhost:3000`. The server serves static assets, custom `404.html`, `POST /api/checkout`, and `GET /api/orders`. Optionally configure `PORT` and `STRIPE_SECRET_KEY` in `.env` (without a Stripe key, checkout runs in mock mode).
-3. **Static preview:** open `index.html` via a static server (e.g., Live Server or GitHub Pages). When the Node backend is unavailable, checkout falls back to client-side demo order history in `localStorage`.
-4. An internet connection is needed for Google Fonts, jQuery CDN, and Bootstrap CSS (`register.html`, `account.html`).
+2. Run with the Node.js backend: run `node server.js` (or `npm start`) from the project root and open `http://localhost:3000`. The server serves static files, `404.html`, `POST /api/checkout`, and `GET /api/orders`. You can optionally set `PORT` and `STRIPE_SECRET_KEY` in `.env` (without a Stripe key, checkout runs in mock mode).
+3. Run as a static site: open `index.html` with a local static server (such as Live Server) or view the GitHub Pages deployment. When the Node backend is unavailable, checkout falls back to saving demo orders in `localStorage`.
+4. An internet connection is needed for Google Fonts, jQuery CDN, Bootstrap CSS (`register.html`, `account.html`), and the Google Maps embed (`contact.html`).
 
 ## Deployment
 
-The static frontend is published with GitHub Pages. After pushing updated files to the repository, the public link above serves the latest static build.
+The static frontend is hosted on GitHub Pages and serves the latest files pushed to the repository.
 
-## JavaScript module map
+## JavaScript files
 
 | File | Key functions / exports | What it does | Pages |
 |---|---|---|---|
-| `js/header-auth.js` | `BakeryHeaderAuth` (`getCurrentUser()`, `createAccountItem()`, `syncNavbar()`) | Synchronously renders the logged-in navbar account button before first paint | all pages |
-| `js/core.js` | `initMenu()`, `initSamePageScroll()`, `initTheme()`, `initLeaves()`, `initCart()`, `BakeryAuth`, `initAccount()` | Site menu, smooth same-page scroll, light/dark theme toggle, leaf animation toggle, cart & checkout drawer, `localStorage` auth/orders, account dropdown sync | all pages |
-| `js/snow-fall.js` | `<snow-fall>` Web Component | Autumn leaf particle overlay | all pages |
-| `js/home.js` | `initWelcome()`, `initCarousel()`, `initTestimonials()` | Home side welcome panel, hero/product carousel, interactive testimonials slider & review form | `index.html` |
-| `js/services.js` | `initSearch()`, `initRecommendations()`, `initCustomCakeForm()`, `initFavorites()` | Live menu search & category filters, recommendations list, custom cake calculator modal, favorites toggle | `services.html` |
-| `js/faq.js` | `initFaq()` | Accessible FAQ accordion with `slideToggle`, `aria-expanded`, arrow keys, `Home`/`End`, status feedback | `contact.html` |
-| `js/validation.js` | `checkName()`, `checkEmail()`, `checkMessage()` | Contact form validation with error feedback and redirect to `demo-result.html` | `contact.html` |
-| `js/register.js` | `saveAccount()`, `showLoginMode()`, `validatePasswords()` | Registration & login form handling, phone mask, gender/orientation toggle switches, password match check, reset | `register.html` |
-| `js/account.js` | Account IIFE (`render()`, profile/password/delete handlers) | Profile editing (including gender/orientation switches & avatar upload), password change, order history, favorites, account deletion | `account.html` |
+| `js/header-auth.js` | `BakeryHeaderAuth` (`getCurrentUser()`, `createAccountItem()`, `syncNavbar()`) | Renders the logged-in navbar account button before first paint | all pages |
+| `js/core.js` | `initHeaderScroll()`, `initMenu()`, `initSamePageScroll()`, `initTheme()`, `initLeaves()`, `initCart()`, `BakeryAuth`, `attachPhoneMask()`, `initAccount()` | Header scroll state, site menu, smooth same-page scroll, theme toggle, leaf animation toggle, cart and checkout drawer, `localStorage` auth/orders, account dropdown sync | all pages |
+| `js/snow-fall.js` | `<snow-fall>` Web Component | Autumn leaf particle overlay using inline SVG shapes | all pages |
+| `js/home.js` | `initHeroParallax()`, `initWelcome()`, `initCarousel()`, `initTestimonials()` | Hero parallax, home side welcome panel, hero/product carousel, testimonials slider and review form | `index.html` |
+| `js/services.js` | `initSearch()`, `initQuickViewModal()`, `initRecommendations()`, `initCustomCakeForm()`, `showPageToast()`, `initFavorites()` | Live menu search and category filters, quick-view modal, recommendations list, custom cake calculator modal, favorites toggle | `services.html` |
+| `js/faq.js` | `initFaq()` | Accessible FAQ accordion with `slideToggle`, `aria-expanded`, arrow keys, `Home`/`End`, and status feedback | `contact.html` |
+| `js/validation.js` | `checkName()`, `checkEmail()`, `checkMessage()` | Contact form validation with feedback and redirect to `demo-result.html` | `contact.html` |
+| `js/register.js` | `saveAccount()`, `showLoginMode()`, `validatePasswords()` | Registration and login form handling, phone mask, personal detail switches, password checks, reset | `register.html` |
+| `js/account.js` | Account IIFE (`render()`, `renderOrders()`, `renderFavorites()`, `syncPersonalSwitches()`, `setEditing()`) | Profile editing (including personal switches and avatar upload), password change, order history, favorites, account deletion | `account.html` |
 
-An inline script in the `<head>` of every page also applies the saved `theme` before first paint to prevent theme flash.
+An inline script in the `<head>` of every page applies the saved `theme` before first paint to prevent a theme flash.
 
 ## Team
 

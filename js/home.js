@@ -1,8 +1,51 @@
 $(function () {
+    initHeroParallax();
     initWelcome();
     initCarousel();
     initTestimonials();
 });
+
+function initHeroParallax() {
+    const hero = document.getElementById("heroVolumetric");
+    if (!hero) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (reduceMotion.matches || !finePointer.matches) return;
+
+    let rafId = null;
+    let targetX = 0;
+    let targetY = 0;
+
+    const commit = () => {
+        rafId = null;
+        hero.style.setProperty("--px", targetX.toFixed(4));
+        hero.style.setProperty("--py", targetY.toFixed(4));
+    };
+
+    const schedule = () => {
+        if (!rafId) {
+            rafId = window.requestAnimationFrame(commit);
+        }
+    };
+
+    hero.addEventListener("pointermove", (e) => {
+        if (reduceMotion.matches) return;
+        const rect = hero.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+        const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+        targetX = Math.max(-1, Math.min(1, nx));
+        targetY = Math.max(-1, Math.min(1, ny));
+        schedule();
+    }, { passive: true });
+
+    hero.addEventListener("pointerleave", () => {
+        targetX = 0;
+        targetY = 0;
+        schedule();
+    });
+}
 
 function initWelcome() {
     const $sideWelcome    = $("#sideWelcome");
@@ -49,8 +92,16 @@ function initCarousel() {
     if (!$track.data("cloned")) {
         $track.data("cloned", true);
         const $items = $track.children();
+        $items.each(function () {
+            const title = $(this).find("h3").text().trim();
+            $(this).attr({
+                tabindex: "0",
+                role: "button",
+                "aria-label": title ? "View nutrition facts for " + title : "View nutrition facts"
+            });
+        });
         for (let i = 0; i < 3; i++) {
-            $items.clone().attr("aria-hidden", "true").appendTo($track);
+            $items.clone().attr("aria-hidden", "true").removeAttr("tabindex role aria-label").appendTo($track);
         }
     }
     $track.parent().on("mouseenter", function () {
@@ -62,14 +113,19 @@ function initCarousel() {
     if (!$modal.length) return;
 
     const MODAL_PLACEHOLDER_SRC = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E";
+    let lastTrigger = null;
 
     const closeModal = () => {
         $modal.removeClass("open").attr("aria-hidden", "true");
         $("#modalImg").attr({ src: MODAL_PLACEHOLDER_SRC, alt: "" });
+        if (lastTrigger && typeof lastTrigger.focus === "function") {
+            lastTrigger.focus();
+        }
+        lastTrigger = null;
     };
 
-    $track.on("click", ".product-card", function () {
-        const $card = $(this);
+    const openCakeModal = ($card, triggerEl) => {
+        lastTrigger = triggerEl || null;
         const $img = $card.find("img");
         $("#modalImg").attr({ src: $img.attr("src"), alt: $img.attr("alt") });
         $("#modalTitle").text($card.find("h3").text());
@@ -79,6 +135,18 @@ function initCarousel() {
         $("#modalFat").text(($card.data("fat") || "—") + "g");
         $("#modalCarbs").text(($card.data("carbs") || "—") + "g");
         $modal.addClass("open").attr("aria-hidden", "false");
+        $("#modalClose").trigger("focus");
+    };
+
+    $track.on("click", ".product-card", function () {
+        openCakeModal($(this), this);
+    });
+
+    $track.on("keydown", ".product-card[tabindex='0']", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openCakeModal($(this), this);
+        }
     });
 
     $("#modalClose").on("click", closeModal);

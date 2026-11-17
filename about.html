@@ -34,6 +34,7 @@
     </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/about.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
@@ -43,7 +44,7 @@
     <script src="js/header-auth.js"></script>
 </head>
 <body>
-    <header>
+    <header id="siteHeader">
         <nav class="navbar" aria-label="Main Navigation">
             <a href="index.html" class="navbar_brand">Bakery<span>-52</span></a>
 
@@ -68,12 +69,21 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="section hero hero_banner hero_banner--about" aria-label="About Bakery-52">
             <div class="container">
                 <div class="hero_text">
-                    <h1>About Bakery-52</h1>
+                    <h1>About <span>Bakery-52</span></h1>
                     <p>We craft comfort, bake with passion, and fill your day with the rich aroma of fresh bread and specialty coffee.</p>
+                    <div class="about-hero_actions">
+                        <div class="about-split-bar">
+                            <span class="about-split-bar_info">
+                                <svg class="about-split-bar_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                <span>Daily &middot; 09:00 &ndash; 21:00</span>
+                            </span>
+                            <a href="#story" class="about-split-bar_cta">Our Story</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -247,10 +257,6 @@
     </footer>
 
     <aside class="site-menu" id="siteMenu" aria-label="Site menu">
-        <div class="site-menu_head">
-            <span class="site-menu_title">Menu</span>
-        </div>
-
         <ul class="site-menu_links">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Menu</a></li>
