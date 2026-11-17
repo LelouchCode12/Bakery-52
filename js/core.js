@@ -5,7 +5,59 @@ $(function () {
     initLeaves();
     initCart();
     initAccount();
+    initHeaderScroll();
 });
+
+function initHeaderScroll() {
+    const header = document.getElementById("siteHeader") || document.querySelector("header");
+    if (!header) return;
+
+    const hero = document.getElementById("heroVolumetric") ||
+                 document.querySelector(".hero_banner, .contact-hero-section, .register-hero-section, .account-hero");
+
+    if (!hero) {
+        header.classList.add("is-scrolled", "is-ready");
+        return;
+    }
+
+    let isScrolled = null;
+    let rafPending = false;
+
+    const syncHeader = (forceImmediate) => {
+        const headerH = header.offsetHeight || 82;
+        const heroRect = hero.getBoundingClientRect();
+        const y = window.scrollY || window.pageYOffset || 0;
+        const nextScrolled = isScrolled
+            ? (y > 4 && heroRect.bottom < headerH + 34)
+            : (y > 4 && heroRect.bottom <= headerH + 16);
+
+        if (nextScrolled !== isScrolled || forceImmediate) {
+            isScrolled = nextScrolled;
+            header.classList.toggle("is-scrolled", nextScrolled);
+        }
+    };
+
+    const onScrollOrResize = () => {
+        if (rafPending) return;
+        rafPending = true;
+        window.requestAnimationFrame(() => {
+            rafPending = false;
+            syncHeader(false);
+        });
+    };
+
+    syncHeader(true);
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize, { passive: true });
+    window.addEventListener("pageshow", () => syncHeader(true));
+
+    window.requestAnimationFrame(() => {
+        syncHeader(true);
+        window.requestAnimationFrame(() => {
+            header.classList.add("is-ready");
+        });
+    });
+}
 
 function initMenu() {
     const $menuBtn  = $("#menuBtn");
@@ -271,145 +323,161 @@ function initCart() {
     fetchUsdtRate();
 
     const $dialog = $(`
-        <dialog id="cartDialog">
+        <dialog id="cartDialog" aria-labelledby="cartDialogTitle" tabindex="-1">
             <div class="cart-dialog_head">
-                <h3>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -3px; margin-right: 6px;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Cart (<span class="cart-head-count">0</span>)
+                <h3 id="cartDialogTitle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span>Cart (<span class="cart-head-count">0</span>)</span>
                 </h3>
                 <button type="button" class="cart-dialog_close" id="cartCloseBtn" aria-label="Close cart">&times;</button>
             </div>
-            <p id="cartEmptyMsg" class="cart-empty-msg">Your cart is empty.</p>
-            <ul id="cartList" class="cart-list"></ul>
-            <div class="cart-total-bar">
-                <span>Total</span>
-                <strong><span id="cartTotal">0</span>₸</strong>
+            <div class="cart-dialog_body">
+                <div id="cartEmptyMsg" class="cart-empty-msg">
+                    <div class="cart-empty-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    </div>
+                    <p class="cart-empty-title">Your cart is empty</p>
+                    <p class="cart-empty-sub">Add freshly baked pastries, breads, or cakes from our menu.</p>
+                    <a href="services.html" class="btn btn-primary cart-empty-btn" id="cartEmptyBrowseBtn">Browse Menu</a>
+                </div>
+                <ul id="cartList" class="cart-list"></ul>
             </div>
-            <div class="cart-dialog_footer">
-                <button type="button" class="btn-checkout" id="cartCheckoutBtn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                    Checkout
-                </button>
-                <button type="button" class="cart-clear-link" id="cartClearBtn">Clear Cart</button>
+            <div class="cart-dialog_bottom">
+                <div class="cart-total-bar">
+                    <span>Total</span>
+                    <strong><span id="cartTotal">0</span>₸</strong>
+                </div>
+                <div class="cart-dialog_footer">
+                    <button type="button" class="btn-checkout" id="cartCheckoutBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        Checkout
+                    </button>
+                    <button type="button" class="cart-clear-link" id="cartClearBtn">Clear Cart</button>
+                </div>
             </div>
         </dialog>
     `).appendTo("body");
 
     const $checkout = $(`
-        <dialog id="checkoutDialog">
+        <dialog id="checkoutDialog" aria-labelledby="checkoutDialogTitle" tabindex="-1">
             <div class="checkout-head">
                 <div>
-                    <h3>Payment Details</h3>
+                    <h3 id="checkoutDialogTitle">Payment Details</h3>
                     <p class="checkout-sub">Complete your purchase securely</p>
                 </div>
                 <button type="button" class="cart-dialog_close" id="checkoutCloseBtn" aria-label="Close">&times;</button>
             </div>
 
-            <div class="pay-methods">
-                <button type="button" class="pay-tab active" data-tab="card">
-                    <svg width="18" height="14" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><rect x="1" y="1" width="22" height="16" rx="3"/><line x1="1" y1="6" x2="23" y2="6"/></svg>
-                    <span>Card</span>
-                </button>
-                <button type="button" class="pay-tab pay-apple" data-tab="apple">
-                    <svg width="14" height="16" viewBox="0 0 170 170" fill="currentColor" style="vertical-align: -2px; margin-right: 2px;"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.58-7.7-11.64-13.98-5.99-9.13-10.74-19.64-14.26-31.54-3.52-11.9-5.28-23.2-5.28-33.91 0-16.14 4.16-29.41 12.49-39.81 8.32-10.4 18.59-15.69 30.82-15.86 4.35 0 9.27 1.15 14.76 3.44 5.49 2.29 9.07 3.47 10.74 3.55 1.45 0 5.26-1.25 11.45-3.77 6.18-2.52 11.45-3.68 15.79-3.48 13.9.77 24.96 5.86 33.18 15.28-12.21 7.39-18.17 17.58-17.88 30.56.32 10.15 4.27 18.61 11.86 25.39 7.58 6.78 16.54 10.66 26.88 11.64-2.28 7.07-5.18 14.28-8.72 21.65zm-33.11-105.81c0-7.85 2.8-15.22 8.39-22.11 5.59-6.89 12.49-11.13 20.7-12.73.43 2.18.64 4.25.64 6.2 0 7.85-2.95 15.39-8.86 22.62-5.91 7.23-12.83 11.38-20.75 12.46-.12-1.89-.12-3.89-.12-6.44z"/></svg><span>Pay</span>
-                </button>
-                <button type="button" class="pay-tab pay-crypto" data-tab="crypto">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 3px;"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M8 10h8M8 14h8"/></svg>
-                    <span>USDT</span>
-                </button>
-            </div>
-
-            <div class="checkout-panel" id="payPanelCard">
-                <div class="checkout-form">
-                    <div class="form-group">
-                        <label for="payCardNum">Card Number</label>
-                        <div class="input-icon-wrap">
-                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                            <input type="text" id="payCardNum" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" maxlength="19">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="payExpiry">Expiry Date</label>
-                            <div class="input-icon-wrap">
-                                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                                <input type="text" id="payExpiry" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="payCvc">CVC</label>
-                            <div class="input-icon-wrap">
-                                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                                <input type="text" id="payCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="3">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="payName">Cardholder Name</label>
-                        <input type="text" id="payName" autocomplete="cc-name" placeholder="Enter name on card">
-                    </div>
-                    <button type="button" class="btn-pay" id="checkoutPayBtn">Pay <span class="checkout-total-val">0₸</span></button>
-                </div>
-            </div>
-
-            <div class="checkout-panel" id="payPanelApple" style="display: none;">
-                <div class="apple-pay-preview">
-                    <div class="apple-pay-row">
+            <div class="checkout-body">
+                <div class="pay-methods">
+                    <button type="button" class="pay-tab active" data-tab="card">
+                        <svg width="18" height="14" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><rect x="1" y="1" width="22" height="16" rx="3"/><line x1="1" y1="6" x2="23" y2="6"/></svg>
                         <span>Card</span>
-                        <strong> Apple Card (•••• 8842)</strong>
-                    </div>
-                    <div class="apple-pay-row">
-                        <span>Merchant</span>
-                        <strong>Bakery-52 Coffee & Treats</strong>
-                    </div>
-                    <div class="apple-pay-row">
-                        <span>Total Amount</span>
-                        <strong style="font-size: 1.05rem;" class="checkout-total-val">0₸</strong>
+                    </button>
+                    <button type="button" class="pay-tab pay-apple" data-tab="apple">
+                        <svg width="14" height="16" viewBox="0 0 170 170" fill="currentColor" style="vertical-align: -2px; margin-right: 2px;"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.58-7.7-11.64-13.98-5.99-9.13-10.74-19.64-14.26-31.54-3.52-11.9-5.28-23.2-5.28-33.91 0-16.14 4.16-29.41 12.49-39.81 8.32-10.4 18.59-15.69 30.82-15.86 4.35 0 9.27 1.15 14.76 3.44 5.49 2.29 9.07 3.47 10.74 3.55 1.45 0 5.26-1.25 11.45-3.77 6.18-2.52 11.45-3.68 15.79-3.48 13.9.77 24.96 5.86 33.18 15.28-12.21 7.39-18.17 17.58-17.88 30.56.32 10.15 4.27 18.61 11.86 25.39 7.58 6.78 16.54 10.66 26.88 11.64-2.28 7.07-5.18 14.28-8.72 21.65zm-33.11-105.81c0-7.85 2.8-15.22 8.39-22.11 5.59-6.89 12.49-11.13 20.7-12.73.43 2.18.64 4.25.64 6.2 0 7.85-2.95 15.39-8.86 22.62-5.91 7.23-12.83 11.38-20.75 12.46-.12-1.89-.12-3.89-.12-6.44z"/></svg><span>Pay</span>
+                    </button>
+                    <button type="button" class="pay-tab pay-crypto" data-tab="crypto">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 3px;"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M8 10h8M8 14h8"/></svg>
+                        <span>USDT</span>
+                    </button>
+                </div>
+
+                <div class="checkout-panel" id="payPanelCard">
+                    <div class="checkout-form">
+                        <div class="form-group">
+                            <label for="payCardNum">Card Number</label>
+                            <div class="input-icon-wrap">
+                                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                                <input type="text" id="payCardNum" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" maxlength="19">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="payExpiry">Expiry Date</label>
+                                <div class="input-icon-wrap">
+                                    <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                    <input type="text" id="payExpiry" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="payCvc">CVC</label>
+                                <div class="input-icon-wrap">
+                                    <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                    <input type="text" id="payCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="payName">Cardholder Name</label>
+                            <input type="text" id="payName" autocomplete="cc-name" placeholder="Enter name on card">
+                        </div>
+                        <button type="button" class="btn-pay" id="checkoutPayBtn">Pay <span class="checkout-total-val">0₸</span></button>
                     </div>
                 </div>
-                <button type="button" class="btn-apple-pay" id="applePayTriggerBtn">
-                    <svg width="20" height="22" viewBox="0 0 170 170" fill="currentColor"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.58-7.7-11.64-13.98-5.99-9.13-10.74-19.64-14.26-31.54-3.52-11.9-5.28-23.2-5.28-33.91 0-16.14 4.16-29.41 12.49-39.81 8.32-10.4 18.59-15.69 30.82-15.86 4.35 0 9.27 1.15 14.76 3.44 5.49 2.29 9.07 3.47 10.74 3.55 1.45 0 5.26-1.25 11.45-3.77 6.18-2.52 11.45-3.68 15.79-3.48 13.9.77 24.96 5.86 33.18 15.28-12.21 7.39-18.17 17.58-17.88 30.56.32 10.15 4.27 18.61 11.86 25.39 7.58 6.78 16.54 10.66 26.88 11.64-2.28 7.07-5.18 14.28-8.72 21.65zm-33.11-105.81c0-7.85 2.8-15.22 8.39-22.11 5.59-6.89 12.49-11.13 20.7-12.73.43 2.18.64 4.25.64 6.2 0 7.85-2.95 15.39-8.86 22.62-5.91 7.23-12.83 11.38-20.75 12.46-.12-1.89-.12-3.89-.12-6.44z"/></svg>
-                    <span>Pay</span>
-                </button>
-            </div>
 
-            <div class="checkout-panel" id="payPanelCrypto" style="display: none;">
-                <div class="crypto-preview">
-                    <div class="crypto-amount-badge">
-                        <span style="font-size: 0.85rem; color: var(--color-text-light);">To Pay:</span>
-                        <div>
-                            <strong id="cryptoUsdtAmount">0.00 USDT</strong>
-                            <span id="cryptoKztSub" style="font-size: 0.82rem; color: var(--color-text-light); margin-left: 4px;">(0₸)</span>
+                <div class="checkout-panel" id="payPanelApple" style="display: none;">
+                    <div class="apple-pay-preview">
+                        <div class="apple-pay-row">
+                            <span>Card</span>
+                            <strong> Apple Card (•••• 8842)</strong>
+                        </div>
+                        <div class="apple-pay-row">
+                            <span>Merchant</span>
+                            <strong>Bakery-52 Coffee & Treats</strong>
+                        </div>
+                        <div class="apple-pay-row">
+                            <span>Total Amount</span>
+                            <strong style="font-size: 1.05rem;" class="checkout-total-val">0₸</strong>
                         </div>
                     </div>
-                    <div class="crypto-rate-tag">
-                        <span class="dot"></span>
-                        <span>Live Rate: 1 USDT ≈ <strong id="cryptoUsdtRate">495.00</strong> ₸</span>
-                    </div>
-                    <div style="font-size: 0.8rem; font-weight: 600; margin-top: 4px;">USDT Deposit Address (TRC-20):</div>
-                    <div class="crypto-address-wrap">
-                        <input type="text" class="crypto-address-input" id="cryptoAddressInput" value="TPyE8j7wK3gUq7dM9Z2xNb4K8L9mZ9L4X" readonly>
-                        <button type="button" class="btn-copy-address" id="cryptoCopyBtn">Copy</button>
-                    </div>
+                    <button type="button" class="btn-apple-pay" id="applePayTriggerBtn">
+                        <svg width="20" height="22" viewBox="0 0 170 170" fill="currentColor"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.58-7.7-11.64-13.98-5.99-9.13-10.74-19.64-14.26-31.54-3.52-11.9-5.28-23.2-5.28-33.91 0-16.14 4.16-29.41 12.49-39.81 8.32-10.4 18.59-15.69 30.82-15.86 4.35 0 9.27 1.15 14.76 3.44 5.49 2.29 9.07 3.47 10.74 3.55 1.45 0 5.26-1.25 11.45-3.77 6.18-2.52 11.45-3.68 15.79-3.48 13.9.77 24.96 5.86 33.18 15.28-12.21 7.39-18.17 17.58-17.88 30.56.32 10.15 4.27 18.61 11.86 25.39 7.58 6.78 16.54 10.66 26.88 11.64-2.28 7.07-5.18 14.28-8.72 21.65zm-33.11-105.81c0-7.85 2.8-15.22 8.39-22.11 5.59-6.89 12.49-11.13 20.7-12.73.43 2.18.64 4.25.64 6.2 0 7.85-2.95 15.39-8.86 22.62-5.91 7.23-12.83 11.38-20.75 12.46-.12-1.89-.12-3.89-.12-6.44z"/></svg>
+                        <span>Pay</span>
+                    </button>
                 </div>
-                <button type="button" class="btn-pay" id="cryptoPayBtn" style="background: #009393; color: #fff;">
-                    Pay with USDT
-                </button>
+
+                <div class="checkout-panel" id="payPanelCrypto" style="display: none;">
+                    <div class="crypto-preview">
+                        <div class="crypto-amount-badge">
+                            <span style="font-size: 0.85rem; color: var(--color-text-light);">To Pay:</span>
+                            <div>
+                                <strong id="cryptoUsdtAmount">0.00 USDT</strong>
+                                <span id="cryptoKztSub" style="font-size: 0.82rem; color: var(--color-text-light); margin-left: 4px;">(0₸)</span>
+                            </div>
+                        </div>
+                        <div class="crypto-rate-tag">
+                            <span class="dot"></span>
+                            <span>Live Rate: 1 USDT ≈ <strong id="cryptoUsdtRate">495.00</strong> ₸</span>
+                        </div>
+                        <div style="font-size: 0.8rem; font-weight: 600; margin-top: 4px;">USDT Deposit Address (TRC-20):</div>
+                        <div class="crypto-address-wrap">
+                            <input type="text" class="crypto-address-input" id="cryptoAddressInput" value="TPyE8j7wK3gUq7dM9Z2xNb4K8L9mZ9L4X" readonly>
+                            <button type="button" class="btn-copy-address" id="cryptoCopyBtn">Copy</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-pay" id="cryptoPayBtn" style="background: #009393; color: #fff;">
+                        Pay with USDT
+                    </button>
+                </div>
+
+                <p id="checkoutError" class="checkout-error" role="alert" aria-live="polite"></p>
+
+                <div id="checkoutSuccess" class="checkout-success" style="display: none;">
+                    <div style="width: 52px; height: 52px; border-radius: 50%; background: #e8f5e9; color: #2e7d32; display: inline-flex; align-items: center; justify-content: center; font-size: 26px; font-weight: bold; margin-bottom: 0.75rem;">✓</div>
+                    <h4 style="margin: 0 0 0.4rem 0;">Payment Successful!</h4>
+                    <p style="margin: 0 0 0.4rem 0; font-size: 0.9rem; color: var(--color-text-light);">
+                        Order <strong id="successOrderId" style="color: var(--color-text);">#BK-1000</strong> confirmed.
+                    </p>
+                    <p id="successPaymentMethod" style="font-size: 0.82rem; color: var(--color-text-light); margin: 0 0 1rem 0;"></p>
+                    <button type="button" class="btn-pay" id="checkoutDoneBtn">Done</button>
+                </div>
             </div>
 
-            <p id="checkoutError" class="checkout-error" role="alert" aria-live="polite"></p>
-
-            <p class="secure-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Payments are secure and encrypted
-            </p>
-
-            <div id="checkoutSuccess" style="display: none; text-align: center; padding: 1.5rem 0.5rem;">
-                <div style="width: 52px; height: 52px; border-radius: 50%; background: #e8f5e9; color: #2e7d32; display: inline-flex; align-items: center; justify-content: center; font-size: 26px; font-weight: bold; margin-bottom: 0.75rem;">✓</div>
-                <h4 style="margin: 0 0 0.4rem 0;">Payment Successful!</h4>
-                <p style="margin: 0 0 0.4rem 0; font-size: 0.9rem; color: var(--color-text-light);">
-                    Order <strong id="successOrderId" style="color: var(--color-text);">#BK-1000</strong> confirmed.
+            <div class="checkout-bottom">
+                <p class="secure-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Payments are secure and encrypted
                 </p>
-                <p id="successPaymentMethod" style="font-size: 0.82rem; color: var(--color-text-light); margin: 0 0 1rem 0;"></p>
-                <button type="button" class="btn-pay" id="checkoutDoneBtn">Done</button>
             </div>
         </dialog>
     `).appendTo("body");
@@ -421,7 +489,10 @@ function initCart() {
         if (typeof dialogEl.showModal === "function") {
             if (!dialogEl.open) dialogEl.showModal();
         } else {
-            $dialog.attr("open", true).show();
+            $dialog.attr("open", true);
+        }
+        if (typeof dialogEl.focus === "function") {
+            dialogEl.focus({ preventScroll: true });
         }
     };
 
@@ -431,13 +502,14 @@ function initCart() {
         if (typeof dialogEl.close === "function" && dialogEl.open) {
             dialogEl.close();
         } else {
-            $dialog.removeAttr("open").hide();
+            $dialog.removeAttr("open");
         }
     };
 
     const openCheckout = () => {
         closeCart();
         $("#checkoutSuccess").hide();
+        $(".checkout-bottom").removeClass("is-hidden");
         $("#checkoutError").text("").removeClass("visible");
         $("#payCardNum, #payExpiry, #payCvc, #payName").removeClass("is-invalid");
         $(".pay-tab").removeClass("active").filter("[data-tab='card']").addClass("active");
@@ -455,7 +527,10 @@ function initCart() {
         if (typeof el.showModal === "function") {
             if (!el.open) el.showModal();
         } else {
-            $checkout.attr("open", true).show();
+            $checkout.attr("open", true);
+        }
+        if (typeof el.focus === "function") {
+            el.focus({ preventScroll: true });
         }
     };
 
@@ -465,7 +540,7 @@ function initCart() {
         if (typeof el.close === "function" && el.open) {
             el.close();
         } else {
-            $checkout.removeAttr("open").hide();
+            $checkout.removeAttr("open");
         }
     };
 
@@ -511,9 +586,9 @@ function initCart() {
         $("#cartTotal").text(totalSum.toLocaleString("ru-RU"));
         $(".checkout-total-val").text(totalSum.toLocaleString("ru-RU") + "₸");
         updateCryptoAmount(totalSum);
-        $("#cartEmptyMsg").toggle(totalQty === 0);
-        $(".cart-total-bar").toggle(totalQty > 0);
-        $(".cart-dialog_footer").toggle(totalQty > 0);
+        $("#cartEmptyMsg").toggleClass("is-hidden", totalQty > 0);
+        $("#cartList").toggleClass("is-hidden", totalQty === 0);
+        $(".cart-dialog_bottom").toggleClass("is-hidden", totalQty === 0);
 
         $(".card-grid .product-card").each(function () {
             const $card     = $(this);
@@ -579,6 +654,18 @@ function initCart() {
     });
 
     $(document).on("click", "#cartCloseBtn", closeCart);
+
+    $dialog.on("click", "#cartEmptyBrowseBtn", function (e) {
+        const path = window.location.pathname || "";
+        if (/(^|\/)services(\.html)?$/i.test(path)) {
+            e.preventDefault();
+            closeCart();
+            const catalogTarget = document.getElementById("categoryFilters") || document.getElementById("searchInput");
+            if (catalogTarget) {
+                catalogTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        }
+    });
 
     $dialog.on("click", function (e) {
         if (e.target === this) closeCart();
@@ -840,6 +927,7 @@ function initCart() {
             $("#successOrderId").text("#" + cleanId);
             $("#successPaymentMethod").text("Paid with: " + methodName);
             $(".pay-methods, .checkout-panel").hide();
+            $(".checkout-bottom").addClass("is-hidden");
             $("#checkoutSuccess").fadeIn(200);
             cart = {};
             saveAndRender();
@@ -896,6 +984,7 @@ function initCart() {
     });
 
     const showApplePaySheet = (totalSum, onConfirmed, onCancel) => {
+        const $sheetHost = ($checkout[0] && $checkout[0].open) ? $checkout : $("body");
         const $sheet = $(`
             <div class="apple-sheet-overlay" id="appleSheetOverlay">
                 <div class="apple-sheet-card">
@@ -925,7 +1014,7 @@ function initCart() {
                     </div>
                 </div>
             </div>
-        `).appendTo("body");
+        `).appendTo($sheetHost);
 
         let timer1 = null;
         let timer2 = null;
@@ -1017,7 +1106,6 @@ function initCart() {
     saveAndRender();
 }
 
-/* Account persistence (localStorage) */
 window.BakeryAuth = (function () {
     const USERS_KEY   = "bakery_users";
     const CURRENT_KEY = "bakery_currentUser";
@@ -1236,12 +1324,6 @@ function initAccount() {
         window.location.href = "index.html";
     });
 
-    const $dropdownCover = $("<div>", { "class": "account-dropdown_cover" }).append(
-        $("<img>", { src: "images/site/bakery-croissants.webp", alt: "Bakery-52", "class": "account-dropdown_img", loading: "lazy" }),
-        $("<div>", { "class": "account-dropdown_cover-overlay" }).append(
-            $("<span>", { "class": "account-dropdown_tag" }).text("🥐 Bakery-52")
-        )
-    );
     const $dropdownBody = $("<div>", { "class": "account-dropdown_body" }).append(
         $("<div>", { "class": "account-dropdown_head" }).append(
             $("<strong>").text(fullName(user)),
@@ -1250,7 +1332,7 @@ function initAccount() {
         $("<a>", { href: "account.html", "class": "account-dropdown_item" }).append(icon("user"), $("<span>").text("My account")),
         $("<button>", { type: "button", "class": "account-dropdown_item", "data-account-logout": "" }).append(icon("logout"), $("<span>").text("Log out"))
     );
-    const $dropdown = $("<div>", { "class": "account-dropdown" }).append($dropdownCover, $dropdownBody);
+    const $dropdown = $("<div>", { "class": "account-dropdown" }).append($dropdownBody);
 
     let $account = $(".navbar_links .account").first();
     if (!$account.length && window.BakeryHeaderAuth) {
@@ -1278,12 +1360,17 @@ function initAccount() {
         });
     }
 
-    const menuLink = (attr, iconName, text) =>
-        $("<li>").append($("<a>", Object.assign({ href: "#", "class": "account-link" }, attr)).append(icon(iconName), $("<span>").text(text)));
-    $(".site-menu_links a[href='register.html']").closest("li").replaceWith(
-        menuLink({ href: "account.html" }, "user", "My account"),
-        menuLink({ "data-account-logout": "" }, "logout", "Log out")
+    const $accountRow = $("<li>", { "class": "site-menu_account-row" }).append(
+        $("<a>", { href: "account.html", "class": "account-link" }).append(icon("user"), $("<span>").text("My account")),
+        $("<button>", {
+            type: "button",
+            "class": "site-menu_logout",
+            "data-account-logout": "",
+            "aria-label": "Log out",
+            title: "Log out"
+        }).append(icon("logout"))
     );
+    $(".site-menu_links a[href='register.html']").closest("li").replaceWith($accountRow);
     if (isAccountPage) $(".site-menu_links a[href='account.html']").attr("aria-current", "page");
 
     $(".info-list a[href='register.html']").text("My account").attr("href", "account.html");

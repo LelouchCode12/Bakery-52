@@ -39,9 +39,23 @@
     const subtitleText = subtitle ? subtitle.textContent : '';
 
     const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
     const emailInput = document.getElementById('email');
     const loginEmailInput = document.getElementById('loginEmail');
     const passwordFeedback = document.getElementById('passwordFeedback');
+    const passwordMismatchFeedback = document.getElementById('passwordMismatchFeedback');
+
+    function validateNameField(input, label) {
+        if (!input) return true;
+        const val = input.value.trim();
+        if (val.length < 2) {
+            input.setCustomValidity(label + ' is required (at least 2 characters).');
+            return false;
+        }
+        input.setCustomValidity('');
+        return true;
+    }
 
     function showError(el, message) {
         if (!el) return;
@@ -146,6 +160,8 @@
     function showLoginMode(isLogin) {
         form.classList.toggle('d-none', isLogin);
         if (loginForm) loginForm.classList.toggle('d-none', !isLogin);
+        form.classList.remove('was-validated');
+        if (loginForm) loginForm.classList.remove('was-validated');
         showError(registerError, '');
         showError(loginError, '');
         if (heading) heading.textContent = isLogin ? 'Log in' : headingText;
@@ -156,6 +172,16 @@
     const showRegisterBtn = document.getElementById('showRegister');
     if (showLoginBtn) showLoginBtn.addEventListener('click', () => showLoginMode(true));
     if (showRegisterBtn) showRegisterBtn.addEventListener('click', () => showLoginMode(false));
+
+    if (firstNameInput) {
+        firstNameInput.addEventListener('input', () => validateNameField(firstNameInput, 'First name'));
+        firstNameInput.addEventListener('blur', () => validateNameField(firstNameInput, 'First name'));
+    }
+
+    if (lastNameInput) {
+        lastNameInput.addEventListener('input', () => validateNameField(lastNameInput, 'Last name'));
+        lastNameInput.addEventListener('blur', () => validateNameField(lastNameInput, 'Last name'));
+    }
 
     if (emailInput) {
         emailInput.addEventListener('input', () => validateEmailInput(emailInput));
@@ -195,18 +221,24 @@
     function validatePasswords() {
         validatePasswordStrength();
         if (!password || !confirm) return;
-        if (confirm.value && password.value !== confirm.value) {
-            confirm.setCustomValidity("Passwords do not match.");
-            confirm.classList.add('is-invalid');
-        } else if (!confirm.value) {
+        if (!confirm.value) {
             confirm.setCustomValidity("Please confirm your password.");
             confirm.classList.remove('is-invalid');
+            if (passwordMismatchFeedback) {
+                passwordMismatchFeedback.textContent = 'Please confirm your password.';
+            }
         } else if (password.value !== confirm.value) {
             confirm.setCustomValidity("Passwords do not match.");
             confirm.classList.add('is-invalid');
+            if (passwordMismatchFeedback) {
+                passwordMismatchFeedback.textContent = 'Passwords do not match.';
+            }
         } else {
             confirm.setCustomValidity("");
             confirm.classList.remove('is-invalid');
+            if (passwordMismatchFeedback) {
+                passwordMismatchFeedback.textContent = 'Passwords do not match.';
+            }
         }
     }
 
@@ -216,6 +248,8 @@
     }
 
     form.addEventListener('submit', function (event) {
+        validateNameField(firstNameInput, 'First name');
+        validateNameField(lastNameInput, 'Last name');
         validateEmailInput(emailInput);
         validatePhoneField();
         validatePasswords();
@@ -235,7 +269,7 @@
     if (resetBtn) {
         resetBtn.addEventListener('click', function () {
             form.classList.remove('was-validated');
-            [emailInput, phoneInput, password, confirm].forEach(el => {
+            [firstNameInput, lastNameInput, emailInput, phoneInput, password, confirm].forEach(el => {
                 if (el) {
                     el.setCustomValidity("");
                     el.classList.remove('is-invalid');
@@ -243,6 +277,9 @@
             });
             if (passwordFeedback) {
                 passwordFeedback.textContent = 'Password must be at least 8 characters and include uppercase, lowercase, and a number.';
+            }
+            if (passwordMismatchFeedback) {
+                passwordMismatchFeedback.textContent = 'Passwords do not match.';
             }
             showError(registerError, '');
             if (switchesCard) switchesCard.classList.remove('disabled-section');

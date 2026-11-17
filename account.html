@@ -28,7 +28,7 @@
     <script src="js/header-auth.js"></script>
 </head>
 <body>
-    <header>
+    <header id="siteHeader">
         <nav class="navbar" aria-label="Main Navigation">
             <a href="index.html" class="navbar_brand">Bakery<span>-52</span></a>
 
@@ -56,7 +56,7 @@
     <main id="main-content">
         <section class="account-hero" aria-label="Account Overview">
             <div class="account-hero_bg" aria-hidden="true">
-                <img src="images/site/bakery-artisan.webp" alt="Bakery-52 warm artisan bread" class="account-hero_img">
+                <img src="images/site/interior/wide%20shot.webp" alt="" class="account-hero_img">
                 <div class="account-hero_overlay"></div>
             </div>
             <div class="container account-hero_content">
@@ -71,15 +71,16 @@
                         <input type="file" id="accAvatarInput" accept="image/*" class="d-none">
                     </div>
                     <div class="account-hero_info">
-                        <h1 id="accName">Loading...</h1>
+                        <h1 id="accName"></h1>
                         <p id="accEmail" class="account-hero_email"></p>
+                        <p id="accMeta" class="account-hero_meta"></p>
                         <button type="button" id="accAvatarRemoveBtn" class="account-avatar_remove d-none">Remove photo</button>
                     </div>
                 </div>
                 <div class="account-hero_actions" id="accHeroActions">
                     <button type="button" class="btn btn-outline account-action" id="accEditBtn">
                         <span class="ico ico-edit" aria-hidden="true"></span>
-                        <span>Edit Profile</span>
+                        <span>Edit profile</span>
                     </button>
                     <button type="button" class="btn btn-primary account-action" data-account-logout>
                         <span class="ico ico-logout" aria-hidden="true"></span>
@@ -90,7 +91,17 @@
         </section>
 
         <section class="account-section" aria-label="Profile and Favorites">
-            <div class="container">
+            <div class="container account-layout">
+
+                <nav class="account-nav" aria-label="Account sections">
+                    <a href="#accViewSection" data-nav-profile class="is-active">Profile</a>
+                    <a href="#accFavorites">Favorites</a>
+                    <a href="#accOrdersSection">Orders</a>
+                    <a href="#accActivity">Activity</a>
+                    <a href="#accSecuritySection">Security</a>
+                </nav>
+
+                <div class="account-content">
 
                 <div id="accViewSection" class="account-panel">
                     <div class="account-panel_header">
@@ -103,10 +114,9 @@
                     <div class="account-info-grid" id="accInfoGrid"></div>
 
                     <div class="account-info-card account-info-card_full account-pref-card">
-                        <div class="account-info-icon account-pref-icon" aria-hidden="true">🍂</div>
                         <div class="account-info-text account-pref-text">
-                            <label class="account-info-label" for="leavesToggle">Autumn Leaves</label>
-                            <span class="account-pref-desc">Gentle falling leaves animation across all pages</span>
+                            <label class="account-info-label" for="leavesToggle">Falling leaves</label>
+                            <span class="account-pref-desc">Animated leaves on every page. Turn off if it distracts you.</span>
                         </div>
                         <div class="form-check form-switch account-pref-switch">
                             <input class="form-check-input switch-item" type="checkbox" role="switch" id="leavesToggle" aria-label="Autumn Leaves">
@@ -247,13 +257,13 @@
                     </form>
                 </div>
 
-                <div class="account-panel account-favorites-panel">
+                <div class="account-panel account-favorites-panel" id="accFavorites">
                     <div class="account-panel_header d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <div>
-                            <h2 class="account-panel_title">Favorite Items</h2>
-                            <p class="account-panel_subtitle">Pastries and treats you saved from our menu.</p>
+                            <h2 class="account-panel_title">Favorites</h2>
+                            <p class="account-panel_subtitle">Items you saved from the menu.</p>
                         </div>
-                        <a href="services.html" class="btn btn-outline btn-sm">Explore Menu</a>
+                        <a href="services.html" class="btn btn-outline btn-sm">Open menu</a>
                     </div>
                     <div id="accFavoritesList" class="account-favorites-grid"></div>
                 </div>
@@ -261,18 +271,18 @@
                 <div class="account-panel account-orders-panel" id="accOrdersSection">
                     <div class="account-panel_header d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <div>
-                            <h2 class="account-panel_title">My Orders</h2>
-                            <p class="account-panel_subtitle">Your purchase history, ordered pastries, and current status.</p>
+                            <h2 class="account-panel_title">Orders</h2>
+                            <p class="account-panel_subtitle">What you ordered and when.</p>
                         </div>
                     </div>
                     <div id="accOrdersList" class="account-orders-list"></div>
                 </div>
 
-                <div class="account-panel account-activity-panel">
+                <div class="account-panel account-activity-panel" id="accActivity">
                     <div class="account-panel_header">
                         <div>
-                            <h2 class="account-panel_title">Login activity</h2>
-                            <p class="account-panel_subtitle">Session and access history for your account.</p>
+                            <h2 class="account-panel_title">Activity</h2>
+                            <p class="account-panel_subtitle">When you first and last visited the site in this browser.</p>
                         </div>
                     </div>
                     <div class="account-activity-list">
@@ -290,8 +300,8 @@
                 <div class="account-panel account-security-panel" id="accSecuritySection">
                     <div class="account-panel_header">
                         <div>
-                            <h2 class="account-panel_title">Security &amp; Account</h2>
-                            <p class="account-panel_subtitle">Change your password or permanently delete your account.</p>
+                            <h2 class="account-panel_title">Security</h2>
+                            <p class="account-panel_subtitle">Change your password or delete the account.</p>
                         </div>
                     </div>
 
@@ -304,7 +314,8 @@
                             </label>
                             <label class="account-field" for="accNewPassword">
                                 <span>New password <span class="text-danger">*</span></span>
-                                <input id="accNewPassword" type="password" required minlength="8" autocomplete="new-password" placeholder="Min. 8 chars (A-Z, a-z, 0-9)">
+                                <input id="accNewPassword" type="password" required minlength="8" autocomplete="new-password" aria-describedby="accPasswordHint" placeholder="New password">
+                                <small id="accPasswordHint" class="account-hint">At least 8 characters, with an uppercase letter, a lowercase letter and a digit.</small>
                             </label>
                             <p class="account-edit_error" id="accPasswordMsg" role="status" aria-live="polite"></p>
                             <div class="account-actions">
@@ -318,7 +329,7 @@
                         <div class="account-delete-block">
                             <h3 class="account-subhead">Delete Account</h3>
                             <p class="account-delete-desc">
-                                Deleting your account will permanently erase your profile, favorite items, and order history from this browser. You will be returned to the home page as a guest.
+                                This erases your profile, favorites and order history from this browser. It can't be undone.
                             </p>
                             <div id="accDeletePrompt">
                                 <button type="button" class="btn btn-danger-outline account-action" id="accDeleteInitBtn">
@@ -327,11 +338,11 @@
                                 </button>
                             </div>
                             <div id="accDeleteConfirmWrap" class="account-delete-confirm d-none-account">
-                                <p class="account-delete-warn">Are you sure you want to permanently delete your account?</p>
+                                <p class="account-delete-warn">Delete the account for good?</p>
                                 <div class="account-actions">
                                     <button type="button" class="btn btn-danger-solid account-action" id="accDeleteConfirmBtn">
                                         <span class="ico ico-trash" aria-hidden="true"></span>
-                                        <span>Yes, Delete My Account</span>
+                                        <span>Yes, delete</span>
                                     </button>
                                     <button type="button" class="btn btn-outline account-action" id="accDeleteCancelBtn">
                                         <span>Cancel</span>
@@ -342,6 +353,7 @@
                     </div>
                 </div>
 
+                </div>
             </div>
         </section>
     </main>
@@ -372,10 +384,6 @@
     <script src="js/account.js" defer></script>
 
     <aside class="site-menu" id="siteMenu" aria-label="Site menu">
-        <div class="site-menu_head">
-            <span class="site-menu_title">Menu</span>
-        </div>
-
         <ul class="site-menu_links">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Menu</a></li>

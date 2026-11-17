@@ -1,56 +1,341 @@
 $(function () {
     initSearch();
+    initQuickViewModal();
     initRecommendations();
     initCustomCakeForm();
     initFavorites();
 });
 
 function initSearch() {
-    const $searchInput   = $("#searchInput");
-    const $searchCount   = $("#searchCount");
-    const $noResultsMsg  = $("#noResults");
-    const $productCards  = $(".card-grid .product-card");
-    const $catBtns       = $("#categoryFilters .cat-btn");
+    const $searchInput     = $("#searchInput");
+    const $searchClearBtn  = $("#searchClearBtn");
+    const $sortSelect      = $("#sortSelect");
+    const $searchCount     = $("#searchCount");
+    const $categoryTitle   = $("#activeCategoryTitle");
+    const $noResultsMsg    = $("#noResults");
+    const $cardGrid        = $("#menuCardGrid").length ? $("#menuCardGrid") : $(".card-grid").first();
+    const $productCards    = $cardGrid.find(".product-card");
+    const $catBtns         = $("#categoryFilters .cat-btn");
+    const $resetFiltersBtn = $("#resetFiltersBtn");
+    const $emptyResetBtn   = $("#emptyResetBtn");
+    const $loadMoreWrap    = $("#catalogLoadMore");
+    const $loadStatus      = $("#catalogLoadStatus");
+    const $showMoreBtn     = $("#showMoreBtn");
 
     if (!$searchInput.length) return;
 
+    const PAGE_SIZE = 24;
     let activeCategory = "all";
+    let visibleLimit = PAGE_SIZE;
 
-    const applyFilters = () => {
-        const query = $searchInput.val().toLowerCase().replace(/\s+/g, " ").trim();
-        let visibleCount = 0;
+    const categoryCounts = { all: $productCards.length };
+    $productCards.each(function (idx) {
+        const $card = $(this);
+        const cat = String($card.attr("data-category") || "");
+        const priceVal = parseInt($card.find(".card_price").text().replace(/\D/g, ""), 10) || 0;
+        const nameVal = $card.find("h3").text().trim().toLowerCase();
 
-        $productCards.each(function () {
-            const $card = $(this);
+        $card.data("order", idx);
+        $card.data("priceVal", priceVal);
+        $card.data("nameVal", nameVal);
 
-            const cardText = $card.find("h3, p").text().toLowerCase();
+        if (cat) {
+            categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+        }
+    });
 
-            const cardCategory = $card.data("category") || "";
-            const matchesCategory = (activeCategory === "all") || (cardCategory === activeCategory);
+    $catBtns.each(function () {
+        const cat = String($(this).data("category") || "");
+        const $count = $(this).find(".cat-btn_count");
+        if ($count.length && Object.prototype.hasOwnProperty.call(categoryCounts, cat)) {
+            $count.text(categoryCounts[cat]);
+        }
+    });
 
-            const matchesQuery = (query === "") || cardText.includes(query);
-
-            const isVisible = matchesCategory && matchesQuery;
-            $card.toggleClass("hidden", !isVisible);
-            if (isVisible) visibleCount++;
+    const sortCards = (mode) => {
+        if (!$cardGrid.length) return;
+        const sorted = $productCards.get().sort((a, b) => {
+            const $a = $(a);
+            const $b = $(b);
+            if (mode === "price-asc") {
+                return ($a.data("priceVal") - $b.data("priceVal")) || ($a.data("order") - $b.data("order"));
+            }
+            if (mode === "price-desc") {
+                return ($b.data("priceVal") - $a.data("priceVal")) || ($a.data("order") - $b.data("order"));
+            }
+            if (mode === "name-asc") {
+                return String($a.data("nameVal")).localeCompare(String($b.data("nameVal")));
+            }
+            return $a.data("order") - $b.data("order");
         });
-
-        $searchCount.text(`Found items: ${visibleCount}`);
-        $noResultsMsg.toggleClass("is-visible", visibleCount === 0);
+        $cardGrid.append(sorted);
     };
 
-    $searchInput.on("input", applyFilters);
+    const syncToolbarMeta = () => {
+        const rawQuery = $searchInput.val() || "";
+        const sortMode = $sortSelect.length ? $sortSelect.val() : "featured";
+        const hasFilters = activeCategory !== "all" || rawQuery.trim() !== "" || sortMode !== "featured";
 
-    $catBtns.on("click", function () {
+        if ($searchClearBtn.length) {
+            $searchClearBtn.prop("hidden", rawQuery.length === 0);
+        }
+        if ($resetFiltersBtn.length) {
+            $resetFiltersBtn.prop("hidden", !hasFilters);
+        }
+        if ($categoryTitle.length) {
+            const $activeBtn = $catBtns.filter(`[data-category="${activeCategory}"]`).first();
+            const label = $activeBtn.find(".cat-btn_label").text().trim() || $activeBtn.text().trim() || "All Menu";
+            $categoryTitle.text(label);
+        }
+    };
+
+    const applyFilters = () => {
+        const query = ($searchInput.val() || "").toLowerCase().replace(/\s+/g, " ").trim();
+        let matchedCount = 0;
+        let shownCount = 0;
+
+        $cardGrid.find(".product-card").each(function () {
+            const $card = $(this);
+            const cardText = $card.find("h3, p").text().toLowerCase();
+            const cardCategory = $card.data("category") || "";
+            const matchesCategory = (activeCategory === "all") || (cardCategory === activeCategory);
+            const matchesQuery = (query === "") || cardText.includes(query);
+
+            let isVisible = false;
+            if (matchesCategory && matchesQuery) {
+                matchedCount++;
+                if (matchedCount <= visibleLimit) {
+                    isVisible = true;
+                    shownCount++;
+                }
+            }
+
+            $card.toggleClass("hidden", !isVisible);
+        });
+
+        $searchCount.text(`Found items: ${matchedCount}`);
+        $noResultsMsg.toggleClass("is-visible", matchedCount === 0);
+
+        if ($loadMoreWrap.length) {
+            const showBar = matchedCount > PAGE_SIZE;
+            const hasMore = shownCount < matchedCount;
+
+            $loadMoreWrap.toggleClass("is-hidden", !showBar);
+            $showMoreBtn.toggleClass("is-hidden", !hasMore);
+
+            if (showBar) {
+                $loadStatus.text(`Showing ${shownCount} of ${matchedCount} items`);
+            }
+        }
+
+        syncToolbarMeta();
+    };
+
+    const setCategory = (category, shouldScroll = false) => {
+        const $targetBtn = $catBtns.filter(`[data-category="${category}"]`).first();
+        if (!$targetBtn.length) return;
 
         $catBtns.removeClass("active").attr("aria-pressed", "false");
-        $(this).addClass("active").attr("aria-pressed", "true");
+        $targetBtn.addClass("active").attr("aria-pressed", "true");
 
-        activeCategory = $(this).data("category");
+        activeCategory = category;
+        visibleLimit = PAGE_SIZE;
+        applyFilters();
+
+        if (shouldScroll) {
+            const catalogEl = document.getElementById("catalog");
+            if (catalogEl) {
+                catalogEl.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }
+    };
+
+    const resetAllFilters = () => {
+        $searchInput.val("");
+        if ($sortSelect.length && $sortSelect.val() !== "featured") {
+            $sortSelect.val("featured");
+            sortCards("featured");
+        }
+        setCategory("all", false);
+    };
+
+    $searchInput.on("input", function () {
+        visibleLimit = PAGE_SIZE;
         applyFilters();
     });
 
+    $searchClearBtn.on("click", function () {
+        $searchInput.val("").trigger("focus");
+        visibleLimit = PAGE_SIZE;
+        applyFilters();
+    });
+
+    $sortSelect.on("change", function () {
+        sortCards($(this).val());
+        visibleLimit = PAGE_SIZE;
+        applyFilters();
+    });
+
+    $catBtns.on("click", function () {
+        setCategory($(this).data("category"), false);
+    });
+
+    $("[data-jump-category]").on("click", function () {
+        const cat = $(this).data("jumpCategory");
+        if (cat) setCategory(cat, true);
+    });
+
+    $resetFiltersBtn.on("click", resetAllFilters);
+    $emptyResetBtn.on("click", resetAllFilters);
+
+    $showMoreBtn.on("click", function () {
+        const wasFocused = document.activeElement === this;
+        visibleLimit += PAGE_SIZE;
+        applyFilters();
+
+        if (wasFocused && $showMoreBtn.hasClass("is-hidden") && $loadStatus.length) {
+            $loadStatus.attr("tabindex", "-1").trigger("focus");
+        }
+    });
+
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const initialCat = params.get("category");
+        if (initialCat && $catBtns.filter(`[data-category="${initialCat}"]`).length) {
+            setCategory(initialCat, false);
+            return;
+        }
+    } catch (e) {}
+
     applyFilters();
+}
+
+function initQuickViewModal() {
+    const $modal = $("#menuItemModal");
+    if (!$modal.length) return;
+
+    const PLACEHOLDER_SRC = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E";
+    const $imgWrap     = $("#menuModalImgWrap");
+    const $img         = $("#menuModalImg");
+    const $cat         = $("#menuModalCat");
+    const $title       = $("#menuModalTitle");
+    const $desc        = $("#menuModalDesc");
+    const $price       = $("#menuModalPrice");
+    const $addBtn      = $("#menuModalAdd");
+    const $qtyControls = $("#menuModalQtyControls");
+    const $qtyVal      = $("#menuModalQtyVal");
+    const $favBtn      = $("#menuModalFav");
+    const $closeBtn    = $("#menuModalClose");
+
+    let $activeCard = null;
+    let lastTrigger = null;
+
+    const syncModalState = () => {
+        if (!$activeCard || !$activeCard.length) return;
+
+        const isInCart = $activeCard.find(".card-qty-controls").hasClass("is-visible");
+        const qtyText  = $activeCard.find(".item-cart-qty").text().trim() || "0";
+        const isFav    = $activeCard.find(".btn-fav").hasClass("active");
+
+        $addBtn.toggleClass("is-hidden", isInCart);
+        $qtyControls.toggleClass("is-visible", isInCart);
+        $qtyVal.text(qtyText);
+        $favBtn.toggleClass("active", isFav)
+               .attr("aria-label", isFav ? "Remove from favorites" : "Add to favorites");
+    };
+
+    const openModal = ($card, triggerEl) => {
+        $activeCard = $card;
+        lastTrigger = triggerEl || null;
+
+        const $cardImg    = $card.find(".placeholder img");
+        const isContain   = $card.find(".placeholder").hasClass("placeholder_contain");
+        const catText     = $card.find(".card_cat").text().trim() || String($card.attr("data-category") || "");
+        const titleText   = $card.find("h3").text().trim();
+        const descText    = $card.find(".card_content p").text().trim();
+        const priceText   = $card.find(".card_price").text().trim();
+
+        $imgWrap.toggleClass("is-contain", isContain).toggleClass("is-cover", !isContain);
+        $img.attr({ src: $cardImg.attr("src") || PLACEHOLDER_SRC, alt: $cardImg.attr("alt") || titleText });
+        $cat.text(catText);
+        $title.text(titleText);
+        $desc.text(descText);
+        $price.text(priceText);
+
+        syncModalState();
+        $modal.addClass("open").attr("aria-hidden", "false");
+        $closeBtn.trigger("focus");
+    };
+
+    const closeModal = () => {
+        if (!$modal.hasClass("open")) return;
+        $modal.removeClass("open").attr("aria-hidden", "true");
+        $img.attr({ src: PLACEHOLDER_SRC, alt: "" });
+        $activeCard = null;
+        if (lastTrigger && typeof lastTrigger.focus === "function") {
+            lastTrigger.focus();
+        }
+        lastTrigger = null;
+    };
+
+    $(".menu-layout .product-card h3").each(function () {
+        const title = $(this).text().trim();
+        $(this).attr({
+            tabindex: "0",
+            role: "button",
+            "aria-label": title ? "Quick view " + title : "Quick view"
+        });
+    });
+
+    $(document).on("click", ".menu-layout .product-card .placeholder, .menu-layout .product-card h3", function (e) {
+        if ($(e.target).closest(".btn-fav").length) return;
+        openModal($(this).closest(".product-card"), this);
+    });
+
+    $(document).on("keydown", ".menu-layout .product-card h3[tabindex='0']", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal($(this).closest(".product-card"), this);
+        }
+    });
+
+    $addBtn.on("click", function () {
+        if (!$activeCard) return;
+        $activeCard.find(".add-to-cart-btn").trigger("click");
+        syncModalState();
+    });
+
+    $("#menuModalInc").on("click", function () {
+        if (!$activeCard) return;
+        $activeCard.find(".card-qty-inc").trigger("click");
+        syncModalState();
+    });
+
+    $("#menuModalDec").on("click", function () {
+        if (!$activeCard) return;
+        $activeCard.find(".card-qty-dec").trigger("click");
+        syncModalState();
+    });
+
+    $favBtn.on("click", function () {
+        if (!$activeCard) return;
+        $activeCard.find(".btn-fav").trigger("click");
+        syncModalState();
+    });
+
+    $(document).on("click", ".cart-inc, .cart-dec, .cart-btn-del, .cart-del, #cartClearBtn", function () {
+        if ($modal.hasClass("open")) {
+            setTimeout(syncModalState, 0);
+        }
+    });
+
+    $closeBtn.on("click", closeModal);
+    $modal.on("click", function (e) {
+        if (e.target === this) closeModal();
+    });
+    $(document).on("keydown", function (e) {
+        if (e.key === "Escape" && $modal.hasClass("open")) closeModal();
+    });
 }
 
 function initRecommendations() {
@@ -63,45 +348,74 @@ function initRecommendations() {
 
     if (!$itemForm.length || !$itemsList.length) return;
 
-    let totalItems = 0;
+    const STORAGE_KEY = "bakeryRecommendations";
+    let items = [];
+    try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        if (Array.isArray(saved)) {
+            items = saved.map(x => String(x || "").trim()).filter(Boolean);
+        }
+    } catch (e) {
+        items = [];
+    }
 
-    const updateUI = () => {
-        $itemCount.text(totalItems);
-        $emptyMsg.toggle(totalItems === 0);
+    const persist = () => {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); } catch (e) {}
     };
 
-    $itemForm.on("submit", function (event) {
-        event.preventDefault();
+    const updateUI = () => {
+        $itemCount.text(items.length);
+        $emptyMsg.toggle(items.length === 0);
+    };
 
-        const text = $itemInput.val().trim();
-
-        if (text === "") {
-            $itemError.addClass("is-visible");
-            $itemInput.addClass("input-invalid").trigger("focus");
-            return;
-        }
-
-        $itemError.removeClass("is-visible");
-        $itemInput.removeClass("input-invalid");
-
+    const appendItemRow = (text, animate = true) => {
         const $li = $("<li>").addClass("rec-item").attr("data-text", text);
-
         const $span = $("<span>").addClass("rec-item__text").text(text);
-
         const $deleteBtn = $("<button>")
             .attr("type", "button")
             .text("Remove")
             .addClass("btn-remove");
 
         $li.append($span, $deleteBtn);
+        if (animate) {
+            $li.hide();
+            $itemsList.append($li);
+            $li.fadeIn(260);
+        } else {
+            $itemsList.append($li);
+        }
+    };
 
-        $li.hide();
-        $itemsList.append($li);
-        $li.fadeIn(280);
+    items.forEach(text => appendItemRow(text, false));
+    updateUI();
 
-        totalItems++;
+    const addSuggestion = (text) => {
+        const clean = String(text || "").trim();
+        if (!clean) {
+            $itemError.addClass("is-visible");
+            $itemInput.addClass("input-invalid").trigger("focus");
+            return false;
+        }
+        $itemError.removeClass("is-visible");
+        $itemInput.removeClass("input-invalid");
+
+        items.push(clean);
+        persist();
+        appendItemRow(clean, true);
         updateUI();
-        $itemInput.val("").trigger("focus");
+        return true;
+    };
+
+    $itemForm.on("submit", function (event) {
+        event.preventDefault();
+        if (addSuggestion($itemInput.val())) {
+            $itemInput.val("").trigger("focus");
+        }
+    });
+
+    $(".rec-preset-btn[data-preset]").on("click", function () {
+        const preset = $(this).data("preset");
+        if (preset) addSuggestion(preset);
     });
 
     $itemInput.on("input", function () {
@@ -113,15 +427,17 @@ function initRecommendations() {
 
     $itemsList.on("click", ".btn-remove", function () {
         const $li = $(this).closest("li");
+        const index = $li.index();
 
-        $li.fadeOut(250, function () {
+        $li.fadeOut(220, function () {
+            if (index >= 0 && index < items.length) {
+                items.splice(index, 1);
+                persist();
+            }
             $(this).remove();
-            totalItems--;
             updateUI();
         });
     });
-
-    updateUI();
 }
 
 function initCustomCakeForm() {
