@@ -157,7 +157,7 @@ html.dark-theme .hero_banner.menu-masthead::after {
   flex-wrap: nowrap;
   max-width: 100%;
   border: 1px solid rgba(251, 246, 239, 0.3);
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
   background: rgba(18, 13, 10, 0.78);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);

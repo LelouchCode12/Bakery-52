@@ -198,7 +198,7 @@ html.dark-theme .hero_banner.hero_banner--contact::after {
   gap: 0;
   align-items: stretch;
   border: 1px solid var(--color-border);
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: hidden;
   background: transparent;
 }

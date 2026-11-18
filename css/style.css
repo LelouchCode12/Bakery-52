@@ -27,6 +27,13 @@
   box-sizing: border-box;
 }
 
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -78,6 +85,7 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-heading);
+  font-weight: 400;
   color: var(--color-primary-dark);
   line-height: 1.25;
   margin-top: 0;
@@ -126,6 +134,7 @@ img {
   display: inline-block;
   padding: 0.75rem 1.6rem;
   border-radius: var(--radius);
+  font-family: inherit;
   font-weight: bold;
   border: 2px solid var(--color-primary);
   cursor: pointer;
@@ -399,7 +408,7 @@ html header:not(.is-scrolled) .menu-btn[aria-expanded="true"] {
 .navbar_brand {
   font-family: var(--font-heading);
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--color-primary-dark);
   letter-spacing: -0.5px;
   transition: transform 0.2s ease;
@@ -910,7 +919,7 @@ html.dark-theme .hero_banner .btn-outline:hover {
 .why-us-card_title {
   font-family: var(--font-heading);
   font-size: 1.45rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #ffffff;
   margin: 0 0 0.65rem 0;
   line-height: 1.25;
@@ -1525,7 +1534,7 @@ html.dark-theme iframe[title="Our Bakery Map"] {
   margin: 0 auto;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 8px 24px rgba(78, 53, 36, 0.06);
   transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
@@ -3123,7 +3132,7 @@ html.dark-theme .feedback-btn:hover {
   padding: 3rem 2rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 24px;
+  border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(78, 53, 36, 0.08);
 }
@@ -3287,7 +3296,7 @@ html.dark-theme .story-split-container {
   object-fit: cover;
   clip-path: url(#storySplitClip);
   -webkit-clip-path: url(#storySplitClip);
-  border-radius: 24px;
+  border-radius: 20px;
 }
 
 .story-text-wrap,
@@ -3296,7 +3305,7 @@ html.dark-theme .story-split-container {
   flex-direction: column;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: 24px;
+  border-radius: 20px;
   padding: clamp(1.6rem, 3.2vw, 2.4rem);
   box-shadow: 0 16px 45px rgba(46, 33, 24, 0.08);
   position: relative;

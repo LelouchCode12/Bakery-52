@@ -206,7 +206,7 @@ html.dark-theme .story-split-container {
 
 .story-text-wrap,
 .story-card {
-  border-radius: 22px;
+  border-radius: 20px;
   padding: clamp(1.75rem, 3.2vw, 2.45rem);
   box-shadow: 0 18px 42px rgba(46, 33, 24, 0.08);
 }
@@ -269,7 +269,7 @@ html.dark-theme .bakery-gallery_item {
 }
 
 .team-card {
-  border-radius: 22px;
+  border-radius: 20px;
 }
 
 .team-card:hover {
