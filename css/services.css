@@ -357,7 +357,6 @@ html.dark-theme .hero_banner.menu-masthead::after {
 }
 
 .menu-catalog-section {
-  background: var(--color-bg);
   padding-block: clamp(2.25rem, 4vw, 3.5rem) clamp(3rem, 5vw, 4.5rem);
 }
 
@@ -378,7 +377,7 @@ html.dark-theme .hero_banner.menu-masthead::after {
 .menu-sidebar {
   min-width: 0;
   max-width: 100%;
-  background: var(--color-surface);
+  background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 18px;
   padding: 1rem;
@@ -433,7 +432,7 @@ html.dark-theme .menu-sidebar {
   padding: 0.65rem 2.25rem 0.65rem 2.45rem;
   border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: var(--color-bg);
+  background: var(--color-surface);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 0.92rem;
@@ -501,7 +500,7 @@ html.dark-theme .menu-search-field input[type="text"]:focus {
   padding: 0.58rem 0.75rem;
   border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: var(--color-bg);
+  background: var(--color-surface);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 0.9rem;
@@ -544,7 +543,7 @@ html.dark-theme .menu-search-field input[type="text"]:focus {
 }
 
 .menu-reset-link:hover {
-  background: var(--color-bg);
+  background: var(--color-surface);
   color: var(--color-primary-dark);
 }
 
@@ -575,7 +574,7 @@ html.dark-theme .menu-search-field input[type="text"]:focus {
   padding: 0.48rem 0.85rem;
   border: 1px solid var(--color-border);
   border-radius: 50px;
-  background: var(--color-bg);
+  background: var(--color-surface);
   color: var(--color-text);
   font-size: 0.86rem;
   font-weight: 600;
@@ -681,7 +680,7 @@ html.dark-theme .menu-sidebar .cat-btn.active:hover .cat-btn_count {
 
   .menu-sidebar .cat-btn:not(.active):hover {
     border-color: transparent;
-    background: var(--color-bg);
+    background: var(--color-surface);
     color: var(--color-primary-dark);
   }
 
@@ -752,7 +751,7 @@ html.dark-theme .menu-sidebar .cat-btn.active:hover .cat-btn_count {
   padding: 2.5rem 1.5rem;
   margin: 0;
   text-align: center;
-  background: var(--color-surface);
+  background: var(--color-bg);
   border: 1px dashed var(--color-border);
   border-radius: 18px;
   color: var(--color-text);
@@ -801,7 +800,7 @@ html.dark-theme .menu-sidebar .cat-btn.active:hover .cat-btn_count {
 .menu-layout .product-card {
   border-radius: 16px;
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-bg);
   box-shadow: 0 4px 16px rgba(78, 53, 36, 0.04);
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
@@ -813,6 +812,7 @@ html.dark-theme .menu-sidebar .cat-btn.active:hover .cat-btn_count {
 }
 
 html.dark-theme .menu-layout .product-card {
+  background: var(--color-bg);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
@@ -838,7 +838,7 @@ html.dark-theme .menu-layout .product-card:hover {
 
 .menu-layout .product-card .placeholder.placeholder_contain {
   background: #f5efe6;
-  border: 10px solid var(--color-surface);
+  border: 10px solid var(--color-bg);
   border-bottom-width: 0;
   border-radius: 16px 16px 0 0;
   padding: 0.45rem;
@@ -858,7 +858,7 @@ html.dark-theme .menu-layout .product-card:hover {
 
 html.dark-theme .menu-layout .product-card .placeholder.placeholder_contain {
   background: #d8cfc2;
-  border-color: var(--color-surface);
+  border-color: var(--color-bg);
 }
 
 html.dark-theme .menu-layout .product-card .placeholder.placeholder_contain img {
@@ -974,6 +974,7 @@ html.dark-theme .menu-layout .product-card .placeholder.placeholder_contain img 
   padding: 0.2rem 0.35rem;
   gap: 0.4rem;
   border-radius: 8px;
+  background: var(--color-surface);
 }
 
 .menu-modal_cat {
@@ -1090,18 +1091,22 @@ html.dark-theme .menu-modal_fav-btn.active {
   mask: url("../images/site/ico/heart-filled.svg") center / contain no-repeat;
 }
 
-#customCakeSection.section_muted {
+#customCakeSection.feedback-section {
   padding-block: clamp(3rem, 5vw, 4.5rem);
 }
 
 #customCakeSection .feedback-card {
-  background: var(--color-bg);
+  background: var(--color-surface);
   border-radius: 24px;
 }
 
 #customCakeSection .feedback-card_img-wrap {
   background: #f4ece0;
   border: 1px solid var(--color-border);
+}
+
+html.dark-theme #customCakeSection .feedback-card_img-wrap {
+  background: var(--color-bg);
 }
 
 .feedback-kicker {
@@ -1122,7 +1127,7 @@ html.dark-theme #customCakeSection .feedback-card_title-accent {
 }
 
 #customCakeSection .feedback-input {
-  background: var(--color-surface);
+  background: var(--color-bg);
   border-radius: 10px;
 }
 
@@ -1132,7 +1137,7 @@ html.dark-theme #customCakeSection .feedback-card_title-accent {
 }
 
 html.dark-theme #customCakeSection .feedback-input {
-  background: #1a1310;
+  background: #1d1613;
 }
 
 html.dark-theme #customCakeSection .feedback-input:focus {
@@ -1181,6 +1186,14 @@ html.dark-theme #customCakeSection .feedback-btn:hover {
   gap: 1.75rem;
   padding: clamp(1.4rem, 3vw, 2.25rem);
   border-radius: 20px;
+  background: var(--color-bg);
+}
+
+#recommendations-section .recommendations-form input,
+html.dark-theme #recommendations-section .recommendations-form input,
+#recommendations-section .item-count-badge,
+#recommendations-section .recommendations-list li {
+  background: var(--color-surface);
 }
 
 @media (min-width: 52rem) {
@@ -1213,7 +1226,7 @@ html.dark-theme #customCakeSection .feedback-btn:hover {
   padding: 0.28rem 0.68rem;
   border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: var(--color-bg);
+  background: var(--color-surface);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 0.78rem;

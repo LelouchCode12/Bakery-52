@@ -122,7 +122,7 @@
             </div>
         </section>
 
-        <section class="section menu-catalog-section" id="catalog">
+        <section class="section section_muted menu-catalog-section" id="catalog">
             <div class="menu-shell">
                 <div class="menu-layout">
                     <aside class="menu-sidebar" aria-label="Catalog filters">
@@ -2265,7 +2265,7 @@
             </div>
         </section>
 
-        <section class="section section_muted feedback-section" id="customCakeSection">
+        <section class="section feedback-section" id="customCakeSection">
             <div class="container">
                 <div class="feedback-card">
                     <div class="feedback-card_img-wrap">
@@ -2304,48 +2304,50 @@
             </div>
         </section>
 
-        <section class="section container recommendations-section" id="recommendations-section">
-            <div class="section_header">
-                <p class="recommendations-kicker">Seasonal Kitchen Notes</p>
-                <h2>Pastry Wishlist &amp; Bake Requests</h2>
-                <p class="section_subtitle">Craving a flavor or pairing not on the menu yet? Add a suggestion for our morning bakers.</p>
-            </div>
-
-            <div class="recommendations-card recommendations-grid-card">
-                <div>
-                    <form id="item-form" class="recommendations-form" novalidate>
-                        <div class="form-field">
-                            <label for="item-input">Suggest a Pastry or Flavor:</label>
-                            <div class="input-wrapper">
-                                <input type="text" id="item-input" class="form-control" placeholder="e.g., Pistachio Croissant with Espresso">
-                            </div>
-                            <p id="item-error" class="input-error" role="alert" aria-live="polite">
-                                Please enter a suggestion before adding.
-                            </p>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-add-item">
-                            <span>Add to Wishlist</span>
-                        </button>
-                    </form>
-                    <div class="recommendations-presets" aria-label="Quick ideas">
-                        <span class="recommendations-presets_label">Ideas:</span>
-                        <button type="button" class="rec-preset-btn" data-preset="Pistachio Croissant">+ Pistachio Croissant</button>
-                        <button type="button" class="rec-preset-btn" data-preset="Matcha Basque Cheesecake">+ Matcha Basque Cheesecake</button>
-                        <button type="button" class="rec-preset-btn" data-preset="Almond Cardamom Bun">+ Almond Cardamom Bun</button>
-                    </div>
+        <section class="section section_muted recommendations-section" id="recommendations-section">
+            <div class="container">
+                <div class="section_header">
+                    <p class="recommendations-kicker">Seasonal Kitchen Notes</p>
+                    <h2>Pastry Wishlist &amp; Bake Requests</h2>
+                    <p class="section_subtitle">Craving a flavor or pairing not on the menu yet? Add a suggestion for our morning bakers.</p>
                 </div>
 
-                <div class="recommendations-list-wrapper">
-                    <div class="list-header">
-                        <span class="list-title">Your Request List</span>
-                        <span class="item-count-badge">Total items: <strong id="item-count">0</strong></span>
+                <div class="recommendations-card recommendations-grid-card">
+                    <div>
+                        <form id="item-form" class="recommendations-form" novalidate>
+                            <div class="form-field">
+                                <label for="item-input">Suggest a Pastry or Flavor:</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="item-input" class="form-control" placeholder="e.g., Pistachio Croissant with Espresso">
+                                </div>
+                                <p id="item-error" class="input-error" role="alert" aria-live="polite">
+                                    Please enter a suggestion before adding.
+                                </p>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-add-item">
+                                <span>Add to Wishlist</span>
+                            </button>
+                        </form>
+                        <div class="recommendations-presets" aria-label="Quick ideas">
+                            <span class="recommendations-presets_label">Ideas:</span>
+                            <button type="button" class="rec-preset-btn" data-preset="Pistachio Croissant">+ Pistachio Croissant</button>
+                            <button type="button" class="rec-preset-btn" data-preset="Matcha Basque Cheesecake">+ Matcha Basque Cheesecake</button>
+                            <button type="button" class="rec-preset-btn" data-preset="Almond Cardamom Bun">+ Almond Cardamom Bun</button>
+                        </div>
                     </div>
 
-                    <p id="empty-list-msg" class="empty-list-msg">
-                        Your wishlist is empty
-                    </p>
+                    <div class="recommendations-list-wrapper">
+                        <div class="list-header">
+                            <span class="list-title">Your Request List</span>
+                            <span class="item-count-badge">Total items: <strong id="item-count">0</strong></span>
+                        </div>
 
-                    <ul id="items-list" class="info-list recommendations-list"></ul>
+                        <p id="empty-list-msg" class="empty-list-msg">
+                            Your wishlist is empty
+                        </p>
+
+                        <ul id="items-list" class="info-list recommendations-list"></ul>
+                    </div>
                 </div>
             </div>
         </section>

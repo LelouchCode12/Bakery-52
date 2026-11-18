@@ -111,6 +111,8 @@
             avatarEl.src = user.avatar;
             avatarEl.alt = "Avatar";
             avatarEl.className = "account-btn_avatar";
+            avatarEl.width = 24;
+            avatarEl.height = 24;
         } else {
             avatarEl = createIcon("user");
         }

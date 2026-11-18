@@ -52,12 +52,8 @@ html.dark-theme .account-hero_img {
   gap: 1.25rem;
 }
 
-.account-avatar-wrap {
-  position: relative;
-  display: inline-block;
-  flex: 0 0 auto;
-}
 .account-avatar {
+  flex: 0 0 auto;
   width: 80px;
   height: 80px;
   display: flex;
@@ -77,48 +73,6 @@ html.dark-theme .account-hero_img {
   height: 100%;
   object-fit: cover;
   display: block;
-}
-.account-avatar_btn {
-  position: absolute;
-  bottom: 0;
-  right: -4px;
-  width: 30px;
-  height: 30px;
-  background: var(--color-accent);
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-.account-avatar_btn .ico {
-  width: 15px;
-  height: 15px;
-}
-.account-avatar_remove {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.8rem;
-  text-decoration: underline;
-  cursor: pointer;
-  padding: 0;
-  margin-top: 0.25rem;
-  text-align: left;
-}
-.account-avatar_remove:hover {
-  color: #ffffff;
-}
-
-.account-btn_avatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: inline-block;
 }
 
 .account-hero_info {
@@ -406,6 +360,41 @@ html.dark-theme .account-pref-switch .form-check-input:checked {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+}
+.account-edit-avatar-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.account-edit-avatar_preview {
+  width: 72px;
+  height: 72px;
+  border-width: 2px;
+  border-color: var(--color-border);
+  box-shadow: none;
+  font-size: 1.75rem;
+}
+.account-edit-avatar_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  flex: 1 1 220px;
+}
+.account-edit-avatar_actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+.account-edit-avatar_actions .btn {
+  padding: 0.5rem 1.05rem;
+  font-size: 0.92rem;
 }
 
 .account-activity-panel {
@@ -855,8 +844,7 @@ html.dark-theme .account-edit-form .form-switch .form-check-input:checked {
   border-left-color: var(--color-accent);
   font-weight: 700;
 }
-.account-nav a:focus-visible,
-.account-avatar_btn:focus-within {
+.account-nav a:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }

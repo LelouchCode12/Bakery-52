@@ -77,6 +77,55 @@
         return `(${diffYears} year${diffYears > 1 ? 's' : ''})`;
     }
 
+    function renderAvatarInto(container, avatarSrc, altText) {
+        if (!container) return;
+        container.innerHTML = '';
+        if (avatarSrc) {
+            const img = document.createElement('img');
+            img.src = avatarSrc;
+            img.alt = altText || 'Avatar';
+            img.className = 'account-avatar_img';
+            container.appendChild(img);
+        } else {
+            const icon = document.createElement('span');
+            icon.className = 'ico ico-user';
+            icon.setAttribute('aria-hidden', 'true');
+            container.appendChild(icon);
+        }
+    }
+
+    function syncHeaderAccount(u, fullName) {
+        const nameBtn = document.querySelector('.account-btn_name');
+        if (nameBtn) nameBtn.textContent = u.firstName || 'Account';
+
+        const dropdownName = document.querySelector('.account-dropdown_head strong');
+        if (dropdownName) dropdownName.textContent = fullName;
+
+        const accountBtn = document.querySelector('.account-btn');
+        if (!accountBtn) return;
+
+        const currentAvatar = accountBtn.querySelector('.account-btn_avatar, .ico-user');
+        if (u.avatar) {
+            if (currentAvatar && currentAvatar.tagName === 'IMG') {
+                currentAvatar.src = u.avatar;
+            } else {
+                const img = document.createElement('img');
+                img.src = u.avatar;
+                img.alt = 'Avatar';
+                img.className = 'account-btn_avatar';
+                img.width = 24;
+                img.height = 24;
+                if (currentAvatar) currentAvatar.replaceWith(img);
+                else accountBtn.prepend(img);
+            }
+        } else if (currentAvatar && currentAvatar.tagName === 'IMG') {
+            const icon = document.createElement('span');
+            icon.className = 'ico ico-user';
+            icon.setAttribute('aria-hidden', 'true');
+            currentAvatar.replaceWith(icon);
+        }
+    }
+
     function render() {
         const u = auth.current();
         if (!u) return;
@@ -85,17 +134,7 @@
         $('accName').textContent = fullName;
         $('accEmail').textContent = u.email || '';
 
-        const avatarContainer = $('accAvatar');
-        const removeAvatarBtn = $('accAvatarRemoveBtn');
-        if (avatarContainer) {
-            if (u.avatar) {
-                avatarContainer.innerHTML = `<img src="${u.avatar}" alt="${escapeHtml(fullName)}" class="account-avatar_img">`;
-                if (removeAvatarBtn) removeAvatarBtn.classList.remove('d-none');
-            } else {
-                avatarContainer.innerHTML = `<span class="ico ico-user" aria-hidden="true"></span>`;
-                if (removeAvatarBtn) removeAvatarBtn.classList.add('d-none');
-            }
-        }
+        renderAvatarInto($('accAvatar'), u.avatar, fullName);
 
         const metaEl = $('accMeta');
         if (metaEl) {
@@ -185,8 +224,7 @@
         renderFavorites(u.favorites || []);
         renderOrders(u.orders || []);
 
-        const nameBtn = document.querySelector('.account-btn_name');
-        if (nameBtn) nameBtn.textContent = u.firstName || 'Account';
+        syncHeaderAccount(u, fullName);
     }
 
     function resolveOrderStatus() {
@@ -291,11 +329,40 @@
         render();
     });
 
+    let pendingAvatar = '';
+    const editAvatarPreview = $('accEditAvatarPreview');
+    const avatarUploadBtn = $('accAvatarUploadBtn');
+    const avatarBtnText = $('accAvatarBtnText');
     const avatarInput = $('accAvatarInput');
+    const removeAvatarBtn = $('accAvatarRemoveBtn');
+
+    function renderEditAvatar(avatarSrc) {
+        const u = auth.current();
+        const fullName = u ? [u.firstName, u.lastName].filter(Boolean).join(' ') : 'Profile photo preview';
+        renderAvatarInto(editAvatarPreview, avatarSrc, fullName || 'Profile photo preview');
+        if (removeAvatarBtn) {
+            removeAvatarBtn.classList.toggle('d-none-account', !avatarSrc);
+        }
+        if (avatarBtnText) {
+            avatarBtnText.textContent = avatarSrc ? 'Change photo' : 'Upload photo';
+        }
+    }
+
+    if (avatarUploadBtn && avatarInput) {
+        avatarUploadBtn.addEventListener('click', function () {
+            avatarInput.click();
+        });
+    }
+
     if (avatarInput) {
         avatarInput.addEventListener('change', function (e) {
             const file = e.target.files && e.target.files[0];
             if (!file) return;
+            if (file.type && !file.type.startsWith('image/')) {
+                if (errorEl) errorEl.textContent = 'Please select a valid image file.';
+                avatarInput.value = '';
+                return;
+            }
 
             const reader = new FileReader();
             reader.onload = function (evt) {
@@ -316,14 +383,18 @@
                             h = maxDim;
                         }
                     }
-                    canvas.width = w;
-                    canvas.height = h;
+                    canvas.width = Math.max(1, w);
+                    canvas.height = Math.max(1, h);
                     const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, w, h);
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
-
-                    auth.update({ avatar: dataUrl });
-                    render();
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    pendingAvatar = canvas.toDataURL('image/jpeg', 0.85);
+                    if (errorEl) errorEl.textContent = '';
+                    renderEditAvatar(pendingAvatar);
+                    avatarInput.value = '';
+                };
+                img.onerror = function () {
+                    if (errorEl) errorEl.textContent = 'Could not read the selected image.';
+                    avatarInput.value = '';
                 };
                 img.src = evt.target.result;
             };
@@ -331,11 +402,11 @@
         });
     }
 
-    const removeAvatarBtn = $('accAvatarRemoveBtn');
     if (removeAvatarBtn) {
         removeAvatarBtn.addEventListener('click', function () {
-            auth.update({ avatar: '' });
-            render();
+            pendingAvatar = '';
+            if (avatarInput) avatarInput.value = '';
+            renderEditAvatar('');
         });
     }
 
@@ -364,11 +435,17 @@
         if (errorEl) errorEl.textContent = '';
         const profileLink = document.querySelector('[data-nav-profile]');
         if (profileLink) profileLink.setAttribute('href', editing ? '#accEditSection' : '#accViewSection');
-        if (!editing) return;
+        if (!editing) {
+            if (avatarInput) avatarInput.value = '';
+            return;
+        }
 
         const u = auth.current();
         const hobbies = u.hobbies || [];
         const prefer = Boolean(u.preferNotToSay);
+        pendingAvatar = u.avatar || '';
+        if (avatarInput) avatarInput.value = '';
+        renderEditAvatar(pendingAvatar);
         $('accFirstName').value = u.firstName || '';
         $('accLastName').value = u.lastName || '';
         $('accPhone').value = u.phone || '';
@@ -380,7 +457,7 @@
         if (genderToggle) genderToggle.checked = !prefer && u.gender === 'Female';
         if (orientationToggle) orientationToggle.checked = !prefer && u.orientation === 'Gay';
         syncPersonalSwitches(prefer);
-        $('accFirstName').focus();
+        (avatarUploadBtn || $('accFirstName')).focus();
     }
 
     const editBtn = $('accEditBtn');
@@ -440,6 +517,7 @@
                 : (orientationToggle && orientationToggle.checked ? 'Gay' : 'Straight');
 
             auth.update({
+                avatar: pendingAvatar,
                 firstName: $('accFirstName').value.trim(),
                 lastName: $('accLastName').value.trim(),
                 phone: $('accPhone').value.trim(),
