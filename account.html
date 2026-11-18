@@ -61,20 +61,13 @@
             </div>
             <div class="container account-hero_content">
                 <div class="account-hero_user">
-                    <div class="account-avatar-wrap">
-                        <div class="account-avatar" id="accAvatar">
-                            <span class="ico ico-user" aria-hidden="true"></span>
-                        </div>
-                        <label for="accAvatarInput" class="account-avatar_btn" title="Change photo" aria-label="Change photo">
-                            <span class="ico ico-camera" aria-hidden="true"></span>
-                        </label>
-                        <input type="file" id="accAvatarInput" accept="image/*" class="d-none">
+                    <div class="account-avatar" id="accAvatar">
+                        <span class="ico ico-user" aria-hidden="true"></span>
                     </div>
                     <div class="account-hero_info">
                         <h1 id="accName"></h1>
                         <p id="accEmail" class="account-hero_email"></p>
                         <p id="accMeta" class="account-hero_meta"></p>
-                        <button type="button" id="accAvatarRemoveBtn" class="account-avatar_remove d-none">Remove photo</button>
                     </div>
                 </div>
                 <div class="account-hero_actions" id="accHeroActions">
@@ -133,6 +126,29 @@
                     </div>
 
                     <form id="accEditForm" class="account-edit-form" novalidate>
+                        <div class="account-field" role="group" aria-labelledby="accAvatarLabel">
+                            <span id="accAvatarLabel">Profile photo</span>
+                            <div class="account-edit-avatar-card">
+                                <div class="account-avatar account-edit-avatar_preview" id="accEditAvatarPreview">
+                                    <span class="ico ico-user" aria-hidden="true"></span>
+                                </div>
+                                <div class="account-edit-avatar_info">
+                                    <div class="account-edit-avatar_actions">
+                                        <button type="button" id="accAvatarUploadBtn" class="btn btn-outline account-action">
+                                            <span class="ico ico-camera" aria-hidden="true"></span>
+                                            <span id="accAvatarBtnText">Change photo</span>
+                                        </button>
+                                        <button type="button" id="accAvatarRemoveBtn" class="btn btn-danger-outline account-action d-none-account">
+                                            <span class="ico ico-trash" aria-hidden="true"></span>
+                                            <span>Remove photo</span>
+                                        </button>
+                                    </div>
+                                    <small class="account-hint">JPG, PNG, or WebP. Shown on your profile and in the header.</small>
+                                </div>
+                                <input type="file" id="accAvatarInput" accept="image/*" class="d-none">
+                            </div>
+                        </div>
+
                         <div class="account-form-row">
                             <label class="account-field" for="accFirstName">
                                 <span>First name <span class="text-danger">*</span></span>
